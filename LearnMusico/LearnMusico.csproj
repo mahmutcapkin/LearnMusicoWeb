@@ -125,27 +125,116 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="audio\dummy-audio.mp3" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="css\animate.css" />
+    <Content Include="css\audioplayer.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\classy-nav.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\magnific-popup.css" />
+    <Content Include="css\one-music-icon.css" />
+    <Content Include="css\owl.carousel.min.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\classy.svg" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\icomoon.svg" />
+    <Content Include="Scripts\js\active.js" />
+    <Content Include="Scripts\js\bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\js\bootstrap\popper.min.js" />
+    <Content Include="Scripts\js\jquery\jquery-2.2.4.min.js" />
+    <Content Include="Scripts\js\plugins\plugins.js" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.3.1.js" />
-    <Content Include="Scripts\jquery-3.3.1.min.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="img\bg-img\a1.jpg" />
+    <Content Include="img\bg-img\a10.jpg" />
+    <Content Include="img\bg-img\a11.jpg" />
+    <Content Include="img\bg-img\a12.jpg" />
+    <Content Include="img\bg-img\a2.jpg" />
+    <Content Include="img\bg-img\a3.jpg" />
+    <Content Include="img\bg-img\a4.jpg" />
+    <Content Include="img\bg-img\a5.jpg" />
+    <Content Include="img\bg-img\a6.jpg" />
+    <Content Include="img\bg-img\a7.jpg" />
+    <Content Include="img\bg-img\a8.jpg" />
+    <Content Include="img\bg-img\a9.jpg" />
+    <Content Include="img\bg-img\add.gif" />
+    <Content Include="img\bg-img\add2.gif" />
+    <Content Include="img\bg-img\add3.gif" />
+    <Content Include="img\bg-img\b1.jpg" />
+    <Content Include="img\bg-img\b2.jpg" />
+    <Content Include="img\bg-img\b3.jpg" />
+    <Content Include="img\bg-img\b4.jpg" />
+    <Content Include="img\bg-img\bg-1.jpg" />
+    <Content Include="img\bg-img\bg-2.jpg" />
+    <Content Include="img\bg-img\bg-3.jpg" />
+    <Content Include="img\bg-img\bg-4.jpg" />
+    <Content Include="img\bg-img\blog1.jpg" />
+    <Content Include="img\bg-img\blog2.jpg" />
+    <Content Include="img\bg-img\blog3.jpg" />
+    <Content Include="img\bg-img\breadcumb.jpg" />
+    <Content Include="img\bg-img\breadcumb2.jpg" />
+    <Content Include="img\bg-img\breadcumb3.jpg" />
+    <Content Include="img\bg-img\e1.jpg" />
+    <Content Include="img\bg-img\e2.jpg" />
+    <Content Include="img\bg-img\e3.jpg" />
+    <Content Include="img\bg-img\e4.jpg" />
+    <Content Include="img\bg-img\e5.jpg" />
+    <Content Include="img\bg-img\e6.jpg" />
+    <Content Include="img\bg-img\e7.jpg" />
+    <Content Include="img\bg-img\e8.jpg" />
+    <Content Include="img\bg-img\e9.jpg" />
+    <Content Include="img\bg-img\fa.jpg" />
+    <Content Include="img\bg-img\movie2.mp4" />
+    <Content Include="img\bg-img\pa1.jpg" />
+    <Content Include="img\bg-img\pa2.jpg" />
+    <Content Include="img\bg-img\pa3.jpg" />
+    <Content Include="img\bg-img\pa4.jpg" />
+    <Content Include="img\bg-img\pa5.jpg" />
+    <Content Include="img\bg-img\pa6.jpg" />
+    <Content Include="img\bg-img\pa7.jpg" />
+    <Content Include="img\bg-img\person_1.jpg" />
+    <Content Include="img\bg-img\person_2.jpg" />
+    <Content Include="img\bg-img\person_3.jpg" />
+    <Content Include="img\bg-img\person_4.jpg" />
+    <Content Include="img\bg-img\person_5.jpg" />
+    <Content Include="img\bg-img\s1.jpg" />
+    <Content Include="img\bg-img\s2.jpg" />
+    <Content Include="img\bg-img\s3.jpg" />
+    <Content Include="img\bg-img\s4.jpg" />
+    <Content Include="img\bg-img\t1.jpg" />
+    <Content Include="img\bg-img\wt1.jpg" />
+    <Content Include="img\bg-img\wt10.jpg" />
+    <Content Include="img\bg-img\wt11.jpg" />
+    <Content Include="img\bg-img\wt12.jpg" />
+    <Content Include="img\bg-img\wt2.jpg" />
+    <Content Include="img\bg-img\wt3.jpg" />
+    <Content Include="img\bg-img\wt4.jpg" />
+    <Content Include="img\bg-img\wt5.jpg" />
+    <Content Include="img\bg-img\wt6.jpg" />
+    <Content Include="img\bg-img\wt7.jpg" />
+    <Content Include="img\bg-img\wt8.jpg" />
+    <Content Include="img\bg-img\wt9.jpg" />
+    <Content Include="img\core-img\favicon.ico" />
+    <Content Include="img\core-img\logo.png" />
+    <Content Include="img\core-img\logo2.png" />
+    <Content Include="img\core-img\logoy.png" />
+    <Content Include="css\style.css" />
+    <Content Include="css\style.css.map" />
+    <Content Include="fonts\classy.eot" />
+    <Content Include="fonts\classy.ttf" />
+    <Content Include="fonts\classy.woff" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\icomoon.eot" />
+    <Content Include="fonts\icomoon.ttf" />
+    <Content Include="fonts\icomoon.woff" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -155,25 +244,39 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Home\" />
-    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Views\Shared\_PartialFooter.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LearnMusico.BusinessLayer\LearnMusico.BusinessLayer.csproj">
+      <Project>{1323e811-6d1d-42ab-b060-844cf40c1be5}</Project>
+      <Name>LearnMusico.BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LearnMusico.Common\LearnMusico.Common.csproj">
+      <Project>{6c2d30cb-a003-4ded-90ba-3ebdef95710f}</Project>
+      <Name>LearnMusico.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LearnMusico.Core\LearnMusico.Core.csproj">
+      <Project>{4322be83-591b-452e-a8cd-2460db359ccd}</Project>
+      <Name>LearnMusico.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LearnMusico.Entities\LearnMusico.Entities.csproj">
+      <Project>{D70F850D-15FA-43E3-8327-B2EB65332898}</Project>
+      <Name>LearnMusico.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

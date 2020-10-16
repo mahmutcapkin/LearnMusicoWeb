@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LearnMusico.Entities;
+using LearnMusico.Entities.ValueObject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,5 +16,29 @@ namespace LearnMusico.Controllers
             //BusinessLayer.Test test = new BusinessLayer.Test();
             return View();
         }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(LoginViewModel model)
+        {
+            return View();
+        }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(RegisterViewModel deger)
+        {
+            return View();
+        }
+
+
     }
 }
