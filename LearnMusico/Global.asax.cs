@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LearnMusico.Common;
+using LearnMusico.Init;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,7 +16,7 @@ namespace LearnMusico
         {
             AreaRegistration.RegisterAllAreas();    
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            //App.Common = new WebCommon();
+            App.Common = new WebCommon();
         }
     }
 }
