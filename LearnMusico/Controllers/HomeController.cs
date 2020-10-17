@@ -150,9 +150,6 @@ namespace LearnMusico.Controllers
         }
 
 
-
-
-
         public ActionResult Logout()
         {
             Session.Clear();

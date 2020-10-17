@@ -15,7 +15,7 @@ namespace LearnMusico.Entities
         public int Id { get; set; }
 
         //virtual methodlar
-        public virtual MusicaUser Owner { get; set; }
+        public virtual MusicaUser LikedUser { get; set; }
         public virtual Sharing Sharing { get; set; }
     }
 }

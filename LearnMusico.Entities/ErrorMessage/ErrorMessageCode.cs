@@ -20,6 +20,7 @@ namespace LearnMusico.Entities.ErrorMessage
         UserCouldNotRemove = 158,
         UserCouldNotFind = 159,
         UserCouldNotInserted = 160,
-        UserCouldNotUpdated = 161
+        UserCouldNotUpdated = 161,
+        SharingCouldNotUpdated =162
     }
 }

@@ -16,7 +16,8 @@ namespace LearnMusico.Core
         int Update(T obj);
         int Delete(T obj);
         int Save();
-        // IQueryable<T> List(Expression<Func<T, bool>> where);
+        
+        //IQueryable<T> List(Expression<Func<T, bool>> where);
         T Find(Expression<Func<T, bool>> where);
     }
 }

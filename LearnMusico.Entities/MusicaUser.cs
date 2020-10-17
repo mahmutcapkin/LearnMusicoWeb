@@ -64,17 +64,17 @@ namespace LearnMusico.Entities
         public virtual List<Liked> Likes { get; set; }
         public virtual List<Instrument> Instruments { get; set; }
 
-        public MusicaUser()
-        {
-            Articles = new List<Article>();
-            Sharings = new List<Sharing>();
-            Comments = new List<Comment>();
-            Instruments = new List<Instrument>();
-            Likes = new List<Liked>();
-            MessageReplies = new List<MessageReplies>();
-            SpecialLessonPrices = new List<SpecialLessonPrice>();
-            InstrumentPrices = new List<InstrumentPrice>();
-        }
+        //public MusicaUser()
+        //{
+        //    Articles = new List<Article>();
+        //    Sharings = new List<Sharing>();
+        //    Comments = new List<Comment>();
+        //    Instruments = new List<Instrument>();
+        //    Likes = new List<Liked>();
+        //    MessageReplies = new List<MessageReplies>();
+        //    SpecialLessonPrices = new List<SpecialLessonPrice>();
+        //    InstrumentPrices = new List<InstrumentPrice>();
+        //}
 
     }
 }
