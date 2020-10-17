@@ -20,12 +20,13 @@ namespace LearnMusico.Controllers
         private SharingManager sharingManager = new SharingManager();
         private LikedManager likedManager = new LikedManager();
 
+        //Tüm Gönderiler
         public ActionResult Index()
         {
             return View(sharingManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList());
         }
 
-
+        //Gönderilerim
         public ActionResult MySharings()
         {
             var sharings = sharingManager.ListQueryable().Include("Owner").Where(
@@ -105,6 +106,8 @@ namespace LearnMusico.Controllers
             return View(sharing);
         }
 
+        //Sharing Edit içinde ekleme olabilir sonradan
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Sharing sharing, HttpPostedFileBase VideoUrlPath)
@@ -112,25 +115,7 @@ namespace LearnMusico.Controllers
             ModelState.Remove("CreatedOn");
             ModelState.Remove("ModifiedOn");
             ModelState.Remove("ModifiedUsername");
-            //if (ModelState.IsValid)
-            //{
-            //    Sharing db_sharing = sharingManager.Find(x => x.Id == sharing.Id);
-
-            //    db_sharing.Description = sharing.Description;
-            //    db_sharing.Title = sharing.Title;
-            //    db_sharing.Title = sharing.Title;
-            //    db_sharing.Title = sharing.Title;
-            //    db_sharing.Title = sharing.Title;
-            //    db_sharing.Title = sharing.Title;
-
-
-
-            //    sharingManager.Update(db_sharing);
-
-            //    return RedirectToAction("Index");
-            //}
-
-            //return View(sharing);
+           
             if (ModelState.IsValid)
             {
                 if (VideoUrlPath != null &&
@@ -159,10 +144,35 @@ namespace LearnMusico.Controllers
             }
             return View(sharing);
 
+        }
 
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Sharing sharing = sharingManager.Find(x => x.Id == id);
+            if (sharing == null)
+            {
+                return HttpNotFound();
+            }
+            return View(sharing);
         }
 
 
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Sharing sharing = sharingManager.Find(x => x.Id == id);
+            sharingManager.Delete(sharing);
+            return RedirectToAction("Index");
+        }
+
+
+
+        //Beğenme beğeni geri alma işlemleri kaldı eklenecek
 
     }
 }
