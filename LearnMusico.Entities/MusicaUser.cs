@@ -18,6 +18,9 @@ namespace LearnMusico.Entities
         [DisplayName("Soyad"), StringLength(50, ErrorMessage = "{0} max {1} karakter içermelidir.")]
         public string Surname { get; set; }
 
+        [DisplayName("Hakkımda"), StringLength(500, ErrorMessage = "{0} max {1} karakter içermelidir.")]
+        public string About { get; set; }
+
         [DisplayName("Kullanıcı Adı"),
             Required(ErrorMessage = "{0} alanı gereklidir."),
             StringLength(25, ErrorMessage = "{0} max {1} karakter içermelidir.")]
@@ -36,6 +39,9 @@ namespace LearnMusico.Entities
         //profil resminin üretilmesi ekrana gelmesi istenmezse böyle olur kendi profilinden aktif edicek demek bu
         [StringLength(150, ErrorMessage = "{0} max {1} karakter içermelidir."), ScaffoldColumn(false)]//  images/user_12.jgp   falan gelicek şekilde
         public string ProfileImageFilename { get; set; }
+
+        [StringLength(150, ErrorMessage = "{0} max {1} karakter içermelidir."), ScaffoldColumn(false)]//  images/user_12.jgp   falan gelicek şekilde
+        public string CV { get; set; }
 
         [DisplayName("Is Active")]
         public bool IsActive { get; set; }

@@ -70,6 +70,10 @@
     <Compile Include="Test.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LearnMusico.Common\LearnMusico.Common.csproj">
+      <Project>{6C2D30CB-A003-4DED-90BA-3EBDEF95710F}</Project>
+      <Name>LearnMusico.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LearnMusico.Core\LearnMusico.Core.csproj">
       <Project>{4322BE83-591B-452E-A8CD-2460DB359CCD}</Project>
       <Name>LearnMusico.Core</Name>

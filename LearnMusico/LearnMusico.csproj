@@ -142,6 +142,7 @@
     <Content Include="fonts\classy.svg" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\icomoon.svg" />
+    <Content Include="img\user_default.png" />
     <Content Include="Scripts\js\active.js" />
     <Content Include="Scripts\js\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\js\bootstrap\popper.min.js" />
