@@ -1,4 +1,5 @@
-﻿using LearnMusico.Entities;
+﻿using LearnMusico.BusinessLayer;
+using LearnMusico.Entities;
 using LearnMusico.Entities.ValueObject;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace LearnMusico.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            //BusinessLayer.Test test = new BusinessLayer.Test();
+            Test test = new Test();
             return View();
         }
 
