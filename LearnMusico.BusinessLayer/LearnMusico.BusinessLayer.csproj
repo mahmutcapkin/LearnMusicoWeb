@@ -41,7 +41,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\ManagerBase.cs" />
+    <Compile Include="ArticleCategoryManager.cs" />
+    <Compile Include="ArticleManager.cs" />
+    <Compile Include="CommentManager.cs" />
+    <Compile Include="InstrumenCategoryManager.cs" />
+    <Compile Include="InstrumenPrice.cs" />
+    <Compile Include="InstrumentPriceManager.cs" />
+    <Compile Include="InstrumentManager.cs" />
+    <Compile Include="LessonPriceManager.cs" />
+    <Compile Include="LikedManager.cs" />
+    <Compile Include="MessageRepliesManager.cs" />
+    <Compile Include="MessagesManager.cs" />
+    <Compile Include="MusicaUserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SharingManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LearnMusico.Core\LearnMusico.Core.csproj">
+      <Project>{4322BE83-591B-452E-A8CD-2460DB359CCD}</Project>
+      <Name>LearnMusico.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LearnMusico.Entities\LearnMusico.Entities.csproj">
+      <Project>{D70F850D-15FA-43E3-8327-B2EB65332898}</Project>
+      <Name>LearnMusico.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
