@@ -1,4 +1,5 @@
 ﻿using LearnMusico.Core;
+using LearnMusico.DataAccessLayer.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,44 +11,45 @@ namespace LearnMusico.BusinessLayer.Abstract
 {
     public abstract class ManagerBase<T> : IDataAccess<T> where T : class
     {
-        public int Delete(T obj)
+        private Repository<T> repo = new Repository<T>();
+        public virtual int Delete(T obj)
         {
-            throw new NotImplementedException();
+            return repo.Delete(obj);
         }
 
-        public T Find(Expression<Func<T, bool>> where)
+        public virtual T Find(Expression<Func<T, bool>> where)
         {
-            throw new NotImplementedException();
+            return repo.Find(where);
         }
 
-        public int Insert(T obj)
+        public virtual  int Insert(T obj)
         {
-            throw new NotImplementedException();
+            return repo.Insert(obj);
         }
 
-        public List<T> List()
+        public virtual List<T> List()
         {
-            throw new NotImplementedException();
+            return repo.List();
         }
 
-        public List<T> List(Expression<Func<T, bool>> where)
+        public virtual List<T> List(Expression<Func<T, bool>> where)
         {
-            throw new NotImplementedException();
+            return repo.List(where);
         }
 
-        public IQueryable<T> ListQueryable()
+        public virtual IQueryable<T> ListQueryable()
         {
-            throw new NotImplementedException();
+            return repo.ListQueryable();
         }
 
-        public int Save()
+        public virtual int Save()
         {
-            throw new NotImplementedException();
+            return repo.Save();
         }
 
-        public int Update(T obj)
+        public virtual int Update(T obj)
         {
-            throw new NotImplementedException();
+            return repo.Update(obj);
         }
     }
 }

@@ -65,6 +65,7 @@
     <Compile Include="MessagesManager.cs" />
     <Compile Include="MusicaUserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Result\BusinessLayerResult.cs" />
     <Compile Include="SharingManager.cs" />
     <Compile Include="Test.cs" />
   </ItemGroup>
