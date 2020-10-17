@@ -111,5 +111,27 @@ namespace LearnMusico.BusinessLayer
             }
             return res;
         }
+
+
+        public BusinessLayerResult<MusicaUser> ActivateUser(Guid activateId)
+        {
+            BusinessLayerResult<MusicaUser> res = new BusinessLayerResult<MusicaUser>();
+            res.Result = Find(x => x.ActivateGuid == activateId);
+            if (res.Result != null)
+            {
+                if (res.Result.IsActive)
+                {
+                    res.AddError(ErrorMessageCode.UserAlreadyActive, "Kullanıcı zaten aktif edilmiştir.");
+                    return res;
+                }
+                res.Result.IsActive = true;
+                Update(res.Result);
+            }
+            else
+            {
+                res.AddError(ErrorMessageCode.ActivateIdDoesNotExists, "Aktifleştirilecek kullanıcı bulunamadı");
+            }
+            return res;
+        }
     }
 }
