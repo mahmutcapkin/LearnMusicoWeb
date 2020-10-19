@@ -39,7 +39,7 @@ namespace LearnMusico.Models
             var result = WebCache.Get("icategory-cache");
             if (result == null)
             {
-                InstrumenCategoryManager icm = new InstrumenCategoryManager();
+                InstrumentCategoryManager icm = new InstrumentCategoryManager();
                 result = icm.List();
                 WebCache.Set("icategory-cache", result, 20, true);
             }
