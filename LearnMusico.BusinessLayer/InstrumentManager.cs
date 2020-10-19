@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LearnMusico.BusinessLayer.Abstract;
+using LearnMusico.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace LearnMusico.BusinessLayer
 {
-    class InstrumentManager
+    public class InstrumentManager: ManagerBase<Instrument>
     {
+
     }
 }

@@ -56,7 +56,6 @@
     <Compile Include="ArticleManager.cs" />
     <Compile Include="CommentManager.cs" />
     <Compile Include="InstrumentCategoryManager.cs" />
-    <Compile Include="InstrumenPrice.cs" />
     <Compile Include="InstrumentPriceManager.cs" />
     <Compile Include="InstrumentManager.cs" />
     <Compile Include="LessonPriceManager.cs" />

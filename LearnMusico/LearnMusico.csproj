@@ -129,10 +129,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ArticleCategoryController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
-    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InstrumentCategoryController.cs" />
     <Compile Include="Controllers\InstrumentController.cs" />
     <Compile Include="Controllers\InstrumentPriceController.cs" />
     <Compile Include="Controllers\LessonPriceController.cs" />
@@ -279,7 +280,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="videos\" />
     <Folder Include="Views\Article\" />
-    <Folder Include="Views\Category\" />
     <Folder Include="Views\Comment\" />
     <Folder Include="Views\InstrumentPrice\" />
     <Folder Include="Views\Instrument\" />
@@ -296,6 +296,16 @@
     <Content Include="Views\Shared\_PartialFooter.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\ArticleCategory\Index.cshtml" />
+    <Content Include="Views\ArticleCategory\Details.cshtml" />
+    <Content Include="Views\ArticleCategory\Create.cshtml" />
+    <Content Include="Views\ArticleCategory\Edit.cshtml" />
+    <Content Include="Views\ArticleCategory\Delete.cshtml" />
+    <Content Include="Views\InstrumentCategory\Index.cshtml" />
+    <Content Include="Views\InstrumentCategory\Details.cshtml" />
+    <Content Include="Views\InstrumentCategory\Create.cshtml" />
+    <Content Include="Views\InstrumentCategory\Edit.cshtml" />
+    <Content Include="Views\InstrumentCategory\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LearnMusico.BusinessLayer\LearnMusico.BusinessLayer.csproj">
