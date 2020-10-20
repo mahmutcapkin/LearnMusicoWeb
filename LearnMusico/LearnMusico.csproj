@@ -285,10 +285,8 @@
     <Folder Include="img\user\" />
     <Folder Include="videos\instrument\" />
     <Folder Include="videos\sharing\" />
-    <Folder Include="Views\Article\" />
     <Folder Include="Views\Comment\" />
     <Folder Include="Views\InstrumentPrice\" />
-    <Folder Include="Views\Instrument\" />
     <Folder Include="Views\LessonPrice\" />
     <Folder Include="Views\MusicaUser\" />
     <Folder Include="Views\Sharing\" />
@@ -312,6 +310,22 @@
     <Content Include="Views\InstrumentCategory\Create.cshtml" />
     <Content Include="Views\InstrumentCategory\Edit.cshtml" />
     <Content Include="Views\InstrumentCategory\Delete.cshtml" />
+    <Content Include="Views\Instrument\Index.cshtml" />
+    <Content Include="Views\Instrument\MyInstrumentDetails.cshtml" />
+    <Content Include="Views\Instrument\Details.cshtml" />
+    <Content Include="Views\Instrument\Create.cshtml" />
+    <Content Include="Views\Instrument\Edit.cshtml" />
+    <Content Include="Views\Instrument\Delete.cshtml" />
+    <Content Include="Views\Article\Index.cshtml" />
+    <Content Include="Views\Article\MyArticles.cshtml" />
+    <Content Include="Views\Article\Details.cshtml" />
+    <Content Include="Views\Article\Create.cshtml" />
+    <Content Include="Views\Article\Edit.cshtml" />
+    <Content Include="Views\Article\Delete.cshtml" />
+    <Content Include="Views\Home\ShowProfile.cshtml" />
+    <Content Include="Views\Home\EditProfile.cshtml" />
+    <Content Include="Views\Home\AccessDenied.cshtml" />
+    <Content Include="Views\Home\HasError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LearnMusico.BusinessLayer\LearnMusico.BusinessLayer.csproj">
