@@ -21,6 +21,8 @@ namespace LearnMusico.Entities.ErrorMessage
         UserCouldNotFind = 159,
         UserCouldNotInserted = 160,
         UserCouldNotUpdated = 161,
-        SharingCouldNotUpdated =162
+        SharingCouldNotUpdated =162,
+        InstrumentCouldNotUpdated=163,
+        ArticleCouldNotUpdated=164
     }
 }

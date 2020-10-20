@@ -278,7 +278,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="videos\" />
+    <Folder Include="audio\instrument\" />
+    <Folder Include="document\" />
+    <Folder Include="img\article\" />
+    <Folder Include="img\instrument\" />
+    <Folder Include="img\user\" />
+    <Folder Include="videos\instrument\" />
+    <Folder Include="videos\sharing\" />
     <Folder Include="Views\Article\" />
     <Folder Include="Views\Comment\" />
     <Folder Include="Views\InstrumentPrice\" />

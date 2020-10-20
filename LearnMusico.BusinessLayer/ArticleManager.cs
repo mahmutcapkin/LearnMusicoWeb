@@ -1,5 +1,7 @@
 ﻿using LearnMusico.BusinessLayer.Abstract;
+using LearnMusico.BusinessLayer.Result;
 using LearnMusico.Entities;
+using LearnMusico.Entities.ErrorMessage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,28 @@ namespace LearnMusico.BusinessLayer
 {
     public class ArticleManager: ManagerBase<Article>
     {
+        public BusinessLayerResult<Article> UpdateArticle(Article data)
+        {
 
+            BusinessLayerResult<Article> res = new BusinessLayerResult<Article>();            
+            res.Result = Find(x => x.Id == data.Id);
+
+            res.Result.Title = data.Title;
+            res.Result.Description = data.Description;
+            res.Result.SubjectType = data.SubjectType;
+
+
+            if (string.IsNullOrEmpty(data.ImageFileName) == false)
+            {
+                res.Result.ImageFileName = data.ImageFileName;
+            }
+
+            if (base.Update(res.Result) == 0)
+            {
+                res.AddError(ErrorMessageCode.ArticleCouldNotUpdated, "Yazı güncellenemedi.");
+            }
+
+            return res;
+        }
     }
 }

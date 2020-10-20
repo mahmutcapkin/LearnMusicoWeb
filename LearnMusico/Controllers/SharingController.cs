@@ -121,9 +121,9 @@ namespace LearnMusico.Controllers
                 if (VideoUrlPath != null &&
                        (VideoUrlPath.ContentType == "video/mp4"))
                 {
-                    string filename = $"user_{sharing.Id}.{VideoUrlPath.ContentType.Split('/')[1]}";
+                    string filename = $"sharing_{sharing.Id}.{VideoUrlPath.ContentType.Split('/')[1]}";
 
-                    VideoUrlPath.SaveAs(Server.MapPath($"~/videos/{filename}"));
+                    VideoUrlPath.SaveAs(Server.MapPath($"~/videos/sharing/{filename}"));
                     sharing.VideoUrlPath = filename;
                 }
                 BusinessLayerResult<Sharing> res = sharingManager.UpdateSharing(sharing);

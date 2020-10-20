@@ -1,6 +1,8 @@
 ﻿using LearnMusico.BusinessLayer;
+using LearnMusico.BusinessLayer.Result;
 using LearnMusico.Entities;
 using LearnMusico.Models;
+using LearnMusico.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -95,23 +97,36 @@ namespace LeararticleManagerusico.Controllers
         //Article Edit içinde ekleme olabilir sonradan düzeltme vb.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Article article)
+        public ActionResult Edit(Article article,HttpPostedFile ImageFileName)
         {
             ModelState.Remove("CreatedOn");
             ModelState.Remove("ModifiedOn");
             ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
-                Article db_article = articleManager.Find(x => x.Id == article.Id);
-                db_article.Title = article.Title;
-                db_article.SubjectType = article.SubjectType;
-                db_article.Description = article.Description;
-
-                if (string.IsNullOrEmpty(article.ImageFileName) == false)
+                if (ImageFileName != null &&
+                        (ImageFileName.ContentType == "image/jpeg" ||
+                        ImageFileName.ContentType == "image/jpg" ||
+                        ImageFileName.ContentType == "image/png"))
                 {
-                    db_article.ImageFileName = article.ImageFileName;
+                    string filename = $"article_{article.Id}.{ImageFileName.ContentType.Split('/')[1]}";
+
+                    ImageFileName.SaveAs(Server.MapPath($"~/img/article/{filename}"));
+                    article.ImageFileName = filename;
                 }
-                articleManager.Update(db_article);
+                BusinessLayerResult<Article> res = articleManager.UpdateArticle(article);
+
+                if (res.Errors.Count > 0)
+                {
+                    ErrorViewModel errorNotifyObj = new ErrorViewModel()
+                    {
+                        Items = res.Errors,
+                        Title = "Yazı Güncellenemedi.",
+                        RedirectingUrl = "/Article/Edit"
+                    };
+
+                    return View("Error", errorNotifyObj);
+                }
 
                 return RedirectToAction("Index");
             }

@@ -112,7 +112,7 @@ namespace LearnMusico.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditProfile(MusicaUser model, HttpPostedFileBase ProfileImage)
+        public ActionResult EditProfile(MusicaUser model, HttpPostedFileBase ProfileImage, HttpPostedFileBase cv)
         {
             ModelState.Remove("ModifiedUsername");
 
@@ -125,9 +125,19 @@ namespace LearnMusico.Controllers
                 {
                     string filename = $"user_{model.Id}.{ProfileImage.ContentType.Split('/')[1]}";
 
-                    ProfileImage.SaveAs(Server.MapPath($"~/images/{filename}"));
+                    ProfileImage.SaveAs(Server.MapPath($"~/img/user/{filename}"));
                     model.ProfileImageFilename = filename;
                 }
+                
+                if(cv!=null &&
+                    (cv.ContentType == "application/pdf"))
+                {
+                    string filenameCV = $"usercv_{model.Id}.{cv.ContentType.Split('/')[1]}";
+                    cv.SaveAs(Server.MapPath($"~/document/user/{filenameCV}"));
+                    model.CV = filenameCV;
+                }
+
+
                 BusinessLayerResult<MusicaUser> res = musicaUserManager.UpdateProfile(model);
 
                 if (res.Errors.Count > 0)

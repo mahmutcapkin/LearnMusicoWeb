@@ -169,6 +169,10 @@ namespace LearnMusico.BusinessLayer
             {
                 res.Result.ProfileImageFilename = data.ProfileImageFilename;
             }
+            if (string.IsNullOrEmpty(data.CV) == false)
+            {
+                res.Result.CV = data.CV;
+            }
 
             if (base.Update(res.Result) == 0)
             {
