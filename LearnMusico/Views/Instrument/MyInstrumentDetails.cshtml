@@ -1,7 +1,76 @@
-﻿
+﻿@model IEnumerable<LearnMusico.Entities.Instrument>
+
 @{
-    ViewBag.Title = "MyInstrumentDetails";
+    ViewBag.Title = "Enstrüman Bilgilerim";
 }
 
-<h2>MyInstrumentDetails</h2>
+<div class="row">
 
+    <div class="col-md-10 col-md-offset-1">
+        <h2>@ViewBag.Title</h2>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <p>
+            @* @Bootstrap.LinkButton("/Note/Create", "primary", string.Empty, string.Empty, "plus", " Yeni")*@
+            <a href="/Instrument/Create" class="btn btn-primary">
+                <span class="glyphicon glyphicon-plus"></span>Enstrüman Ekle
+            </a>
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.InstrumentCategory.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.InstrumentName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InstrumentCategory.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InstrumentName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                        
+                    <td width="150">
+                        <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#modal_comment" data-note-id="@item.Id">
+                            <span class="glyphicon glyphicon-comment"></span>
+                        </button>
+                        <a href="/Instrument/Edit/@item.Id" class="btn btn-warning btn-sm">
+                        <span class="glyphicon glyphicon-edit"></span>Düzenle
+                         </a>
+                        @*@Bootstrap.LinkButton("/Note/Edit/" + item.Id, "warning", "btn-xs", "Düzenle", "edit", string.Empty)*@
+                        <a href="/Instrument/Details/@item.Id" class="btn btn-warning btn-sm">
+                        <span class="glyphicon glyphicon-search"></span>Detaylar
+                         </a>
+                        @*@Bootstrap.LinkButton("/Note/Details/" + item.Id, "info", "btn-xs", "Detaylar", "search", string.Empty)*@
+                        <a href="/Instrument/Edit/@item.Id" class="btn btn-warning btn-sm">
+                    <span class="glyphicon glyphicon-trash"></span>Kaldır
+                     </a>
+                        @*@Bootstrap.LinkButton("/Note/Delete/" + item.Id, "danger", "btn-xs", "Kaldır", "trash", string.Empty)*@
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+
+</div>
+
+@Bootstrap.ModalPopup("modal_comment", title: "Yorumlar")
+<script src="~/Scripts/comment.js"></script>

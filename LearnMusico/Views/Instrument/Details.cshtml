@@ -1,7 +1,45 @@
-﻿
+﻿@model LearnMusico.Entities.Instrument
+
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Enstrüman Detaylarım";
 }
 
-<h2>Details</h2>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h4>Enstrüman İşlemleri</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.InstrumentCategory.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.InstrumentCategory.Title)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.InstrumentName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.InstrumentName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+        </dl>
+    </div>
+    <div class="col-md-8 col-md-offset-2">
+        <p>
+            <a href="/Instrument/MyInstrumentDetails/@Model.Id" class="btn btn-warning btn-sm">
+                <span class="glyphicon glyphicon-edit"></span>Düzenle
+            </a>
+            @*  @Bootstrap.LinkButton("/Category/Index/" + Model.Id, "warning", string.Empty, string.Empty, "edit", " Düzenle")*@
+            
+        </p>
+    </div>
+</div>
 

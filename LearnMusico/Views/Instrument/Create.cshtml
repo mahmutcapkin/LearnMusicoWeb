@@ -1,7 +1,88 @@
-﻿
-@{
-    ViewBag.Title = "Create";
-}
+﻿@model LearnMusico.Entities.Instrument
 
-<h2>Create</h2>
+@{
+    ViewBag.Title = "Enstrüman Ekleme";
+}
+<link href="~/Content/validation-summary.css" rel="stylesheet" />
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h2>Ekle</h2>
+        <hr />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+
+        @using (Html.BeginForm("Create", "Instrument", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Enstrüman Ekleme</h4>
+            <hr />
+            @Html.ValidationSummary(false)
+            <div class="form-group">
+                @Html.LabelFor(model => model.InstrumentName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.InstrumentName, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.InstrumentCategoryId, "Enstrüman Kategori", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("InstrumentCategoryId", null, htmlAttributes: new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <img src="~/images/@Model.ImageFilePath" class="img-circle" width="128" height="128" />
+                @Html.HiddenFor(model => model.ImageFilePath)
+                <br /><br />
+                <input type="file" name="ImageFilePath" id="VideoUrlPath" class="form-control" /><br />
+                <span class="glyphicon glyphicon-info-sign">&nbsp;</span>
+                <span><i>Lütfen jpg, jpeg ya da png formatı kullanın.</i></span>
+            </div>
+            <div class="form-group">
+                @* buraya bişey eklenebilir *@
+                <video src="~/audio/@Model.AudioUrlPath"></video>
+                @Html.HiddenFor(model => model.AudioUrlPath)
+                <br /><br />
+                <input type="file" name="AudioUrlPath" id="AudioUrlPath" class="form-control" /><br />
+                <span class="glyphicon glyphicon-info-sign">&nbsp;</span>
+                <span><i>Lütfen mp3 formatı kullanın.</i></span>
+            </div>
+            <div class="form-group">
+                @* buraya eklenebilir *@
+                <video src="~/videos/instrument/@Model.VideoUrlPath"/>
+                @Html.HiddenFor(model => model.VideoUrlPath)
+                <br /><br />
+                <input type="file" name="VideoUrlPath" id="VideoUrlPath" class="form-control" /><br />
+                <span class="glyphicon glyphicon-info-sign">&nbsp;</span>
+                <span><i>Lütfen mp4 formatı kullanın.</i></span>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>Ekle</button>
+                    @Html.ActionLink("Geri Dön", "Index", "Instrument", null, new { @class = "btn btn-default" })
+                </div>
+            </div>
+        </div>
+        }
+
+    </div>
+</div>
+
+
+
+
+
+
 

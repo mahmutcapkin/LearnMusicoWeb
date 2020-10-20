@@ -107,8 +107,7 @@ namespace LearnMusico.Controllers
                     instrument.VideoUrlPath = filenameV;
                 }
                 if (AudioUrlPath != null &&
-                       (AudioUrlPath.ContentType == "audio/mp3" ||
-                       AudioUrlPath.ContentType == "audio/mpeg"))
+                       (AudioUrlPath.ContentType == "audio/mp3"))
                 {
                     string filenameA = $"instrument_{instrument.Id}.{AudioUrlPath.ContentType.Split('/')[1]}";
 
