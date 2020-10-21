@@ -25,6 +25,11 @@ namespace LearnMusico.Entities
         [DisplayName("Özel Ders Fiyatı"), Required]
         public int Price { get; set; }
 
+        [DisplayName("Adres"),
+            Required(ErrorMessage = "{0} alanı gereklidir."),
+            StringLength(200, ErrorMessage = "{0} max {1} karakter içermelidir.")]
+        public string Address { get; set; }
+
         [StringLength(150), ScaffoldColumn(false)]
         public string ImageFilePath { get; set; }
 

@@ -170,6 +170,7 @@
     <Content Include="fonts\classy.svg" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\icomoon.svg" />
+    <Content Include="img\gitar.jpg" />
     <Content Include="img\user_default.png" />
     <Content Include="Scripts\js\active.js" />
     <Content Include="Scripts\js\bootstrap\bootstrap.min.js" />
@@ -264,6 +265,7 @@
     <Content Include="fonts\icomoon.eot" />
     <Content Include="fonts\icomoon.ttf" />
     <Content Include="fonts\icomoon.woff" />
+    <Content Include="videos\kalimba.mp4" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -279,16 +281,16 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="audio\instrument\" />
-    <Folder Include="document\" />
     <Folder Include="img\article\" />
+    <Folder Include="img\instprice\" />
     <Folder Include="img\instrument\" />
+    <Folder Include="img\lessonprice\" />
     <Folder Include="img\user\" />
     <Folder Include="videos\instrument\" />
     <Folder Include="videos\sharing\" />
     <Folder Include="Views\Comment\" />
     <Folder Include="Views\InstrumentPrice\" />
     <Folder Include="Views\LessonPrice\" />
-    <Folder Include="Views\MusicaUser\" />
     <Folder Include="Views\Sharing\" />
   </ItemGroup>
   <ItemGroup>
@@ -296,6 +298,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="document\review.pdf" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_PartialFooter.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
@@ -326,6 +329,10 @@
     <Content Include="Views\Home\EditProfile.cshtml" />
     <Content Include="Views\Home\AccessDenied.cshtml" />
     <Content Include="Views\Home\HasError.cshtml" />
+    <Content Include="Views\MusicaUser\Index.cshtml" />
+    <Content Include="Views\MusicaUser\Details.cshtml" />
+    <Content Include="Views\MusicaUser\Edit.cshtml" />
+    <Content Include="Views\MusicaUser\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LearnMusico.BusinessLayer\LearnMusico.BusinessLayer.csproj">

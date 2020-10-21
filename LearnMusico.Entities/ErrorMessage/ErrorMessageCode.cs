@@ -23,6 +23,8 @@ namespace LearnMusico.Entities.ErrorMessage
         UserCouldNotUpdated = 161,
         SharingCouldNotUpdated =162,
         InstrumentCouldNotUpdated=163,
-        ArticleCouldNotUpdated=164
+        ArticleCouldNotUpdated=164,
+        InstPriceCouldNotUpdated=165,
+        LessonPriceCouldNotUpdated=166
     }
 }

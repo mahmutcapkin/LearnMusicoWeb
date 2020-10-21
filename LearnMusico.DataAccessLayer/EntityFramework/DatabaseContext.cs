@@ -20,7 +20,13 @@ namespace LearnMusico.DataAccessLayer.EntityFramework
         public DbSet<MusicaUser> MusicaUsers { get; set; }
         public DbSet<Sharing> Sharings { get; set; }
         public DbSet<SpecialLessonPrice> SpecialLessonPrices { get; set; }
+        public DbSet<InstrumentCategory> InstrumentCategories { get; set; }
+        public DbSet<ArticleCategory> ArticleCategories { get; set; }
 
 
+        public DatabaseContext()
+        {
+            Database.SetInitializer(new Initilazier());
+        }
     }
 }

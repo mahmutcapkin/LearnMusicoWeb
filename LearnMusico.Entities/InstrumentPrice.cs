@@ -40,7 +40,7 @@ namespace LearnMusico.Entities
 
         public int InstrumentCategoryId { get; set; }
 
-        //Owner_ıd
+
         public virtual MusicaUser Owner { get; set; }
 
         public virtual InstrumentCategory InstrumentCategory { get; set; }

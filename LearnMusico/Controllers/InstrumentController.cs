@@ -132,7 +132,7 @@ namespace LearnMusico.Controllers
                     ErrorViewModel errorNotifyObj = new ErrorViewModel()
                     {
                         Items = res.Errors,
-                        Title = "Enstrüman bilgileri Güncellenemedi.",
+                        Title = "Enstrüman bilgileri güncellenemedi.",
                         RedirectingUrl = "/Instrument/Edit"
                     };
 
