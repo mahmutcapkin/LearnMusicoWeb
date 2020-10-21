@@ -126,8 +126,7 @@ namespace LearnMusico.DataAccessLayer.EntityFramework
                 }
             }
             context.SaveChanges();
-            //List<InstrumentCategory> catList = context.InstrumentCategories.ToList();
-            //InstrumentCategory cat = catList[FakeData.NumberData.GetNumber(0, catList.Count - 1)];
+            
 
 
             //Adding fake sharings
@@ -173,47 +172,115 @@ namespace LearnMusico.DataAccessLayer.EntityFramework
 
             }
 
-
-            for (int i = 0; i < 5; i++)
-            {
-                ArticleCategory articlecat = new ArticleCategory()
+            //ADDİNG FAKE ARTİCLE AND CATEGORY 
+                for (int i = 0; i < 5; i++)
                 {
-                    Title = FakeData.PlaceData.GetStreetName(),
-                    CreatedOn = DateTime.Now,
-                    ModifiedOn = DateTime.Now,
-                    ModifiedUsername = "ahmetkilic"
-                };
-                context.ArticleCategories.Add(articlecat);
-                // adding fake Article...
+                    ArticleCategory articlecat = new ArticleCategory()
+                    {
+                        Title = FakeData.PlaceData.GetStreetName(),
+                        CreatedOn = DateTime.Now,
+                        ModifiedOn = DateTime.Now,
+                        ModifiedUsername = "ahmetkilic"
+                    };
+                    context.ArticleCategories.Add(articlecat);
+                    // adding fake Article...
+                    for (int k = 0; k < FakeData.NumberData.GetNumber(1, 5); k++)
+                    {
+                        MusicaUser owner = userList[FakeData.NumberData.GetNumber(0, userList.Count - 1)];
+                        Article article = new Article()
+                        {
+                            Title = FakeData.TextData.GetAlphabetical(FakeData.NumberData.GetNumber(5, 25)),
+                            Description = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, " +
+                            "similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque" +
+                            " nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates " +
+                            "repudiandae sint et molestiae non recusandae. Itaque earum rerum " +
+                            "hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat At vero eos et accusamus et " +
+                            "iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque " +
+                            "corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, " +
+                            "similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. " +
+                            "Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id " +
+                            "quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. " +
+                            "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, " +
+                            "ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat",
+                            ArticleCategory = articlecat,
+                            ImageFileName = "gitar.jpg",                       
+                            Owner = owner,
+                            CreatedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now),
+                            ModifiedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now),
+                            ModifiedUsername = owner.Username
+                        };
+                        articlecat.Articles.Add(article);
+                    }
+                }
+
+
+            List<InstrumentCategory> catList = context.InstrumentCategories.ToList();
+            // adding fake instrumentprice...
+            for (int i = 0; i < 6; i++)
+            {
+               
+                InstrumentCategory cat = catList[FakeData.NumberData.GetNumber(0, catList.Count - 1)];
+                
                 for (int k = 0; k < FakeData.NumberData.GetNumber(1, 5); k++)
                 {
                     MusicaUser owner = userList[FakeData.NumberData.GetNumber(0, userList.Count - 1)];
-                    Article article = new Article()
+                    InstrumentPrice instrumentprice = new InstrumentPrice()
                     {
-                        Title = FakeData.TextData.GetAlphabetical(FakeData.NumberData.GetNumber(5, 25)),
-                        Description = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, " +
-                        "similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque" +
-                        " nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates " +
-                        "repudiandae sint et molestiae non recusandae. Itaque earum rerum " +
-                        "hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat At vero eos et accusamus et " +
-                        "iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque " +
-                        "corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, " +
-                        "similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. " +
-                        "Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id " +
-                        "quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. " +
-                        "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, " +
-                        "ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat",
-                        ArticleCategory = articlecat,
-                        ImageFileName = "gitar.jpg",                       
+                        InstrumentName = FakeData.TextData.GetAlphabetical(FakeData.NumberData.GetNumber(5, 25)),
+                        Description = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
+                        InstrumentCategory = cat,
+                        ImageFilePath = "gitar.jpg",
+                        Price=250,
+                        Status="Yeni gibi sayılır",
+                        Address= FakeData.PlaceData.GetAddress(),
                         Owner = owner,
                         CreatedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now),
                         ModifiedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now),
                         ModifiedUsername = owner.Username
                     };
-                    instcat.Instruments.Add(instrument);
+                    cat.InstrumentPrices.Add(instrumentprice);
                 }
-            }
-        }
-    }
 
+            }
+
+
+            // adding fake speciallessonprice...
+
+            for (int i = 0; i < 6; i++)
+            {
+
+                InstrumentCategory instcategory = catList[FakeData.NumberData.GetNumber(0, catList.Count - 1)];
+
+                for (int k = 0; k < FakeData.NumberData.GetNumber(1, 5); k++)
+                {
+                    MusicaUser owner = userList[FakeData.NumberData.GetNumber(0, userList.Count - 1)];
+                    SpecialLessonPrice lessonprice = new SpecialLessonPrice()
+                    {
+                        InstrumentName = FakeData.TextData.GetAlphabetical(FakeData.NumberData.GetNumber(5, 25)),
+                        Description = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
+                        Price = 300,
+                        
+                        ImageFilePath = "gitar.jpg",
+                        Address = FakeData.PlaceData.GetAddress(),
+                        Teacher= owner,
+                        CreatedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now),
+                        ModifiedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now),
+                        ModifiedUsername = owner.Username
+                    };
+                    instcategory.SpecialLessonPrices.Add(lessonprice);
+                }
+
+            }
+
+
+
+
+
+
+        }
+
+
+    }
 }
+
+
