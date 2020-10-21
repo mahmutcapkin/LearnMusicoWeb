@@ -19,7 +19,7 @@ namespace LearnMusico.Entities
 
         [DisplayName("İçerik"),
             Required(ErrorMessage = "{0} alanı gereklidir."),
-            StringLength(40, ErrorMessage = "{0} max {1} karakter içermelidir.")]
+            StringLength(400, ErrorMessage = "{0} max {1} karakter içermelidir.")]
         public string Description { get; set; }
 
         [DisplayName("Enstrüman Fiyatı"), Required(ErrorMessage = "{0} alanı gereklidir.")]

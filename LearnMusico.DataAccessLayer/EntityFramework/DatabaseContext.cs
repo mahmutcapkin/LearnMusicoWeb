@@ -10,6 +10,11 @@ namespace LearnMusico.DataAccessLayer.EntityFramework
 {
     public class DatabaseContext : DbContext
     {
+        public DatabaseContext()
+        {
+            Database.SetInitializer(new MyInitilazier());
+        }
+
         public DbSet<Article> Articles { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Instrument> Instruments { get; set; }
@@ -23,10 +28,5 @@ namespace LearnMusico.DataAccessLayer.EntityFramework
         public DbSet<InstrumentCategory> InstrumentCategories { get; set; }
         public DbSet<ArticleCategory> ArticleCategories { get; set; }
 
-
-        public DatabaseContext()
-        {
-            Database.SetInitializer(new Initilazier());
-        }
     }
 }

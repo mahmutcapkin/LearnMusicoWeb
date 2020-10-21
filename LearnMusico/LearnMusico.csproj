@@ -154,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="audio\dummy-audio.mp3" />
+    <Content Include="audio\instrument\dummy-audio.mp3" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -265,6 +266,7 @@
     <Content Include="fonts\icomoon.eot" />
     <Content Include="fonts\icomoon.ttf" />
     <Content Include="fonts\icomoon.woff" />
+    <Content Include="videos\instrument\kalimba.mp4" />
     <Content Include="videos\kalimba.mp4" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -280,13 +282,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="audio\instrument\" />
     <Folder Include="img\article\" />
     <Folder Include="img\instprice\" />
     <Folder Include="img\instrument\" />
     <Folder Include="img\lessonprice\" />
     <Folder Include="img\user\" />
-    <Folder Include="videos\instrument\" />
     <Folder Include="videos\sharing\" />
     <Folder Include="Views\Comment\" />
     <Folder Include="Views\InstrumentPrice\" />
