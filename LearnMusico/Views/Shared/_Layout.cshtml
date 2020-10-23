@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using LearnMusico.Entities
+@using LearnMusico.Models 
+
+
+<!DOCTYPE html>
 <html lang="tr">
 
 <head>
@@ -38,18 +42,6 @@
 
                         <!-- Nav brand -->
                         <a href="index.html" class="nav-brand"><img src="~/img/core-img/logo2.png" alt=""></a>
-                        <div class="classynav">
-                            <ul>
-                                <li><a href="index.html">Home</a></li>
-                            </ul>
-                            <ul>
-                                <li><a href="index.html">Home</a></li>
-                            </ul>
-                            <ul>
-                                <li><a href="index.html">Home</a></li>
-                            </ul>
-                        </div>
-
 
 
                         <!-- Navbar Toggler -->
@@ -64,49 +56,64 @@
                             <div class="classycloseIcon">
                                 <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                             </div>
-
+                           
                             <!-- Nav Start -->
                             <div class="classynav">
+                                @if (CurrentSession.User != null)
+                                {
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
                                     <li>
-                                        <a href="#">Pages</a>
+                                        <a href="/Sharing/Index">Satılık Enstrümanlar</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li>
-                                                <a href="#">Dropdown</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="#">Even Dropdown</a></li>
-                                                    <li><a href="#">Even Dropdown</a></li>
-                                                    <li><a href="#">Even Dropdown</a></li>
-                                                    <li>
-                                                        <a href="#">Even Dropdown</a>
-                                                        <ul class="dropdown">
-                                                            <li><a href="#">Deeply Dropdown</a></li>
-                                                            <li><a href="#">Deeply Dropdown</a></li>
-                                                            <li><a href="#">Deeply Dropdown</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="#">Even Dropdown</a></li>
-                                                </ul>
-                                            </li>
+                                            <li><a href="index.html">Satılık Çalgılarım</a></li>
+                                            <li><a href="index.html">Enstrüman Sat</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="blog.html">News</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li>
+                                        <a href="/Sharing/Index">Gönderiler</a>
+                                        <ul class="dropdown">
+                                            <li><a href="index.html">Gönderilerim</a></li>
+                                            <li><a href="index.html">Gönderi Paylaş</a></li>
+                                            <li><a href="index.html">Beğendiklerim</a></li>
+                                        </ul>
+                                    </li>
+                                    <li> <a href="/Sharing/Index">Enstrümanlar</a></li>
+                                    <li> <a href="/Sharing/Index"><i class="fa fa-newspaper-o"></i>Haberler/Yazılar</a></li>
+                                    <li><a href="/Sharing/Index">Özel Dersler</a></li>
+
+
                                 </ul>
+                                }
+                                
+                              
+                            <ul >
+                                @if (CurrentSession.User == null)
+                                {
+                                    <li>
+                                        <a href="/Home/Login" id="loginBtn"><i class="fa fa-sign-in"></i>Giriş Yap</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Home/Register" id="loginBtn">Kayıt Ol</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a href="/Home/ShowProfile">@CurrentSession.User.Username</a>
+                                        <ul class="dropdown">
+                                            <li><a href="index.html">Mesajlarım</a></li>
+                                            <li><a href="index.html">Profili Göster</a></li>
+                                            <li><a href="index.html">Profili Düzenle</a></li>
+                                            <li><a href="index.html">Profili Sil</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="/Home/Logout" id="loginBtn"><i class="fa fa-sign-out"></i>Çıkış</a>
+                                    </li>
+                                }
+                            </ul>
 
-                                <!-- Login/Register & Cart Button -->
-                                <div class="login-register-cart-button d-flex align-items-center">
-                                    <!-- Login/Register -->
-                                    <div class="login-register-btn mr-50">
-                                        <a href="/Home/Login" id="loginBtn">Login</a>
-                                    </div>
-                                    <div class="login-register-btn mr-50">
-                                        <a href="/Home/Register" id="loginBtn">Register</a>
-                                    </div>
 
-                                </div>
                             </div>
                             <!-- Nav End -->
 

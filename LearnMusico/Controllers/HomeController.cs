@@ -31,7 +31,31 @@ namespace LearnMusico.Controllers
         [HttpPost]
         public ActionResult Login(LoginViewModel model)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                BusinessLayerResult<MusicaUser> res = musicaUserManager.LoginUser(model);
+
+                if (res.Errors.Count > 0)
+                {
+                    // Hata koduna göre özel işlem yapmamız gerekirse..
+                    // Hatta hata mesajına burada müdahale edilebilir.
+                    // (Login.cshtml'deki kısmında açıklama satırı şeklinden kurtarınız)
+                    //
+                    //if (res.Errors.Find(x => x.Code == ErrorMessageCode.UserIsNotActive) != null)
+                    //{
+                    //    ViewBag.SetLink = "http://Home/Activate/1234-4567-78980";
+                    //}
+
+                    res.Errors.ForEach(x => ModelState.AddModelError("", x.Message));
+
+                    return View(model);
+                }
+
+                CurrentSession.Set<MusicaUser>("login", res.Result); // Session'a kullanıcı bilgi saklama..
+                return RedirectToAction("Index");   // yönlendirme..
+            }
+
+            return View(model);
         }
 
         public ActionResult Register()
@@ -40,9 +64,31 @@ namespace LearnMusico.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(RegisterViewModel deger)
+        public ActionResult Register(RegisterViewModel register)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                BusinessLayerResult<MusicaUser> res = musicaUserManager.RegisterUser(register);
+                if (res.Errors.Count > 0)
+                {
+                    res.Errors.ForEach(x => ModelState.AddModelError("", x.Message));
+                    return View(register);
+                }
+
+                OkViewModel ovm = new OkViewModel()
+                {
+                    Title = "Kayıt Başarılı",
+                    RedirectingUrl = "/Home/Login"
+
+                };
+                ovm.Items.Add(" Lütfen e-posta adresinize gönderdiğimiz aktivasyon link'ine tıklayarak hesabınızı aktive ediniz." +
+                    " Hesabını aktive etmeden not eklemeyez ve beğenme yapamazsınız");
+
+                return View("Ok", ovm);
+            }
+
+
+            return View(register);
         }
 
         public ActionResult UserActivate(Guid id)
