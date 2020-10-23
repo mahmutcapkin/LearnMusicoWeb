@@ -1,42 +1,29 @@
-﻿using LearnMusico.BusinessLayer;
-using LearnMusico.BusinessLayer.Result;
-using LearnMusico.Entities;
-using LearnMusico.Models;
-using LearnMusico.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using LearnMusico.BusinessLayer;
+using LearnMusico.Entities;
+using LearnMusico.Models;
 
-namespace LeararticleManagerusico.Controllers
+namespace LearnMusico.Controllers
 {
     public class ArticleController : Controller
     {
-
         private ArticleManager articleManager = new ArticleManager();
-        private ArticleCategoryManager acm = new ArticleCategoryManager();
+        ArticleCategoryManager articleCategoryManager = new ArticleCategoryManager();
 
-        //Tüm Yazılar
         public ActionResult Index()
         {
-            return View(articleManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList());
-        }
-
-
-        //Yazılarım
-        public ActionResult MyArticles()
-        {
-          
-            var articles = articleManager.ListQueryable().Include("ArticleCategory").Include("Owner").Where(
-                x => x.Owner.Id == CurrentSession.User.Id).OrderByDescending(
-                x => x.ModifiedOn);
+            var articles = articleManager.ListQueryable().Include(a => a.ArticleCategory);
             return View(articles.ToList());
         }
 
-
+        // GET: Article/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -51,17 +38,19 @@ namespace LeararticleManagerusico.Controllers
             return View(article);
         }
 
-
+        // GET: Article/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(CacheHelper.GetArticleCategoryFromCache(), "Id", "Title");
+            List<ArticleCategory> articleCategories = articleCategoryManager.List().ToList();
+
+            ViewBag.ArticleCategoryId = new SelectList(articleCategoryManager.List(), "Id", "Title");
             return View();
         }
 
-
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Article Article)
+        public ActionResult Create(Article article)
         {
             ModelState.Remove("CreatedOn");
             ModelState.Remove("ModifiedOn");
@@ -69,16 +58,16 @@ namespace LeararticleManagerusico.Controllers
 
             if (ModelState.IsValid)
             {
-                Article.Owner = CurrentSession.User;
-                articleManager.Insert(Article);
+                article.Owner = CurrentSession.User;
+                articleManager.Insert(article);
                 return RedirectToAction("Index");
             }
-            // cm.List() bu yapı çok değişken olmadığından ve bir çok yerde çaprıldığından cacheleme işlemi yapılacak 
-            ViewBag.CategoryId = new SelectList(CacheHelper.GetArticleCategoryFromCache(), "Id", "Title");
-            return View(Article);
+
+            ViewBag.ArticleCategoryId = new SelectList(articleCategoryManager.List(), "Id", "Title", article.ArticleCategoryId);
+            return View(article);
         }
 
-
+        // GET: Article/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -90,47 +79,22 @@ namespace LeararticleManagerusico.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoryId = new SelectList(CacheHelper.GetArticleCategoryFromCache(), "Id", "Title");
+            ViewBag.ArticleCategoryId = new SelectList(articleCategoryManager.List(), "Id", "Title", article.ArticleCategoryId);
             return View(article);
         }
 
-        //Article Edit içinde ekleme olabilir sonradan düzeltme vb.
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Article article,HttpPostedFile ImageFileName)
+        public ActionResult Edit(Article article)
         {
-            ModelState.Remove("CreatedOn");
-            ModelState.Remove("ModifiedOn");
-            ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
-                if (ImageFileName != null &&
-                        (ImageFileName.ContentType == "image/jpeg" ||
-                        ImageFileName.ContentType == "image/jpg" ||
-                        ImageFileName.ContentType == "image/png"))
-                {
-                    string filename = $"article_{article.Id}.{ImageFileName.ContentType.Split('/')[1]}";
-
-                    ImageFileName.SaveAs(Server.MapPath($"~/img/article/{filename}"));
-                    article.ImageFileName = filename;
-                }
-                BusinessLayerResult<Article> res = articleManager.UpdateArticle(article);
-
-                if (res.Errors.Count > 0)
-                {
-                    ErrorViewModel errorNotifyObj = new ErrorViewModel()
-                    {
-                        Items = res.Errors,
-                        Title = "Yazı Güncellenemedi.",
-                        RedirectingUrl = "/Article/Edit"
-                    };
-
-                    return View("Error", errorNotifyObj);
-                }
-
+                //db.Entry(article).State = EntityState.Modified;
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryId = new SelectList(CacheHelper.GetArticleCategoryFromCache(), "Id", "Title");
+            ViewBag.ArticleCategoryId = new SelectList(articleCategoryManager.List(), "Id", "Title", article.ArticleCategoryId);
             return View(article);
         }
 
@@ -149,6 +113,7 @@ namespace LeararticleManagerusico.Controllers
             return View(article);
         }
 
+        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -157,7 +122,6 @@ namespace LeararticleManagerusico.Controllers
             articleManager.Delete(article);
             return RedirectToAction("Index");
         }
-
 
     }
 }

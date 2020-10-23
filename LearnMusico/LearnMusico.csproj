@@ -170,7 +170,10 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\classy.svg" />
     <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\fontawesomeregular.svg" />
     <Content Include="fonts\icomoon.svg" />
+    <Content Include="fonts\icomoonregular.svg" />
+    <Content Include="img\article\haber.jpg" />
     <Content Include="img\gitar.jpg" />
     <Content Include="img\user_default.png" />
     <Content Include="Scripts\js\active.js" />
@@ -255,17 +258,6 @@
     <Content Include="img\core-img\logoy.png" />
     <Content Include="css\style.css" />
     <Content Include="css\style.css.map" />
-    <Content Include="fonts\classy.eot" />
-    <Content Include="fonts\classy.ttf" />
-    <Content Include="fonts\classy.woff" />
-    <Content Include="fonts\fontawesome-webfont.eot" />
-    <Content Include="fonts\fontawesome-webfont.ttf" />
-    <Content Include="fonts\fontawesome-webfont.woff" />
-    <Content Include="fonts\fontawesome-webfont.woff2" />
-    <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="fonts\icomoon.eot" />
-    <Content Include="fonts\icomoon.ttf" />
-    <Content Include="fonts\icomoon.woff" />
     <Content Include="videos\instrument\kalimba.mp4" />
     <Content Include="videos\kalimba.mp4" />
     <Content Include="Web.config" />
@@ -282,7 +274,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="img\article\" />
     <Folder Include="img\instprice\" />
     <Folder Include="img\instrument\" />
     <Folder Include="img\lessonprice\" />
@@ -299,6 +290,19 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="document\review.pdf" />
+    <Content Include="fonts\classy.eot" />
+    <Content Include="fonts\classy.ttf" />
+    <Content Include="fonts\classy.woff" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesomeregular.ttf" />
+    <Content Include="fonts\icomoon.eot" />
+    <Content Include="fonts\icomoon.ttf" />
+    <Content Include="fonts\icomoon.woff" />
+    <Content Include="fonts\icomoonregular.ttf" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_PartialFooter.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
@@ -319,12 +323,6 @@
     <Content Include="Views\Instrument\Create.cshtml" />
     <Content Include="Views\Instrument\Edit.cshtml" />
     <Content Include="Views\Instrument\Delete.cshtml" />
-    <Content Include="Views\Article\Index.cshtml" />
-    <Content Include="Views\Article\MyArticles.cshtml" />
-    <Content Include="Views\Article\Details.cshtml" />
-    <Content Include="Views\Article\Create.cshtml" />
-    <Content Include="Views\Article\Edit.cshtml" />
-    <Content Include="Views\Article\Delete.cshtml" />
     <Content Include="Views\Home\ShowProfile.cshtml" />
     <Content Include="Views\Home\EditProfile.cshtml" />
     <Content Include="Views\Home\AccessDenied.cshtml" />
@@ -333,6 +331,11 @@
     <Content Include="Views\MusicaUser\Details.cshtml" />
     <Content Include="Views\MusicaUser\Edit.cshtml" />
     <Content Include="Views\MusicaUser\Create.cshtml" />
+    <Content Include="Views\Article\Create.cshtml" />
+    <Content Include="Views\Article\Delete.cshtml" />
+    <Content Include="Views\Article\Details.cshtml" />
+    <Content Include="Views\Article\Edit.cshtml" />
+    <Content Include="Views\Article\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LearnMusico.BusinessLayer\LearnMusico.BusinessLayer.csproj">

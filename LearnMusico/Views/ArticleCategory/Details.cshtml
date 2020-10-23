@@ -4,62 +4,69 @@
     ViewBag.Title = "Kategori Detay";
 }
 
-<div class="row">
-    <div class="col-md-8 col-md-offset-2">
+<section class="breadcumb-area bg-img bg-overlay" style="   background-image: url(../../img/bg-img/breadcumb3.jpg);">
+    <div class="bradcumbContent">
         <h2>@ViewBag.Title</h2>
     </div>
-</div>
+</section>
 
-<div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <h4>Yazı Kategori</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Title)
-            </dt>
+<section class="login-area section-padding-100">
+    <div class="container">
 
-            <dd>
-                @Html.DisplayFor(model => model.Title)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.CreatedOn)
-            </dt>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h4>Yazı Kategori</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.CreatedOn)
-            </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Title)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CreatedOn)
+                    </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.ModifiedOn)
-            </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.CreatedOn)
+                    </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.ModifiedOn)
-            </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ModifiedOn)
+                    </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.ModifiedUsername)
-            </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.ModifiedOn)
+                    </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.ModifiedUsername)
-            </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ModifiedUsername)
+                    </dt>
 
-        </dl>
+                    <dd>
+                        @Html.DisplayFor(model => model.ModifiedUsername)
+                    </dd>
+
+                </dl>
+
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <p>
+                    <a href="/ArticleCategory/Index/@Model.Id" class="btn btn-warning btn-sm">
+                        <i class="fa fa-edit"></i>Düzenle
+                    </a>
+                    @*  @Bootstrap.LinkButton("/Category/Index/" + Model.Id, "warning", string.Empty, string.Empty, "edit", " Düzenle")*@
+                    <a href="/ArticleCategory/Index" class="btn btn-default btn-sm">
+                        <i class="fa fa-long-arrow-left"></i>Geri Dön
+                    </a>
+                    @* @Bootstrap.LinkButton("/Category/Index", "default", string.Empty, string.Empty, "arrow-left", " Geri Dön!")*@
+                </p>
+            </div>
+        </div>
 
     </div>
-    <div class="col-md-8 col-md-offset-2">
-        <p>
-            <a href="/ArticleCategory/Index/@Model.Id" class="btn btn-warning btn-sm">
-                    <span class="glyphicon glyphicon-edit"></span>Düzenle
-                </a>
-          @*  @Bootstrap.LinkButton("/Category/Index/" + Model.Id, "warning", string.Empty, string.Empty, "edit", " Düzenle")*@
-            <a href="/ArticleCategory/Index" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-arrow-left"></span>Geri Dön
-                </a>
-           @* @Bootstrap.LinkButton("/Category/Index", "default", string.Empty, string.Empty, "arrow-left", " Geri Dön!")*@
-        </p>
-    </div>
-</div>
+</section>
+   
 

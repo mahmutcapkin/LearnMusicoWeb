@@ -4,49 +4,58 @@
     ViewBag.Title = "Enstrüman Kaldır";
 }
 
-<div class="row">
-    <div class="col-md-8 col-md-offset-2">
+
+<section class="breadcumb-area bg-img bg-overlay" style="   background-image: url(../../img/bg-img/breadcumb3.jpg);">
+    <div class="bradcumbContent">
         <h2>@ViewBag.Title</h2>
-        <h3>Silmek istediğinize emin misiniz?</h3>
     </div>
-</div>
+</section>
 
-<div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <h4>Enstrüman Kaldırma</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.InstrumentCategory.Title)
-            </dt>
+<section class="login-area section-padding-100">
+    <div class="container">
 
-            <dd>
-                @Html.DisplayFor(model => model.InstrumentCategory.Title)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.InstrumentName)
-            </dt>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h4>Silmek istediğinize emin misiniz?</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.InstrumentCategory.Title)
+                    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.InstrumentName)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Description)
-            </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.InstrumentCategory.Title)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.InstrumentName)
+                    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Description)
-            </dd>
-        </dl>
+                    <dd>
+                        @Html.DisplayFor(model => model.InstrumentName)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <p>
+                    <a href="/Instrument/MyInstrumentDetails/@Model.Id" class="btn btn-warning btn-sm">
+                        <i class="fa fa-edit">&nbsp;</i>Düzenle
+                    </a>
+                    @*  @Bootstrap.LinkButton("/Category/Index/" + Model.Id, "warning", string.Empty, string.Empty, "edit", " Düzenle")*@
+
+                </p>
+            </div>
+        </div>
+
     </div>
-    <div class="col-md-8 col-md-offset-2">
-        <p>
-            <a href="/Instrument/MyInstrumentDetails/@Model.Id" class="btn btn-warning btn-sm">
-                <span class="glyphicon glyphicon-edit"></span>Düzenle
-            </a>
-            @*  @Bootstrap.LinkButton("/Category/Index/" + Model.Id, "warning", string.Empty, string.Empty, "edit", " Düzenle")*@
+</section>
 
-        </p>
-    </div>
-</div>
+
+
 

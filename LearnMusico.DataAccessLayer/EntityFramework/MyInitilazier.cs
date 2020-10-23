@@ -113,12 +113,13 @@ namespace LearnMusico.DataAccessLayer.EntityFramework
                     MusicaUser owner = userList[FakeData.NumberData.GetNumber(0, userList.Count - 1)];
                     Article article = new Article()
                     {
-                        Title = FakeData.TextData.GetAlphabetical(FakeData.NumberData.GetNumber(1, 2)),
+                        Title = FakeData.TextData.GetAlphabetical(FakeData.NumberData.GetNumber(2, 5)),
                         Description = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, " +
                         "facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque" +
                         "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, " +
                         "ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat",
                         ArticleCategory = articlecat,
+                        ArticleCategoryId = articlecat.Id,
                         SubjectType = "haber",
                         ImageFileName = "gitar.jpg",
                         Owner = owner,

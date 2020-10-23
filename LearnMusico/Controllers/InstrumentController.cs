@@ -16,7 +16,8 @@ namespace LearnMusico.Controllers
     public class InstrumentController : Controller
     {
         private InstrumentManager _instrumentManager = new InstrumentManager();
-        
+        private InstrumentCategoryManager categoryManager = new InstrumentCategoryManager();
+
         //tüm enstruman bilgileri
         public ActionResult Index()
         {
@@ -48,7 +49,11 @@ namespace LearnMusico.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(CacheHelper.GetInstrumentCategoryFromCache(), "Id", "Title");
+           // List<InstrumentCategory> instrumentCategories = categoryManager.List();
+
+
+            ViewBag.InstrumentCategoryId = new SelectList(categoryManager.List(), "Id", "Title");
+            // ViewBag.CategoryId = new SelectList(CacheHelper.GetInstrumentCategoryFromCache(), "Id", "Title");
             return View();
         }
 
@@ -66,7 +71,8 @@ namespace LearnMusico.Controllers
                 _instrumentManager.Insert(instrument);
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryId = new SelectList(CacheHelper.GetInstrumentCategoryFromCache(), "Id", "Title");
+            ViewBag.InstrumentCategoryId = new SelectList(categoryManager.List(), "Id", "Title");
+            //ViewBag.CategoryId = new SelectList(CacheHelper.GetInstrumentCategoryFromCache(), "Id", "Title");
             return View(instrument);
         }
 
@@ -81,7 +87,8 @@ namespace LearnMusico.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoryId = new SelectList(CacheHelper.GetInstrumentCategoryFromCache(), "Id", "Title");
+            ViewBag.InstrumentCategoryId = new SelectList(categoryManager.List(), "Id", "Title");
+            //ViewBag.CategoryId = new SelectList(CacheHelper.GetInstrumentCategoryFromCache(), "Id", "Title");
             return View(instrument);
         }
 
@@ -141,7 +148,8 @@ namespace LearnMusico.Controllers
 
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryId = new SelectList(CacheHelper.GetInstrumentCategoryFromCache(), "Id", "Title");
+            ViewBag.InstrumentCategoryId = new SelectList(categoryManager.List(), "Id", "Title");
+            //ViewBag.CategoryId = new SelectList(CacheHelper.GetInstrumentCategoryFromCache(), "Id", "Title");
             return View(instrument);
 
         }

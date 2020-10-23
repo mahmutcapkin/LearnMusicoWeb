@@ -1,117 +1,127 @@
 ﻿@model IEnumerable<LearnMusico.Entities.MusicaUser>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Kullanıcılar";
 }
 
-<h2>Kullanıcılar</h2>
+<section class="breadcumb-area bg-img bg-overlay" style="   background-image: url(../../img/bg-img/breadcumb3.jpg);">
+    <div class="bradcumbContent">
+        <h2>@ViewBag.Title</h2>
+    </div>
+</section>
 
-<p>
-    @Html.ActionLink("Kullanıcı Ekle", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Surname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.About)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CV)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsTeacher)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsAdmin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedUsername)
-        </th>
-        <th></th>
-    </tr>
+<section class="blog-area section-padding-100">
+    <div class="container">
+        <div class="row">
+            <p>
+                <i class="fa-fa-plus"></i>
+                @Html.ActionLink("Kullanıcı Ekle", "Create",null, new {@class="btn btn-primary" })
+            </p>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Surname)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.About)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Username)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Password)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CV)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsTeacher)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsAdmin)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreatedOn)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ModifiedOn)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ModifiedUsername)
+                    </th>
+                    <th></th>
+                </tr>
 
-    @foreach (var item in Model)
-    {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Surname)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.About)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Username)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Email)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Password)
-    </td>
-    <td>
-        <a href="~/document/@item.CV" target="_blank" class="btn btn-xs">CV</a>
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.IsActive)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.IsTeacher)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.IsAdmin)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CreatedOn)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ModifiedOn)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ModifiedUsername)
-    </td>
-    <td>
-        <a href="/MusicaUser/Edit/@item.Id" class="btn btn-warning btn-xs" title="Düzenle">
-            <span class="glyphicon glyphicon-edit"></span>
-        </a>
-        <a href="/MusicaUser/Details/@item.Id" class="btn btn-info btn-xs" title="Detaylar">
-            <span class="glyphicon glyphicon-search"></span>
-        </a>
-        <a href="/MusicaUser/Delete/@item.Id" class="btn btn-danger btn-xs" title="Sil">
-            <span class="glyphicon glyphicon-trash"></span>
-        </a>
-            @*@Html.ActionLink("Düzenle", "Edit", new { id = item.Id })
-            @Html.ActionLink("Detaylar", "Details", new { id = item.Id })
-            @Html.ActionLink("Sil", "Delete", new { id = item.Id })*@
-    </td>
-</tr>
-    }
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Surname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.About)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Username)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Password)
+                        </td>
+                        <td>
+                            <a href="~/document/@item.CV" target="_blank" class="btn btn-xs">CV</a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsActive)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsTeacher)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsAdmin)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedOn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ModifiedOn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ModifiedUsername)
+                        </td>
+                        <td width="200">
+                            <a href="/MusicaUser/Edit/@item.Id" class="btn btn-warning btn-sm" title="Düzenle">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a href="/MusicaUser/Details/@item.Id" class="btn btn-info btn-sm" title="Detaylar">
+                                <i class="fa fa-search"></i>
+                            </a>
+                            <a href="/MusicaUser/Delete/@item.Id" class="btn btn-danger btn-sm" title="Sil">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                            @*@Html.ActionLink("Düzenle", "Edit", new { id = item.Id })
+                                @Html.ActionLink("Detaylar", "Details", new { id = item.Id })
+                                @Html.ActionLink("Sil", "Delete", new { id = item.Id })*@
+                        </td>
+                    </tr>
+                }
 
-</table>
-
+            </table>
+        </div>
+    </div>
+</section>
 

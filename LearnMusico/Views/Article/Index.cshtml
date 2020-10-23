@@ -1,7 +1,76 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
+﻿@model IEnumerable<LearnMusico.Entities.Article>
 
-<h2>Index</h2>
+@{
+    ViewBag.Title = "Yazılar";
+}
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1254" />
+<section class="breadcumb-area bg-img bg-overlay" style=" background-image: url(../../img/bg-img/breadcumb3.jpg);">
+    <div class="bradcumbContent">
+        <h2>@ViewBag.Title</h2>
+    </div>
+</section>
+
+<div class="container">
+    <br />
+        <a href="/Article/Create" class="btn btn-primary">
+            <i class="fa fa-plus"></i>Yazı Ekle
+        </a>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ArticleCategory.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubjectType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+
+            </th>
+            <th>İşlemler</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArticleCategory.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubjectType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td width="150">
+                    <a href="/Article/Edit/@item.Id" class="btn btn-warning btn-sm" title="Edit">
+                        <i class="fa fa-edit"></i>Düzenle
+                    </a>
+
+                    <a href="/Article/Details/@item.Id" class="btn btn-info btn-sm" title="Details">
+                        <i class="fa fa-search"></i>Detaylar
+                    </a>
+
+                    <a href="/Article/Delete/@item.Id" class="btn btn-danger btn-sm" title="Delete">
+                        <i class="fa fa-trash"></i>Kaldır
+                    </a>
+
+
+                    @*@Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" })
+                        @Html.ActionLink("Detaylar", "Details", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" })
+                        @Html.ActionLink("Kaldır", "Delete", new {  id = item.Id }, new { @class = "btn btn-warning btn-sm" })*@
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
 

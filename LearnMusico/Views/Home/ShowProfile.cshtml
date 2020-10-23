@@ -1,7 +1,60 @@
-﻿
+﻿@using LearnMusico.Entities
+@model MusicaUser
+
 @{
-    ViewBag.Title = "ShowProfile";
+    ViewBag.Title = "Profiliniz";
 }
 
-<h2>ShowProfile</h2>
+
+<div class="container">
+
+    <div class="row">
+        <h2>@ViewBag.Title</h2>
+        <hr />
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-2">
+            <img src="~/images/@Model.ProfileImageFilename" class="img-circle" width="128" height="128" />
+        </div>
+
+        <div class="col-md-10">
+            <h3>@(Model.Name + " " + Model.Surname)</h3>
+            <br />
+            <h5><b>@Html.DisplayNameFor(model => model.Username) : </b>@Model.Username</h5>
+            <h5><b>@Html.DisplayNameFor(model => model.Email) : </b>@Model.Email</h5>
+            <h5><b>@Html.DisplayNameFor(model => model.CV) : </b><a href="~/document/@Model.CV" target="_blank">CV</a></h5>
+            <h5><b>@Html.DisplayNameFor(model => model.About) : </b>@Model.About</h5>
+            <br />
+
+        </div>
+
+
+        @* Bu kısım dropdown ile kullanıcı isminin bulunduğu yerin altına eklendi *@
+        @*<div class="col-md-2 text-right">
+                <div class="btn-group">
+                    <a class="btn dropdown-toggle btn-info btn-sm" data-toggle="dropdown" href="#">
+                        <span class=" glyphicon glyphicon-cog">&nbsp;</span>
+                        Options
+                        <span class="icon-cog icon-white"></span><span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="@Url.Action("EditProfile","Home")">
+                                <span class=" glyphicon glyphicon-edit">&nbsp;</span>
+                                Düzenle
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("DeleteProfile","Home")" onclick="return confirm('Hesabınızı silmek istediğinize emin misiniz?');">
+                                <span class=" glyphicon glyphicon-trash">&nbsp;</span>
+                                Sil
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>*@
+    </div>
+</div>
 
