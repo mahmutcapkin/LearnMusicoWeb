@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace LearnMusico.BusinessLayer
 {
-    public class ArticleCategoryManager: ManagerBase<ArticleCategory>
+    public class ArticleCategoryManager : ManagerBase<ArticleCategory>
     {
+
     }
 }

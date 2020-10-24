@@ -15,10 +15,12 @@ namespace LearnMusico.Controllers
     public class ArticleController : Controller
     {
         private ArticleManager articleManager = new ArticleManager();
-        ArticleCategoryManager articleCategoryManager = new ArticleCategoryManager();
+        private ArticleCategoryManager articleCategoryManager = new ArticleCategoryManager();
 
+        
         public ActionResult Index()
         {
+           
             var articles = articleManager.ListQueryable().Include(a => a.ArticleCategory);
             return View(articles.ToList());
         }
@@ -41,9 +43,16 @@ namespace LearnMusico.Controllers
         // GET: Article/Create
         public ActionResult Create()
         {
-            List<ArticleCategory> articleCategories = articleCategoryManager.List().ToList();
+            //List<ArticleCategory> articleCategories = articleCategoryManager.List();
+            List<SelectListItem> article = (from i in articleCategoryManager.ListQueryable().Include("Articles")
+                                             select new SelectListItem
+                                             {
+                                                 Text = i.Title,
+                                                 Value = i.Id.ToString()
+                                             }).ToList();
 
-            ViewBag.ArticleCategoryId = new SelectList(articleCategoryManager.List(), "Id", "Title");
+            //ViewBag.ArticleCategoryId = new SelectList(CacheHelper.GetArticleCategoryFromCache(), "Id", "Title");
+            ViewBag.ArticleCategoryId = article;
             return View();
         }
 
@@ -62,8 +71,8 @@ namespace LearnMusico.Controllers
                 articleManager.Insert(article);
                 return RedirectToAction("Index");
             }
-
-            ViewBag.ArticleCategoryId = new SelectList(articleCategoryManager.List(), "Id", "Title", article.ArticleCategoryId);
+            //ViewBag.ArticleCategoryId = new SelectListItem(CacheHelper.GetArticleCategoryFromCache(), "Id", "Title");
+            //ViewBag.ArticleCategoryId = new SelectList(articleCategoryManager.List(), "Id", "Title", article.ArticleCategoryId);
             return View(article);
         }
 

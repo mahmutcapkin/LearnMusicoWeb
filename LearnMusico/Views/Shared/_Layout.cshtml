@@ -64,29 +64,82 @@
                                 <ul>
                                     <li>
                                         <a href="/Sharing/Index">Satılık Enstrümanlar</a>
-                                        <ul class="dropdown">
-                                            <li><a href="index.html">Satılık Çalgılarım</a></li>
-                                            <li><a href="index.html">Enstrüman Sat</a></li>
-                                        </ul>
-                                    </li>
+                                        @if (!CurrentSession.User.IsTeacher)
+                                        {
+                                            <ul class="dropdown">
+                                                <li><a href="index.html">Satılık Çalgılarım</a></li>
+                                                <li><a href="index.html">Enstrüman Sat</a></li>
+                                            </ul>
+                                        }
+                                        </li>
+
                                     <li>
                                         <a href="/Sharing/Index">Gönderiler</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html">Gönderilerim</a></li>
-                                            <li><a href="index.html">Gönderi Paylaş</a></li>
-                                            <li><a href="index.html">Beğendiklerim</a></li>
+                                            <li><a href="/Sharing/MySharings">Gönderilerim</a></li>
+                                            <li><a href="/Sharing/Create">Gönderi Paylaş</a></li>
+                                            <li><a href="/Sharing/MyLikes">Beğendiklerim</a></li>
                                         </ul>
                                     </li>
-                                    <li> <a href="/Sharing/Index">Enstrümanlar</a></li>
-                                    <li> <a href="/Sharing/Index"><i class="fa fa-newspaper-o"></i>Haberler/Yazılar</a></li>
-                                    <li><a href="/Sharing/Index">Özel Dersler</a></li>
+                                    <li>
+                                        <a href="/Instrument/Index">Enstrümanlar</a>
+                                        @if (CurrentSession.User.IsTeacher)
+                                        {
+                                            <ul class="dropdown">
+                                                <li><a href="/Instrument/MyInstrumentDetails">Enstrümanlarım</a></li>
+                                                <li><a href="/Instrument/Create">Enstrüman Ekle</a></li>
+                                                <li><a href="/InstrumentCategory/Index">Enstrüman Kategori</a></li>
+                                                <li><a href="/InstrumentCategory/Create">Kategori Ekle</a></li>
+                                            </ul>
+                                        }
+                                    </li>
+                                    <li>
+                                        <a href="/Article/Index"><i class="fa fa-newspaper-o"></i>Haberler/Yazılar</a>
+                                        @if (CurrentSession.User.IsTeacher)
+                                        {
+                                            <ul class="dropdown">
+                                                <li><a href="/Article/MyArticleDetails">Haber/Yazılarım</a></li>
+                                                <li><a href="/Article/Create">Haber/Yazı Ekle</a></li>
+                                                <li><a href="/ArticleCategory/Index">Haber/Yazı Kategori</a></li>
+                                                <li><a href="/ArticleCategory/Create">Kategori Ekle</a></li>
+                                            </ul>
+                                        }
 
+                                    </li>
+                                    <li>
+                                        <a href="/Sharing/Index">Özel Dersler</a>
+                                        @if (CurrentSession.User.IsTeacher)
+                                        {
+                                            <ul class="dropdown">
+                                                <li><a href="index.html">Özel Derslerim</a></li>
+                                                <li><a href="index.html">Özel Ders Ekle</a></li>
+                                            </ul>
+                                        }
+
+                                    </li>
+                                                                        
+                                                @*<li><a href="index.html">Haber/Yazı Detaylarım</a></li>
+                                                    <li><a href="index.html">Haber/Yazı Ekle</a></li>
+                                                    <li><a href="index.html">Enstrümanlarım</a></li>
+                                                    <li><a href="index.html">Enstrüman Ekle</a></li>
+                                                    <li><a href="index.html">özel Derslerim</a></li>
+                                                    <li><a href="index.html">özel Ders Ekle</a></li>*@
+                                                                                   
+                                        @*<li>
+                                            <a href="/Home/Index"> Yönetim</a>
+                                            <ul class="dropdown">
+                                                <li><a href="/Article/MyArticle">Haber/Yazılarım</a></li>
+                                                <li><a href="/Article/Create">Haber/Yazı Ekle</a></li>
+                                                <li><a href="index.html">Özel Derslerim</a></li>
+                                                <li><a href="index.html">Özel Ders Ekle</a></li>
+                                            </ul>
+                                        </li>*@
 
                                 </ul>
                                 }
                                 
                               
-                            <ul >
+                            <ul>
                                 @if (CurrentSession.User == null)
                                 {
                                     <li>
@@ -99,12 +152,12 @@
                                 else
                                 {
                                     <li>
-                                        <a href="/Home/ShowProfile">@CurrentSession.User.Username</a>
+                                        <a href="/Home/Index">@CurrentSession.User.Username</a>
                                         <ul class="dropdown">
                                             <li><a href="index.html">Mesajlarım</a></li>
-                                            <li><a href="index.html">Profili Göster</a></li>
-                                            <li><a href="index.html">Profili Düzenle</a></li>
-                                            <li><a href="index.html">Profili Sil</a></li>
+                                            <li><a href="/Home/ShowProfile">Profili Göster</a></li>
+                                            <li><a href="/Home/EditProfile">Profili Düzenle</a></li>
+                                            <li><a href="/Home/DeleteProfile">Profili Sil</a></li>
                                         </ul>
                                     </li>
                                     <li>
