@@ -1,7 +1,7 @@
 ﻿@model LearnMusico.Entities.Article
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Haber/Yazı Sil";
 }
 
 <section class="breadcumb-area bg-img bg-overlay" style="   background-image: url(../../img/bg-img/breadcumb3.jpg);">
@@ -10,11 +10,13 @@
     </div>
 </section>
 
-<section class="blog-area section-padding-100">
+
+<section class="login-area section-padding-100">
     <div class="container">
 
+        <h3>Silmek istediğinize emin misiniz?</h3>
         <div>
-            <h4>Silmek istediğinize emin misiniz?</h4>
+            <h4>Haber/Yazı</h4>
             <hr />
             <dl class="dl-horizontal">
                 <dt>
@@ -56,11 +58,10 @@
                 @Html.AntiForgeryToken()
 
                 <div class="form-actions no-color">
-                    <input type="submit" value="Delete" class="btn btn-default" /> |
-                    @Html.ActionLink("Geri Dön", "Index", "Article", null, new { @class = "btn btn-default" })
+                    <input type="submit" value="Sil" class="btn btn-primary" /> |
+                    @Html.ActionLink("Geri Dön", "Index", null, new { @class = "btn btn-default" })
                 </div>
             }
         </div>
-
-     </div>
+    </div>
 </section>

@@ -1,7 +1,7 @@
 ﻿@model LearnMusico.Entities.Instrument
 
 @{
-    ViewBag.Title = "Enstrüman Detaylarım";
+    ViewBag.Title = "Enstrüman Detay";
 }
 
 <section class="breadcumb-area bg-img bg-overlay" style="   background-image: url(../../img/bg-img/breadcumb3.jpg);">
@@ -10,47 +10,43 @@
     </div>
 </section>
 
-<section class="blog-area section-padding-100">
+
+<section class="login-area section-padding-100">
     <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.InstrumentCategory.Title)
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.InstrumentCategory.Title)
-                    </dd>
-                    <dt>
-                        @Html.DisplayNameFor(model => model.InstrumentName)
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.InstrumentName)
-                    </dd>
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Description)
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.Description)
-                    </dd>
-                    <dt>
-                        @Html.DisplayNameFor(model => model.ImageFilePath)
-                    </dt>
-                    <dd>
-                        <img src="~/img/instrument/@Model.ImageFilePath" class="img-circle" width="128" height="128" />
-                    </dd>
 
-                </dl>
-            </div>
-            <div class="col-md-8 col-md-offset-2">
-                <p>
-                    <a href="/Instrument/MyInstrumentDetails/@Model.Id" class="btn btn-warning btn-sm">
-                        <i class="fa fa-edit"></i>Düzenle
-                    </a>
-                    @*  @Bootstrap.LinkButton("/Category/Index/" + Model.Id, "warning", string.Empty, string.Empty, "edit", " Düzenle")*@
+        <div>
+            <h4>Enstrüman</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.InstrumentCategory.Title)
+                </dt>
 
-                </p>
-            </div>
+                <dd>
+                    @Html.DisplayFor(model => model.InstrumentCategory.Title)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.InstrumentName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.InstrumentName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+
+            </dl>
         </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" })
+            @Html.ActionLink("Geri Dön", "Index", null, new { @class = "btn btn-default" })
+        </p>
     </div>
 </section>

@@ -43,7 +43,7 @@ namespace LearnMusico.Controllers
             return View("Index", sm.ListQueryable().OrderByDescending(x => x.LikeCount).ToList());
         }
 
-        public ActionResult MyLikedNotes()
+        public ActionResult MyLikedSharings()
         {
             var sharings = likedManager.ListQueryable().Include("LikedUser").Include("Sharing").Where(
                 x => x.LikedUser.Id == CurrentSession.User.Id).Select(

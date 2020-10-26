@@ -17,7 +17,7 @@ namespace LearnMusico.Controllers
 
         public ActionResult Index()
         {
-            return View(acm.List());
+            return View(CacheHelper.GetArticleCategoryFromCache());
         }
 
         public ActionResult Details(int? id)

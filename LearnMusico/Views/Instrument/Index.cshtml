@@ -1,126 +1,56 @@
 ﻿@model IEnumerable<LearnMusico.Entities.Instrument>
+
 @{
-    ViewBag.Title = "Enstrüman Bilgileri";
+    ViewBag.Title = "Enstrümanlar";
 }
 
-<section class="breadcumb-area bg-img bg-overlay" style="  background-image: url(../../img/bg-img/breadcumb3.jpg);">
+<section class="breadcumb-area bg-img bg-overlay" style="   background-image: url(../../img/bg-img/breadcumb3.jpg);">
     <div class="bradcumbContent">
-        <h2>Enstrümanlar</h2>
+        <h2>@ViewBag.Title</h2>
     </div>
 </section>
 
-<section class="blog-area section-padding-100">
+
+<section class="login-area section-padding-100">
     <div class="container">
 
-        <div class="row">
-            <div class="col-lg-3 col-md-3">
-                <div class="blog-sidebar-area">
-                    <!-- Widget Area -->
-                    <div class="single-widget-area mt-30">
-                        <div class="widget-title">
-                            <h5>Categories</h5>
-                        </div>
-                        <div class="widget-content">
-                            <ul>
-                                <li><a href="#">Music</a></li>
-                                <li><a href="#">Events &amp; Press</a></li>
-                                <li><a href="#">Festivals</a></li>
-                                <li><a href="#">Lyfestyle</a></li>
-                                <li><a href="#">Uncategorized</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+        <p>
+            @Html.ActionLink("Enstrüman Ekle", "Create", null, new { @class = "btn btn-primary" })
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.InstrumentCategory.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.InstrumentName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th></th>
+            </tr>
 
-                <div class="sidebar-box">
-                    <img src="img/bg-img/person_1.jpg" alt="Image" class="img-fluid mb-4 w-50 rounded-circle">
-                    <h3 class="text-black">About The Author</h3>
-                    <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-                </div>
-            </div>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InstrumentCategory.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InstrumentName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" })
+                        @Html.ActionLink("Detaylar", "Details", new { id = item.Id }, new { @class = "btn btn-info" })
+                        @Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
 
-
-            <div class="col-lg-9 col-md-9 blog-content">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 blog-content">
-                        @foreach (var item in Model)
-                        {
-                            <h4 class="text-center">@item.InstrumentName</h4>
-                            <a href="#"><img src="img/bg-img/blog1.jpg" alt=""></a>
-
-                            <br>
-                            <p class="lead">
-                                @item.Description
-                            </p>
-
-
-                            <div class="blog-post-thumb mt-30">
-                                <video width="780" height="370" controls>
-                                    <source src="~/videos/instrument/@item.VideoUrlPath" type="video/mp4">
-                                </video>
-                            </div>
-                            <br />
-                            <div class="single-song-area mb-30 d-flex flex-wrap align-items-end">
-                                <div class="song-play-area">
-                                    <div class="song-name">
-                                        <p>01. Main Hit Song</p>
-                                    </div>
-                                    <audio preload="auto" controls>
-                                        <source src="~/audio/@item.AudioUrlPath">
-                                    </audio>
-                                </div>
-                            </div>
-                            }
-                        </div>
-                </div>
-                
-
-                <!--<div class="pt-5">
-            <h3 class="mb-5">6 Comments</h3>
-            <ul class="comment-list">
-                <li class="comment">
-                    <div class="vcard bio">
-                        <img src="img/bg-img/person_2.jpg" alt="Image">
-                    </div>
-                    <div class="comment-body">
-                        <h3>Jacob Smith</h3>
-                        <div class="meta">January 9, 2018 at 2:21pm</div>
-                        <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
-                    </div>
-                </li>
-
-                <li class="comment">
-                    <div class="vcard bio">
-                        <img src="img/bg-img/person_3.jpg" alt="Image">
-                    </div>
-                    <div class="comment-body">
-                        <h3>Chris Meyer</h3>
-                        <div class="meta">January 9, 2018 at 2:21pm</div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                    </div>
-                </li>
-
-                <li class="comment text-right image-right">
-                    <div class="vcard2 bio">
-                        <img src="img/bg-img/person_1.jpg" alt="Image">
-                    </div>
-                    <div class="comment-body">
-                        <h3>Jean Doe</h3>
-                        <div class="meta">January 9, 2018 at 2:21pm</div>
-                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-                    </div>
-
-                </li>
-            </ul>-->
-                <!-- END comment-list -->
-                <!--</div>-->
-
-            </div>
-             
-
-         
-        </div>
-
+        </table>
     </div>
 </section>
-

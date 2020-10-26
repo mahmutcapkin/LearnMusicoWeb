@@ -170,9 +170,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\classy.svg" />
     <Content Include="fonts\fontawesome-webfont.svg" />
-    <Content Include="fonts\fontawesomeregular.svg" />
     <Content Include="fonts\icomoon.svg" />
-    <Content Include="fonts\icomoonregular.svg" />
     <Content Include="img\article\haber.jpg" />
     <Content Include="img\gitar.jpg" />
     <Content Include="img\user_default.png" />
@@ -298,11 +296,9 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="fonts\fontawesomeregular.ttf" />
     <Content Include="fonts\icomoon.eot" />
     <Content Include="fonts\icomoon.ttf" />
     <Content Include="fonts\icomoon.woff" />
-    <Content Include="fonts\icomoonregular.ttf" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_PartialFooter.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
@@ -317,12 +313,6 @@
     <Content Include="Views\InstrumentCategory\Create.cshtml" />
     <Content Include="Views\InstrumentCategory\Edit.cshtml" />
     <Content Include="Views\InstrumentCategory\Delete.cshtml" />
-    <Content Include="Views\Instrument\Index.cshtml" />
-    <Content Include="Views\Instrument\MyInstrumentDetails.cshtml" />
-    <Content Include="Views\Instrument\Details.cshtml" />
-    <Content Include="Views\Instrument\Create.cshtml" />
-    <Content Include="Views\Instrument\Edit.cshtml" />
-    <Content Include="Views\Instrument\Delete.cshtml" />
     <Content Include="Views\Home\ShowProfile.cshtml" />
     <Content Include="Views\Home\EditProfile.cshtml" />
     <Content Include="Views\Home\AccessDenied.cshtml" />
@@ -336,6 +326,11 @@
     <Content Include="Views\Article\Details.cshtml" />
     <Content Include="Views\Article\Edit.cshtml" />
     <Content Include="Views\Article\Index.cshtml" />
+    <Content Include="Views\Instrument\Create.cshtml" />
+    <Content Include="Views\Instrument\Delete.cshtml" />
+    <Content Include="Views\Instrument\Details.cshtml" />
+    <Content Include="Views\Instrument\Edit.cshtml" />
+    <Content Include="Views\Instrument\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LearnMusico.BusinessLayer\LearnMusico.BusinessLayer.csproj">
