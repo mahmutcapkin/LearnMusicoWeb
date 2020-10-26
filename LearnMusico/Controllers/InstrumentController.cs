@@ -18,7 +18,7 @@ namespace LearnMusico.Controllers
     {
         private InstrumentManager instrumentManager = new InstrumentManager();
 
-        // GET: Instrument
+        //Enstrumanlarım
         public ActionResult Index()
         {
             var instrument = instrumentManager.ListQueryable().Include("InstrumentCategory").Include("Owner").Where(
@@ -26,6 +26,13 @@ namespace LearnMusico.Controllers
                x => x.ModifiedOn);
             return View(instrument.ToList());
         }
+
+        //tüm enstruman bilgileri
+        public ActionResult InstrumanAll()
+        {
+            return View(instrumentManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList());
+        }
+
 
         // GET: Instrument/Details/5
         public ActionResult Details(int? id)

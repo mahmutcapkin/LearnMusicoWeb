@@ -1,35 +1,38 @@
-﻿using LearnMusico.BusinessLayer;
-using LearnMusico.BusinessLayer.Result;
-using LearnMusico.Entities;
-using LearnMusico.Models;
-using LearnMusico.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using LearnMusico.BusinessLayer;
+using LearnMusico.BusinessLayer.Result;
+using LearnMusico.Entities;
+using LearnMusico.Models;
+using LearnMusico.ViewModels;
 
 namespace LearnMusico.Controllers
 {
     public class InstrumentPriceController : Controller
     {
         private InstrumentPriceManager priceManager = new InstrumentPriceManager();
+
+        // benim satılık ürünlerim
         public ActionResult Index()
+        {
+            var instrumentPrices = priceManager.ListQueryable().Include("Owner").Where(
+                            x => x.Owner.Id == CurrentSession.User.Id).OrderByDescending(
+                            x => x.ModifiedOn);
+            return View(instrumentPrices.ToList());
+        }
+
+        public ActionResult InstrumentPriceAll()
         {
             return View(priceManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList());
         }
 
-        public ActionResult MyInstrumentDetails()
-        {
-            var Iprice = priceManager.ListQueryable().Include("Owner").Where(
-                            x => x.Owner.Id == CurrentSession.User.Id).OrderByDescending(
-                            x => x.ModifiedOn);
-            return View(Iprice.ToList());
-        }
-
-
+        // GET: InstrumentPrice/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -44,30 +47,40 @@ namespace LearnMusico.Controllers
             return View(instrumentPrice);
         }
 
+        // GET: InstrumentPrice/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(CacheHelper.GetInstrumentCategoryFromCache(), "Id", "Title");
+            ViewBag.InstrumentCategoryId = new SelectList(CacheHelper.GetInstrumentCategoryFromCache(), "Id", "Title");
             return View();
         }
 
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(InstrumentPrice instrumentPrice)
+        public ActionResult Create(InstrumentPrice instrumentPrice, HttpPostedFileBase ImageFilePath)
         {
-            ModelState.Remove("CreatedOn");
-            ModelState.Remove("ModifiedOn");
-            ModelState.Remove("ModifiedUsername");
-
             if (ModelState.IsValid)
             {
+                if (ImageFilePath != null &&
+                       (ImageFilePath.ContentType == "image/jpeg" ||
+                        ImageFilePath.ContentType == "image/jpg" ||
+                        ImageFilePath.ContentType == "image/png"))
+                {
+                    string filenameI = $"instrumentP_{instrumentPrice.Id}.{ImageFilePath.ContentType.Split('/')[1]}";
+
+                    ImageFilePath.SaveAs(Server.MapPath($"~/img/instprice/{filenameI}"));
+                    instrumentPrice.ImageFilePath = filenameI;
+                }
                 instrumentPrice.Owner = CurrentSession.User;
                 priceManager.Insert(instrumentPrice);
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryId = new SelectList(CacheHelper.GetInstrumentCategoryFromCache(), "Id", "Title");
+
+            ViewBag.InstrumentCategoryId = new SelectList(CacheHelper.GetInstrumentCategoryFromCache(), "Id", "Title", instrumentPrice.InstrumentCategoryId);
             return View(instrumentPrice);
         }
 
+        // GET: InstrumentPrice/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -79,21 +92,17 @@ namespace LearnMusico.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoryId = new SelectList(CacheHelper.GetInstrumentCategoryFromCache(), "Id", "Title");
+            ViewBag.InstrumentCategoryId = new SelectList(CacheHelper.GetInstrumentCategoryFromCache(), "Id", "Title", instrumentPrice.InstrumentCategoryId);
             return View(instrumentPrice);
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(InstrumentPrice instrumentPrice, HttpPostedFileBase ImageFilePath)
         {
-            ModelState.Remove("CreatedOn");
-            ModelState.Remove("ModifiedOn");
-            ModelState.Remove("ModifiedUsername");
-
             if (ModelState.IsValid)
             {
-                
                 if (ImageFilePath != null &&
                        (ImageFilePath.ContentType == "image/jpeg" ||
                         ImageFilePath.ContentType == "image/jpg" ||
@@ -101,7 +110,7 @@ namespace LearnMusico.Controllers
                 {
                     string filenameI = $"instrumentP_{instrumentPrice.Id}.{ImageFilePath.ContentType.Split('/')[1]}";
 
-                    ImageFilePath.SaveAs(Server.MapPath($"~/img/instrument/{filenameI}"));
+                    ImageFilePath.SaveAs(Server.MapPath($"~/img/instprice/{filenameI}"));
                     instrumentPrice.ImageFilePath = filenameI;
                 }
 
@@ -118,21 +127,20 @@ namespace LearnMusico.Controllers
 
                     return View("Error", errorNotifyObj);
                 }
-
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryId = new SelectList(CacheHelper.GetInstrumentCategoryFromCache(), "Id", "Title");
+            ViewBag.InstrumentCategoryId = new SelectList(CacheHelper.GetInstrumentCategoryFromCache(), "Id", "Title", instrumentPrice.InstrumentCategoryId);
             return View(instrumentPrice);
-
         }
 
+        // GET: InstrumentPrice/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            InstrumentPrice instrumentPrice = priceManager.Find(x => x.Id == id);
+            InstrumentPrice instrumentPrice = priceManager.Find(x => x.Id == id.Value);
             if (instrumentPrice == null)
             {
                 return HttpNotFound();
@@ -140,7 +148,7 @@ namespace LearnMusico.Controllers
             return View(instrumentPrice);
         }
 
-
+        // POST: InstrumentPrice/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -136,7 +136,6 @@
     <Compile Include="Controllers\InstrumentCategoryController.cs" />
     <Compile Include="Controllers\InstrumentController.cs" />
     <Compile Include="Controllers\InstrumentPriceController.cs" />
-    <Compile Include="Controllers\LessonPriceController.cs" />
     <Compile Include="Controllers\MusicaUserController.cs" />
     <Compile Include="Controllers\SharingController.cs" />
     <Compile Include="Global.asax.cs">
@@ -258,7 +257,7 @@
     <Content Include="css\style.css" />
     <Content Include="css\style.css.map" />
     <Content Include="videos\instrument\kalimba.mp4" />
-    <Content Include="videos\kalimba.mp4" />
+    <Content Include="videos\sharing\kalimba.mp4" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -276,10 +275,7 @@
     <Folder Include="img\instprice\" />
     <Folder Include="img\lessonprice\" />
     <Folder Include="img\user\" />
-    <Folder Include="videos\sharing\" />
     <Folder Include="Views\Comment\" />
-    <Folder Include="Views\InstrumentPrice\" />
-    <Folder Include="Views\LessonPrice\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.min.css.map" />
@@ -336,6 +332,12 @@
     <Content Include="Views\Sharing\Edit.cshtml" />
     <Content Include="Views\Sharing\Index.cshtml" />
     <Content Include="Views\Sharing\AllSharings.cshtml" />
+    <Content Include="Views\Instrument\InstrumanAll.cshtml" />
+    <Content Include="Views\InstrumentPrice\Create.cshtml" />
+    <Content Include="Views\InstrumentPrice\Delete.cshtml" />
+    <Content Include="Views\InstrumentPrice\Details.cshtml" />
+    <Content Include="Views\InstrumentPrice\Edit.cshtml" />
+    <Content Include="Views\InstrumentPrice\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LearnMusico.BusinessLayer\LearnMusico.BusinessLayer.csproj">
