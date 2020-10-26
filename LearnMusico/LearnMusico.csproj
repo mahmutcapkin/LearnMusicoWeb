@@ -138,6 +138,7 @@
     <Compile Include="Controllers\InstrumentPriceController.cs" />
     <Compile Include="Controllers\MusicaUserController.cs" />
     <Compile Include="Controllers\SharingController.cs" />
+    <Compile Include="Controllers\SpecialLessonPriceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -338,6 +339,11 @@
     <Content Include="Views\InstrumentPrice\Details.cshtml" />
     <Content Include="Views\InstrumentPrice\Edit.cshtml" />
     <Content Include="Views\InstrumentPrice\Index.cshtml" />
+    <Content Include="Views\SpecialLessonPrice\Create.cshtml" />
+    <Content Include="Views\SpecialLessonPrice\Delete.cshtml" />
+    <Content Include="Views\SpecialLessonPrice\Details.cshtml" />
+    <Content Include="Views\SpecialLessonPrice\Edit.cshtml" />
+    <Content Include="Views\SpecialLessonPrice\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LearnMusico.BusinessLayer\LearnMusico.BusinessLayer.csproj">
