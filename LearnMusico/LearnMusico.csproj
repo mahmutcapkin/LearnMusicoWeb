@@ -172,7 +172,8 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\icomoon.svg" />
     <Content Include="img\article\haber.jpg" />
-    <Content Include="img\gitar.jpg" />
+    <Content Include="img\instrument\gitar.jpg" />
+    <Content Include="img\sharing\keman.jpg" />
     <Content Include="img\user_default.png" />
     <Content Include="Scripts\js\active.js" />
     <Content Include="Scripts\js\bootstrap\bootstrap.min.js" />
@@ -273,14 +274,12 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="img\instprice\" />
-    <Folder Include="img\instrument\" />
     <Folder Include="img\lessonprice\" />
     <Folder Include="img\user\" />
     <Folder Include="videos\sharing\" />
     <Folder Include="Views\Comment\" />
     <Folder Include="Views\InstrumentPrice\" />
     <Folder Include="Views\LessonPrice\" />
-    <Folder Include="Views\Sharing\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.min.css.map" />
@@ -331,6 +330,12 @@
     <Content Include="Views\Instrument\Details.cshtml" />
     <Content Include="Views\Instrument\Edit.cshtml" />
     <Content Include="Views\Instrument\Index.cshtml" />
+    <Content Include="Views\Sharing\Create.cshtml" />
+    <Content Include="Views\Sharing\Delete.cshtml" />
+    <Content Include="Views\Sharing\Details.cshtml" />
+    <Content Include="Views\Sharing\Edit.cshtml" />
+    <Content Include="Views\Sharing\Index.cshtml" />
+    <Content Include="Views\Sharing\AllSharings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LearnMusico.BusinessLayer\LearnMusico.BusinessLayer.csproj">

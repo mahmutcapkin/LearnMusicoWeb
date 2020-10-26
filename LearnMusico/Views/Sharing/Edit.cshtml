@@ -1,7 +1,7 @@
-﻿@model LearnMusico.Entities.Instrument
+﻿@model LearnMusico.Entities.Sharing
 
 @{
-    ViewBag.Title = "Enstrüman Düzenle";
+    ViewBag.Title = "Paylaşım Düzenle";
 }
 
 <section class="breadcumb-area bg-img bg-overlay" style="   background-image: url(../../img/bg-img/breadcumb3.jpg);">
@@ -19,29 +19,29 @@
             @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h4>Enstrüman</h4>
+            <h4>Paylaşım</h4>
             <hr />
             @Html.ValidationSummary(false)
             @Html.HiddenFor(model => model.Id)
 
             <div class="form-group">
-                @Html.LabelFor(model => model.InstrumentName, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.InstrumentName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
                 </div>
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.TextAreaFor(model => model.Description,7,40, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.InstrumentCategoryId, "InstrumentCategoryId", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.LikeCount, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("InstrumentCategoryId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.EditorFor(model => model.LikeCount, new { htmlAttributes = new { @class = "form-control" } })
                 </div>
             </div>
 
@@ -49,23 +49,13 @@
                 <i class="fa fa-info">&nbsp;</i>
                 <span><i>Lütfen mp4 formatı kullanın.</i></span>
                 <input type="file" name="VideoUrlPath" id="VideoUrlPath" class="form-control" /><br />
-
-            </div>
-
-            <div class="col-md-5">
-                <i class="fa fa-info">&nbsp;</i>
-                <span><i>Lütfen mp3 formatı kullanın.</i></span>
-                <input type="file" name="AudioUrlPath" id="AudioUrlPath" class="form-control" /><br />
-
             </div>
 
             <div class="col-md-5">
                 <i class="fa fa-info">&nbsp;</i>
                 <span><i>Lütfen jpg, jpeg ya da png formatı kullanın.</i></span>
-                <input type="file" name="ImageFilePath" id="ImageFilePath" class="form-control" /><br />
-
+                <input type="file" name="ImageUrlPath" id="ImageUrlPath" class="form-control" /><br />
             </div>
-
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
@@ -76,7 +66,7 @@
         }
 
         <div>
-            @Html.ActionLink("Geri Dön", "Index", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
         </div>
     </div>
 </section>

@@ -23,7 +23,11 @@ namespace LearnMusico.Entities
         public string Description { get; set; }
 
         [StringLength(150), ScaffoldColumn(false)]
+        public string ImageUrlPath { get; set; }
+
+        [StringLength(150), ScaffoldColumn(false)]
         public string VideoUrlPath { get; set; }
+
 
         [DisplayName("Beğeni Sayısı")]
         public int LikeCount { get; set; }

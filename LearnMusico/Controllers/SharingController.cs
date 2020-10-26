@@ -1,9 +1,4 @@
-﻿using LearnMusico.BusinessLayer;
-using LearnMusico.BusinessLayer.Result;
-using LearnMusico.Entities;
-using LearnMusico.Models;
-using LearnMusico.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -11,36 +6,39 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using LearnMusico.BusinessLayer;
+using LearnMusico.BusinessLayer.Result;
+using LearnMusico.Entities;
+using LearnMusico.Models;
+using LearnMusico.ViewModels;
 
 namespace LearnMusico.Controllers
 {
     public class SharingController : Controller
     {
-
         private SharingManager sharingManager = new SharingManager();
         private LikedManager likedManager = new LikedManager();
 
-        //Tüm Gönderiler
+        //Gönderilerim
         public ActionResult Index()
         {
-            return View(sharingManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList());
-        }
-
-        //Gönderilerim
-        public ActionResult MySharings()
-        {
             var sharings = sharingManager.ListQueryable().Include("Owner").Where(
-                            x => x.Owner.Id == CurrentSession.User.Id).OrderByDescending(
-                            x => x.ModifiedOn);
+                           x => x.Owner.Id == CurrentSession.User.Id).OrderByDescending(
+                           x => x.ModifiedOn);
             return View(sharings.ToList());
         }
 
 
+        //Tüm Gönderiler
+        public ActionResult AllSharings()
+        {
+            return View(sharingManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList());
+        }
 
         public ActionResult MostLiked()
         {
             SharingManager sm = new SharingManager();
-            return View("Index", sm.ListQueryable().OrderByDescending(x => x.LikeCount).ToList());
+            return View("AllSharings", sm.ListQueryable().OrderByDescending(x => x.LikeCount).ToList());
         }
 
         public ActionResult MyLikedSharings()
@@ -50,10 +48,12 @@ namespace LearnMusico.Controllers
                 x => x.Sharing).OrderByDescending(
                 x => x.ModifiedOn);
 
-            return View("Index", sharings.ToList());
+            return View("AllSharings", sharings.ToList());
         }
 
 
+
+        // GET: Sharing/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -68,14 +68,16 @@ namespace LearnMusico.Controllers
             return View(sharing);
         }
 
+        // GET: Sharing/Create
         public ActionResult Create()
         {
             return View();
         }
 
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Sharing sharing)
+        public ActionResult Create(Sharing sharing, HttpPostedFileBase VideoUrlPath, HttpPostedFileBase ImageUrlPath)
         {
             ModelState.Remove("CreatedOn");
             ModelState.Remove("ModifiedOn");
@@ -83,14 +85,33 @@ namespace LearnMusico.Controllers
 
             if (ModelState.IsValid)
             {
+                if (VideoUrlPath != null &&
+                                     (VideoUrlPath.ContentType == "video/mp4"))
+                {
+                    string filenameV = $"sharingV_{sharing.Id}.{VideoUrlPath.ContentType.Split('/')[1]}";
+
+                    VideoUrlPath.SaveAs(Server.MapPath($"~/videos/sharing/{filenameV}"));
+                    sharing.VideoUrlPath = filenameV;
+                }
+                if (ImageUrlPath != null &&
+                      (ImageUrlPath.ContentType == "image/jpeg" ||
+                       ImageUrlPath.ContentType == "image/jpg" ||
+                       ImageUrlPath.ContentType == "image/png"))
+                {
+                    string filenameI = $"sharingI_{sharing.Id}.{ImageUrlPath.ContentType.Split('/')[1]}";
+
+                    ImageUrlPath.SaveAs(Server.MapPath($"~/img/sharing/{filenameI}"));
+                    sharing.ImageUrlPath = filenameI;
+                }
+
                 sharing.Owner = CurrentSession.User;
                 sharingManager.Insert(sharing);
                 return RedirectToAction("Index");
             }
-            
             return View(sharing);
         }
 
+        // GET: Sharing/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -102,29 +123,37 @@ namespace LearnMusico.Controllers
             {
                 return HttpNotFound();
             }
-
             return View(sharing);
         }
 
-        //Sharing Edit içinde ekleme olabilir sonradan
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Sharing sharing, HttpPostedFileBase VideoUrlPath)
+        public ActionResult Edit(Sharing sharing, HttpPostedFileBase VideoUrlPath, HttpPostedFileBase ImageUrlPath)
         {
             ModelState.Remove("CreatedOn");
             ModelState.Remove("ModifiedOn");
             ModelState.Remove("ModifiedUsername");
-           
+
             if (ModelState.IsValid)
             {
                 if (VideoUrlPath != null &&
-                       (VideoUrlPath.ContentType == "video/mp4"))
+                        (VideoUrlPath.ContentType == "video/mp4"))
                 {
-                    string filename = $"sharing_{sharing.Id}.{VideoUrlPath.ContentType.Split('/')[1]}";
+                    string filename = $"sharingV_{sharing.Id}.{VideoUrlPath.ContentType.Split('/')[1]}";
 
                     VideoUrlPath.SaveAs(Server.MapPath($"~/videos/sharing/{filename}"));
                     sharing.VideoUrlPath = filename;
+                }
+                if (ImageUrlPath != null &&
+                     (ImageUrlPath.ContentType == "image/jpeg" ||
+                      ImageUrlPath.ContentType == "image/jpg" ||
+                      ImageUrlPath.ContentType == "image/png"))
+                {
+                    string filenameI = $"sharingI_{sharing.Id}.{ImageUrlPath.ContentType.Split('/')[1]}";
+
+                    ImageUrlPath.SaveAs(Server.MapPath($"~/img/sharing/{filenameI}"));
+                    sharing.ImageUrlPath = filenameI;
                 }
                 BusinessLayerResult<Sharing> res = sharingManager.UpdateSharing(sharing);
 
@@ -143,9 +172,9 @@ namespace LearnMusico.Controllers
                 return RedirectToAction("Index");
             }
             return View(sharing);
-
         }
 
+        // GET: Sharing/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -160,7 +189,7 @@ namespace LearnMusico.Controllers
             return View(sharing);
         }
 
-
+        // POST: Sharing/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -169,10 +198,6 @@ namespace LearnMusico.Controllers
             sharingManager.Delete(sharing);
             return RedirectToAction("Index");
         }
-
-
-
-        //Beğenme beğeni geri alma işlemleri kaldı eklenecek
 
     }
 }
