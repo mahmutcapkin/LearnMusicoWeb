@@ -21,8 +21,10 @@ namespace LearnMusico.Controllers
         // GET: Instrument
         public ActionResult Index()
         {
-            var instruments = instrumentManager.ListQueryable().Include(i => i.InstrumentCategory);
-            return View(instruments.ToList());
+            var instrument = instrumentManager.ListQueryable().Include("InstrumentCategory").Include("Owner").Where(
+               x => x.Owner.Id == CurrentSession.User.Id).OrderByDescending(
+               x => x.ModifiedOn);
+            return View(instrument.ToList());
         }
 
         // GET: Instrument/Details/5

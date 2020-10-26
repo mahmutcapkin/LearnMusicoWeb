@@ -21,7 +21,9 @@ namespace LearnMusico.Controllers
         // GET: Article
         public ActionResult Index()
         {
-            var articles =articleManager.ListQueryable().Include(a => a.ArticleCategory);
+            var articles = articleManager.ListQueryable().Include("ArticleCategory").Include("Owner").Where(
+               x => x.Owner.Id == CurrentSession.User.Id).OrderByDescending(
+               x => x.ModifiedOn);
             return View(articles.ToList());
         }
 
