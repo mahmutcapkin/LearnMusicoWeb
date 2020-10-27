@@ -33,7 +33,17 @@ namespace LearnMusico.Controllers
         {
             return View(LpriceManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList());
         }
+        public ActionResult ByLessonPriceCategory(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            List<SpecialLessonPrice> lessonPrices = LpriceManager.ListQueryable().Where(x => x.InstrumentCategoryId == id).OrderByDescending(x => x.ModifiedOn).ToList();
 
+            return View("AllSpecialLesson", lessonPrices);
+
+        }
 
         // GET: SpecialLessonPrice/Details/5
         public ActionResult Details(int? id)

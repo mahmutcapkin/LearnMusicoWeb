@@ -16,29 +16,17 @@
         <div class="row">
             <div class="col-lg-3 col-md-3">
                 <div class="blog-sidebar-area">
-                    <!-- Widget Area -->
-                    <div class="single-widget-area mt-30">
-                        <div class="widget-title">
-                            <h5>Categories</h5>
-                        </div>
-                        <div class="widget-content">
-                            <ul>
-                                <li><a href="#">Music</a></li>
-                                <li><a href="#">Events &amp; Press</a></li>
-                                <li><a href="#">Festivals</a></li>
-                                <li><a href="#">Lyfestyle</a></li>
-                                <li><a href="#">Uncategorized</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="sidebar-box">
-                    <img src="img/bg-img/person_1.jpg" alt="Image" class="img-fluid mb-4 w-50 rounded-circle">
-                    <h3 class="text-black">About The Author</h3>
-                    <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+                    @Html.Partial("_PartialInstrumentCategory")
                 </div>
-            </div>
+               
+                    @*<div class="sidebar-box">
+                        <img src="~/img/user/@item.Owner.ProfileImageFilename" alt="Image" class="img-fluid mb-4 w-50 rounded-circle">
+                        <h3 class="text-black">@(item.Owner.Name + " " + item.Owner.Surname)</h3>
+                        <p>@item.Owner.About</p>
+                    </div>*@
+              
+                </div>
 
 
             <div class="col-lg-9 col-md-9 blog-content">
@@ -47,7 +35,7 @@
                         @foreach (var item in Model)
                         {
                             <h4 class="text-center">@item.InstrumentName</h4>
-                            <img  width="250" height="400" src="~/img/instrument/@item.ImageFilePath" alt="" >
+                            <img width="250" height="400" src="~/img/instrument/@item.ImageFilePath" alt="">
 
                             <br>
                             <p class="lead">
@@ -71,6 +59,8 @@
                                     </audio>
                                 </div>
                             </div>
+                            <p class="text-right">Yazar: <a href="#">@item.Owner.ModifiedUsername</a></p>
+                            <br />
                         }
                     </div>
                 </div>

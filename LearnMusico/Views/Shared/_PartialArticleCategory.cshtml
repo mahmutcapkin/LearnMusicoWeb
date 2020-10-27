@@ -1,0 +1,22 @@
+﻿@using LearnMusico.Models
+@using LearnMusico.Entities
+
+@{ 
+    List<ArticleCategory> articleCategories = CacheHelper.GetArticleCategoryFromCache();
+}
+
+
+<div class="single-widget-area mb-30">
+    <div class="widget-title">
+        <h5>Kategoriler</h5>
+    </div>
+    <div class="widget-content">
+        @foreach (ArticleCategory articleCategory in articleCategories)
+        {
+            <ul>
+                <li><a href="/Article/ByArticleCategory/@articleCategory.Id">@articleCategory.Title</a></li>
+            </ul>
+        }
+
+    </div>
+</div>

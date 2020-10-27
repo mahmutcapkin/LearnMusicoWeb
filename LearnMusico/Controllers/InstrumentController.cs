@@ -17,6 +17,7 @@ namespace LearnMusico.Controllers
     public class InstrumentController : Controller
     {
         private InstrumentManager instrumentManager = new InstrumentManager();
+        
 
         //Enstrumanlarım
         public ActionResult Index()
@@ -26,6 +27,33 @@ namespace LearnMusico.Controllers
                x => x.ModifiedOn);
             return View(instrument.ToList());
         }
+
+        public ActionResult ByInstrumentCategory(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            List<Instrument> instrument = instrumentManager.ListQueryable().Where(x => x.InstrumentCategoryId == id).OrderByDescending(x => x.ModifiedOn).ToList();
+
+            return View("InstrumanAll", instrument);
+
+        }
+
+        //public ActionResult ByAuthor(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    //List<Instrument> instrument = instrumentManager.ListQueryable().Where(x => x.InstrumentCategoryId == id).OrderByDescending(x => x.ModifiedOn).ToList();
+        //    Instrument user = instrumentManager.Find(x => x.Owner.Id == id);
+
+        //    return View("InstrumanAll", user);
+
+        //}
+
+
 
         //tüm enstruman bilgileri
         public ActionResult InstrumanAll()

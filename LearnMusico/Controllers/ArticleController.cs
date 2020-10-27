@@ -27,6 +27,22 @@ namespace LearnMusico.Controllers
             return View(articles.ToList());
         }
 
+        public ActionResult AllArticle()
+        {
+            
+            return View(articleManager.ListQueryable().OrderByDescending(x=>x.ModifiedOn).ToList());
+        }
+        public ActionResult ByArticleCategory(int? id)
+        {
+            if(id==null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            List<Article> article = articleManager.ListQueryable().Where(x => x.ArticleCategoryId == id).OrderByDescending(x => x.ModifiedOn).ToList();
+
+            return View("AllArticle", article);
+
+        }
         // GET: Article/Details/5
         public ActionResult Details(int? id)
         {

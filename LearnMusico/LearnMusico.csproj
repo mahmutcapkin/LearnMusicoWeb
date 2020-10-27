@@ -174,7 +174,7 @@
     <Content Include="img\article\haber.jpg" />
     <Content Include="img\instrument\gitar.jpg" />
     <Content Include="img\sharing\keman.jpg" />
-    <Content Include="img\user_default.png" />
+    <Content Include="img\user\user_default.png" />
     <Content Include="Scripts\js\active.js" />
     <Content Include="Scripts\js\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\js\bootstrap\popper.min.js" />
@@ -275,7 +275,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="img\instprice\" />
     <Folder Include="img\lessonprice\" />
-    <Folder Include="img\user\" />
     <Folder Include="Views\Comment\" />
   </ItemGroup>
   <ItemGroup>
@@ -295,6 +294,7 @@
     <Content Include="fonts\icomoon.eot" />
     <Content Include="fonts\icomoon.ttf" />
     <Content Include="fonts\icomoon.woff" />
+    <Content Include="App_Code\BootstrapT.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_PartialFooter.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
@@ -344,6 +344,9 @@
     <Content Include="Views\SpecialLessonPrice\Details.cshtml" />
     <Content Include="Views\SpecialLessonPrice\Edit.cshtml" />
     <Content Include="Views\SpecialLessonPrice\Index.cshtml" />
+    <Content Include="Views\Article\AllArticle.cshtml" />
+    <Content Include="Views\Shared\_PartialArticleCategory.cshtml" />
+    <Content Include="Views\Shared\_PartialInstrumentCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LearnMusico.BusinessLayer\LearnMusico.BusinessLayer.csproj">

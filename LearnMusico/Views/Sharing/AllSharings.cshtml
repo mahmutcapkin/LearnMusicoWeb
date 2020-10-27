@@ -47,16 +47,11 @@
                                         </div>
                                         <p>@item.Description</p>
                                     </div>
-
                                 </div>
-
                                 <!--Footer-->
                                 <!--<div class="modal-footer justify-content-center">
-                                    <p class="tags">Yorumlar</p>
-                                   
-
+                                    <p class="tags">Yorumlar</p>                                  
                                 </div>-->
-
                             </div>
                             <!--/.Content-->
 
@@ -82,16 +77,15 @@
 
                                 @if (string.IsNullOrEmpty(item.Description) == false && item.Description.Length > 70)
                                 {
-                                    <p>@(item.Description.Substring(0, 70) + "...")</p>
+                                    <p>@(item.Description.Substring(0, 80) + "...")</p>
                                     <p class="pull-right">
-                                        <a href="#" data-toggle="modal" data-target="#modal_notedetail" data-note-id="@item.Id" class="btn btn-default btn-sm">devamı <span class="glyphicon glyphicon-chevron-right"></span></a>
+                                        <a href="#" data-toggle="modal" data-target="#modal_notedetail" data-note-id="@item.Id" class="btn btn-default btn-sm">devamı</a>
                                     </p>
                                 }
                                 else
                                 {
                                     <p>@item.Description</p>
                                 }
-
 
                             </div>
                     </div>

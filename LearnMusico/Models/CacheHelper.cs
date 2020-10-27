@@ -54,6 +54,5 @@ namespace LearnMusico.Models
         // kategoriler güncellendiğinde eklendiğinde silindiğinde cache yapısının da güncellenmesi için 
         //cache temizlenir ve yukarıdaki GetCategoriesFromCache ile tekrar doldurlur
 
-
     }
 }

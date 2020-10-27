@@ -32,6 +32,19 @@ namespace LearnMusico.Controllers
             return View(priceManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList());
         }
 
+        public ActionResult ByInstPriceCategory(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            List<InstrumentPrice> instPrices = priceManager.ListQueryable().Where(x => x.InstrumentCategoryId == id).OrderByDescending(x => x.ModifiedOn).ToList();
+
+            return View("InstrumentPriceAll", instPrices);
+
+        }
+
+
         // GET: InstrumentPrice/Details/5
         public ActionResult Details(int? id)
         {
