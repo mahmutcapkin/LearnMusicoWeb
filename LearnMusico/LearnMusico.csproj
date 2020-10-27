@@ -172,7 +172,9 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\icomoon.svg" />
     <Content Include="img\article\haber.jpg" />
+    <Content Include="img\instprice\gitar.jpg" />
     <Content Include="img\instrument\gitar.jpg" />
+    <Content Include="img\lessonprice\gitar.jpg" />
     <Content Include="img\sharing\keman.jpg" />
     <Content Include="img\user\user_default.png" />
     <Content Include="Scripts\js\active.js" />
@@ -273,8 +275,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="img\instprice\" />
-    <Folder Include="img\lessonprice\" />
     <Folder Include="Views\Comment\" />
   </ItemGroup>
   <ItemGroup>
@@ -347,6 +347,10 @@
     <Content Include="Views\Article\AllArticle.cshtml" />
     <Content Include="Views\Shared\_PartialArticleCategory.cshtml" />
     <Content Include="Views\Shared\_PartialInstrumentCategory.cshtml" />
+    <Content Include="Views\InstrumentPrice\InstrumentPriceAll.cshtml" />
+    <Content Include="Views\SpecialLessonPrice\AllSpecialLesson.cshtml" />
+    <Content Include="Views\Shared\_PartialLessonCategory.cshtml" />
+    <Content Include="Views\Shared\_PartialInstPriceCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LearnMusico.BusinessLayer\LearnMusico.BusinessLayer.csproj">

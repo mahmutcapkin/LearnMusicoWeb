@@ -1,0 +1,69 @@
+﻿@model IEnumerable<LearnMusico.Entities.SpecialLessonPrice>
+@{
+    ViewBag.Title = "Özel Dersler";
+}
+
+
+<section class="breadcumb-area bg-img bg-overlay" style="  background-image: url(../../img/bg-img/breadcumb3.jpg);">
+    <div class="bradcumbContent">
+        <h2>@ViewBag.Title</h2>
+    </div>
+</section>
+
+<section class="blog-area section-padding-100">
+    <div class="container">
+                <!-- Grid row -->
+                <div class="row">
+
+                    <div class="col-lg-3">
+                        <div class="blog-sidebar-area">
+
+                            @Html.Partial("_PartialLessonCategory")
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-9">
+
+                        <div class="row">
+                            @foreach (var item in Model)
+                            {
+
+
+                            <div class="col-sm-4 col-lg-4 col-md-4 mb-4">
+
+                                <!-- Single Post Start -->
+                                <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms">
+                                    <!-- Post Thumb -->
+                                    <div class="blog-post-thumb mt-30">
+                                        <a>
+                                            <img class="img-fluid z-depth-1" src="~/img/lessonprice/@item.ImageFilePath" alt="">
+                                        </a>
+                                    </div>
+
+                                    <!-- Blog Content -->
+                                    <div class="blog-content">
+                                        <!-- Post Title -->
+                                        <a href="#" class="post-title">@item.InstrumentName</a>
+                                        <!-- Post Meta -->
+                                        <div class="post-meta d-flex mb-30">
+                                            <p ><strong>@(item.Teacher.Name+" "+item.Teacher.Surname) (@item.Teacher.Username)</strong></p>
+                                        </div>
+                                        <!-- Post Excerpt -->
+                                        <p><strong>Kategori: </strong>@item.InstrumentCategory.Title</p>
+                                        <p><strong>Açıklama: </strong>@item.Description</p>
+                                        <p><strong>Adres: </strong>@item.Address</p>
+                                        <p><strong>Fiyat: </strong>@item.Price TL</p>
+                                        @*<a href="#" class="pull-right">Read More<i class="fa fa-angle-double-right"></i></a>*@
+                                    </div>
+                                </div>
+                            </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+
+    </div>
+</section>

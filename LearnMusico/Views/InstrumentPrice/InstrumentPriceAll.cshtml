@@ -1,0 +1,64 @@
+﻿@model IEnumerable<LearnMusico.Entities.InstrumentPrice>
+@{
+    ViewBag.Title = "Satılık Enstrümanlar";
+}
+
+<section class="breadcumb-area bg-img bg-overlay" style="  background-image: url(../../img/bg-img/breadcumb3.jpg);">
+    <div class="bradcumbContent">
+        <h2>@ViewBag.Title</h2>
+    </div>
+</section>
+
+<section class="blog-area section-padding-100">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-3">
+                <div class="blog-sidebar-area">
+                    <!-- Widget Area -->
+                    @Html.Partial("_PartialInstPriceCategory")
+                </div>
+            
+            </div>
+
+            <div class="col-lg-9">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-sm-4 col-lg-4 col-md-4 mb-4">
+
+                            <!-- Single Post Start -->
+                            <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms">
+                                <!-- Post Thumb -->
+                                <div class="blog-post-thumb mt-30">
+                                    <a>
+                                        <img class="img-fluid z-depth-1" src="~/img/instprice/@item.ImageFilePath" alt="">
+                                    </a>
+                                </div>
+
+                                <!-- Blog Content -->
+                                <div class="blog-content">
+                                    <a href="#" class="post-title">@item.InstrumentName</a>
+                                    <!-- Post Meta -->
+                                    <div class="post-meta d-flex mb-30">
+                                        <p><strong>@(item.Owner.Name+" "+item.Owner.Surname) (@item.Owner.Username)</strong></p>
+                                    </div>
+                                    <!-- Post Excerpt -->
+                                    <p><strong>Kategori: </strong>@item.InstrumentCategory.Title</p>
+                                    <p><strong>Açıklama: </strong>@item.Description</p>
+                                    <p><strong>Durum: </strong>@item.Status</p>
+                                    <p><strong>Adres: </strong>@item.Address</p>
+                                    <p><strong>Fiyat: </strong>@item.Price TL</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
