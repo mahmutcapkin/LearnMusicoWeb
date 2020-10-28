@@ -1,6 +1,7 @@
 ﻿using LearnMusico.BusinessLayer;
 using LearnMusico.Entities;
 using LearnMusico.Models;
+using LearnMusico.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -18,19 +19,23 @@ namespace LearnMusico.Controllers
         // GET: Comment
         public ActionResult ShowSharingComments(int? id)
         {
+            SharingCommentViewModel model = new SharingCommentViewModel();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Sharing sharing = sharingManager.ListQueryable().Include("Comments").FirstOrDefault(x => x.Id == id);
 
-            if (sharing == null)
+            model.sharing = sharing;
+            model.comment = sharing.Comments;
+            
+
+            if (model == null)
             {
                 return HttpNotFound();
             }
-            //buranın view kodu henüz yazılmadı
-            return View();
-           // return PartialView("_PartialComments", sharing.Comments);
+            
+            return PartialView("_PartialSharing", model);
         }
 
         [HttpPost]

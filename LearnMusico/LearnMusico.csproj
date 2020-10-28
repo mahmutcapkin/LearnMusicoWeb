@@ -150,6 +150,7 @@
     <Compile Include="ViewModels\InfoViewModel.cs" />
     <Compile Include="ViewModels\NotifyViewModelBase.cs" />
     <Compile Include="ViewModels\OkViewModel.cs" />
+    <Compile Include="ViewModels\SharingCommentViewModel.cs" />
     <Compile Include="ViewModels\WarningViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -351,6 +352,7 @@
     <Content Include="Views\SpecialLessonPrice\AllSpecialLesson.cshtml" />
     <Content Include="Views\Shared\_PartialLessonCategory.cshtml" />
     <Content Include="Views\Shared\_PartialInstPriceCategory.cshtml" />
+    <Content Include="Views\Shared\_PartialSharing.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LearnMusico.BusinessLayer\LearnMusico.BusinessLayer.csproj">
