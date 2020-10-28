@@ -16,18 +16,18 @@ namespace LearnMusico.Controllers
     {
         private SharingManager sharingManager = new SharingManager();
         private CommentManager commentManager = new CommentManager();
+        private SharingCommentViewModel model = new SharingCommentViewModel();
         // GET: Comment
         public ActionResult ShowSharingComments(int? id)
-        {
-            SharingCommentViewModel model = new SharingCommentViewModel();
+        {           
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Sharing sharing = sharingManager.ListQueryable().Include("Comments").FirstOrDefault(x => x.Id == id);
 
-            model.sharing = sharing;
-            model.comment = sharing.Comments;
+            //model.sharing = sharing;
+            //model.comment = sharing.Comments;
 
 
             if (model == null)
@@ -35,7 +35,7 @@ namespace LearnMusico.Controllers
                 return HttpNotFound();
             }
 
-            return PartialView("_PartialSharing",model);
+            return PartialView("_PartialSharing", sharing);
         }
 
         [HttpPost]
