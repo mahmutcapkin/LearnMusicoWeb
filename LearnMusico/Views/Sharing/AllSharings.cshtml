@@ -5,7 +5,7 @@
 }
 
 
-<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb3.jpg);">
+<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(../../img/bg-img/breadcumb3.jpg);">
     <div class="bradcumbContent">
         <h2>@ViewBag.Title</h2>
     </div>
@@ -32,14 +32,14 @@
 
                             <div class="post-meta d-flex mb-30">
                                 <p class="post-author">@item.ModifiedUsername</p>
-                                <p class="tags"><a href="#" data-toggle="modal" data-target="#modal_comment" data-note-id="@item.Id">Yorumlar</a></p>
+                                <p class="tags"><a href="#" data-toggle="modal" data-target="#modal_comment" data-sharing-id="@item.Id">Yorumlar</a></p>
                             </div>
 
                             @if (string.IsNullOrEmpty(item.Description) == false && item.Description.Length > 70)
                             {
                                 <p>@(item.Description.Substring(0, 80) + "...")</p>
                                 <p class="pull-right">
-                                    <a href="#" data-toggle="modal" data-target="#modal_notedetail" data-note-id="@item.Id" class="btn btn-default btn-sm">devamı</a>
+                                    <a href="#" data-toggle="modal" data-target="#modal_notedetail" data-sharing-id="@item.Id" class="btn btn-default btn-sm">devamı</a>
                                 </p>
                             }
                             else
@@ -59,11 +59,17 @@
 
 @BootstrapT.ModalPopup(id:"modal_comment",title:"Paylaşım")
 <script>
-    $(function () {
+    $(function ()
+    {
+        
         $('#modal_comment').on('show.bs.modal', function (e) {
-            $("#modal_comment_body").load("/Comment/ShowSharingComments");
+            var btn = $(e.relatedTarget);
+            var sharingid = btn.data("sharing-id")
 
-        });
+            $("#modal_comment_body").load("/Comment/ShowSharingComments/" + sharingid);
+                
+
+        })
     });
 
 

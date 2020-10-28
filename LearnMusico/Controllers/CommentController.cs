@@ -28,14 +28,14 @@ namespace LearnMusico.Controllers
 
             model.sharing = sharing;
             model.comment = sharing.Comments;
-            
+
 
             if (model == null)
             {
                 return HttpNotFound();
             }
-            
-            return PartialView("_PartialSharing", model);
+
+            return PartialView("_PartialSharing",model);
         }
 
         [HttpPost]

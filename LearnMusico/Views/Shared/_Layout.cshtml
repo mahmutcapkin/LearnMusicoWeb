@@ -16,20 +16,32 @@
     <!-- Favicon -->
     <link rel="icon" href="~/img/core-img/favicon.ico">
     <!-- Stylesheet -->
+    <link href="~/fontawesome/css/all.min.css" rel="stylesheet" />
     <link href="~/css/style.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-2.2.4.min.js"></script>
+    <script src="~/Scripts/js/plugins/plugins.js"></script>
+    <script src="~/Scripts/js/bootstrap/popper.min.js"></script>
+    <script src="~/Scripts/js/bootstrap/bootstrap.min.js"></script>
+    <!-- Popper js -->
+    <!-- Bootstrap js -->
+    <!-- All Plugins js -->
+    <!-- Active js -->
+
+
 
 </head>
 
 <body>
     <!-- Preloader -->
     @*<div class="preloader d-flex align-items-center justify-content-center">
-        <div class="lds-ellipsis">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>*@
+            <div class="lds-ellipsis">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>*@
 
     <!-- ##### Header Area Start ##### -->
     <header class="header-area">
@@ -41,7 +53,7 @@
                     <nav class="classy-navbar justify-content-between" id="oneMusicNav">
 
                         <!-- Nav brand -->
-                        <a href="index.html" class="nav-brand"><img src="~/img/core-img/logo2.png" alt=""></a>
+                        <a href="/Home/Index" class="nav-brand"><img src="~/img/core-img/logo2.png" alt=""></a>
 
 
                         <!-- Navbar Toggler -->
@@ -56,115 +68,115 @@
                             <div class="classycloseIcon">
                                 <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                             </div>
-                           
+
                             <!-- Nav Start -->
                             <div class="classynav">
                                 @if (CurrentSession.User != null)
                                 {
-                                <ul>
-                                    <li>
-                                        <a href="/Sharing/Index">Satılık Enstrümanlar</a>
-                                        @if (!CurrentSession.User.IsTeacher)
-                                        {
-                                            <ul class="dropdown">
-                                                <li><a href="index.html">Satılık Çalgılarım</a></li>
-                                                <li><a href="index.html">Enstrüman Sat</a></li>
-                                            </ul>
-                                        }
+                                    <ul>
+                                        <li>
+                                            <a href="/Sharing/Index">Satılık Enstrümanlar</a>
+                                            @if (!CurrentSession.User.IsTeacher)
+                                            {
+                                                <ul class="dropdown">
+                                                    <li><a href="index.html">Satılık Çalgılarım</a></li>
+                                                    <li><a href="index.html">Enstrüman Sat</a></li>
+                                                </ul>
+                                            }
                                         </li>
 
-                                    <li>
-                                        <a href="/Sharing/Index">Gönderiler</a>
-                                        <ul class="dropdown">
-                                            <li><a href="/Sharing/MySharings">Gönderilerim</a></li>
-                                            <li><a href="/Sharing/Create">Gönderi Paylaş</a></li>
-                                            <li><a href="/Sharing/MyLikes">Beğendiklerim</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="/Instrument/Index">Enstrümanlar</a>
-                                        @if (CurrentSession.User.IsTeacher)
-                                        {
+                                        <li>
+                                            <a href="/Sharing/Index">Gönderiler</a>
                                             <ul class="dropdown">
-                                                <li><a href="/Instrument/MyInstrumentDetails">Enstrümanlarım</a></li>
-                                                <li><a href="/Instrument/Create">Enstrüman Ekle</a></li>
-                                                <li><a href="/InstrumentCategory/Index">Enstrüman Kategori</a></li>
-                                                <li><a href="/InstrumentCategory/Create">Kategori Ekle</a></li>
+                                                <li><a href="/Sharing/MySharings">Gönderilerim</a></li>
+                                                <li><a href="/Sharing/Create">Gönderi Paylaş</a></li>
+                                                <li><a href="/Sharing/MyLikes">Beğendiklerim</a></li>
                                             </ul>
-                                        }
-                                    </li>
-                                    <li>
-                                        <a href="/Article/Index"><i class="fa fa-newspaper-o"></i>Haberler/Yazılar</a>
-                                        @if (CurrentSession.User.IsTeacher)
-                                        {
-                                            <ul class="dropdown">
-                                                <li><a href="/Article/MyArticleDetails">Haber/Yazılarım</a></li>
-                                                <li><a href="/Article/Create">Haber/Yazı Ekle</a></li>
-                                                <li><a href="/ArticleCategory/Index">Haber/Yazı Kategori</a></li>
-                                                <li><a href="/ArticleCategory/Create">Kategori Ekle</a></li>
-                                            </ul>
-                                        }
+                                        </li>
+                                        <li>
+                                            <a href="/Instrument/Index">Enstrümanlar</a>
+                                            @if (CurrentSession.User.IsTeacher)
+                                            {
+                                                <ul class="dropdown">
+                                                    <li><a href="/Instrument/MyInstrumentDetails">Enstrümanlarım</a></li>
+                                                    <li><a href="/Instrument/Create">Enstrüman Ekle</a></li>
+                                                    <li><a href="/InstrumentCategory/Index">Enstrüman Kategori</a></li>
+                                                    <li><a href="/InstrumentCategory/Create">Kategori Ekle</a></li>
+                                                </ul>
+                                            }
+                                        </li>
+                                        <li>
+                                            <a href="/Article/Index"><i class="fa fa-newspaper-o"></i>Haberler/Yazılar</a>
+                                            @if (CurrentSession.User.IsTeacher)
+                                            {
+                                                <ul class="dropdown">
+                                                    <li><a href="/Article/MyArticleDetails">Haber/Yazılarım</a></li>
+                                                    <li><a href="/Article/Create">Haber/Yazı Ekle</a></li>
+                                                    <li><a href="/ArticleCategory/Index">Haber/Yazı Kategori</a></li>
+                                                    <li><a href="/ArticleCategory/Create">Kategori Ekle</a></li>
+                                                </ul>
+                                            }
 
-                                    </li>
-                                    <li>
-                                        <a href="/Sharing/Index">Özel Dersler</a>
-                                        @if (CurrentSession.User.IsTeacher)
-                                        {
-                                            <ul class="dropdown">
-                                                <li><a href="index.html">Özel Derslerim</a></li>
-                                                <li><a href="index.html">Özel Ders Ekle</a></li>
-                                            </ul>
-                                        }
+                                        </li>
+                                        <li>
+                                            <a href="/Sharing/Index">Özel Dersler</a>
+                                            @if (CurrentSession.User.IsTeacher)
+                                            {
+                                                <ul class="dropdown">
+                                                    <li><a href="index.html">Özel Derslerim</a></li>
+                                                    <li><a href="index.html">Özel Ders Ekle</a></li>
+                                                </ul>
+                                            }
 
-                                    </li>
-                                                                        
-                                                @*<li><a href="index.html">Haber/Yazı Detaylarım</a></li>
-                                                    <li><a href="index.html">Haber/Yazı Ekle</a></li>
-                                                    <li><a href="index.html">Enstrümanlarım</a></li>
-                                                    <li><a href="index.html">Enstrüman Ekle</a></li>
-                                                    <li><a href="index.html">özel Derslerim</a></li>
-                                                    <li><a href="index.html">özel Ders Ekle</a></li>*@
-                                                                                   
+                                        </li>
+
+                                        @*<li><a href="index.html">Haber/Yazı Detaylarım</a></li>
+                                            <li><a href="index.html">Haber/Yazı Ekle</a></li>
+                                            <li><a href="index.html">Enstrümanlarım</a></li>
+                                            <li><a href="index.html">Enstrüman Ekle</a></li>
+                                            <li><a href="index.html">özel Derslerim</a></li>
+                                            <li><a href="index.html">özel Ders Ekle</a></li>*@
+
                                         @*<li>
-                                            <a href="/Home/Index"> Yönetim</a>
-                                            <ul class="dropdown">
-                                                <li><a href="/Article/MyArticle">Haber/Yazılarım</a></li>
-                                                <li><a href="/Article/Create">Haber/Yazı Ekle</a></li>
-                                                <li><a href="index.html">Özel Derslerim</a></li>
-                                                <li><a href="index.html">Özel Ders Ekle</a></li>
-                                            </ul>
-                                        </li>*@
+                                                <a href="/Home/Index"> Yönetim</a>
+                                                <ul class="dropdown">
+                                                    <li><a href="/Article/MyArticle">Haber/Yazılarım</a></li>
+                                                    <li><a href="/Article/Create">Haber/Yazı Ekle</a></li>
+                                                    <li><a href="index.html">Özel Derslerim</a></li>
+                                                    <li><a href="index.html">Özel Ders Ekle</a></li>
+                                                </ul>
+                                            </li>*@
 
+                                    </ul>
+                                }
+
+
+                                <ul>
+                                    @if (CurrentSession.User == null)
+                                    {
+                                        <li>
+                                            <a href="/Home/Login" id="loginBtn"><i class="fa fa-sign-in"></i>Giriş Yap</a>
+                                        </li>
+                                        <li>
+                                            <a href="/Home/Register" id="loginBtn">Kayıt Ol</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <a href="/Home/Index">@CurrentSession.User.Username</a>
+                                            <ul class="dropdown">
+                                                <li><a href="index.html">Mesajlarım</a></li>
+                                                <li><a href="/Home/ShowProfile">Profili Göster</a></li>
+                                                <li><a href="/Home/EditProfile">Profili Düzenle</a></li>
+                                                <li><a href="/Home/DeleteProfile">Profili Sil</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="/Home/Logout" id="loginBtn"><i class="fa fa-sign-out"></i>Çıkış</a>
+                                        </li>
+                                    }
                                 </ul>
-                                }
-                                
-                              
-                            <ul>
-                                @if (CurrentSession.User == null)
-                                {
-                                    <li>
-                                        <a href="/Home/Login" id="loginBtn"><i class="fa fa-sign-in"></i>Giriş Yap</a>
-                                    </li>
-                                    <li>
-                                        <a href="/Home/Register" id="loginBtn">Kayıt Ol</a>
-                                    </li>
-                                }
-                                else
-                                {
-                                    <li>
-                                        <a href="/Home/Index">@CurrentSession.User.Username</a>
-                                        <ul class="dropdown">
-                                            <li><a href="index.html">Mesajlarım</a></li>
-                                            <li><a href="/Home/ShowProfile">Profili Göster</a></li>
-                                            <li><a href="/Home/EditProfile">Profili Düzenle</a></li>
-                                            <li><a href="/Home/DeleteProfile">Profili Sil</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="/Home/Logout" id="loginBtn"><i class="fa fa-sign-out"></i>Çıkış</a>
-                                    </li>
-                                }
-                            </ul>
 
 
                             </div>
@@ -180,17 +192,10 @@
     <!-- ##### Hero Area Start ##### -->
     @RenderBody()
 
-    @RenderSection("footer",required:false)
+    @RenderSection("footer", required: false)
     <!-- ##### All Javascript Script ##### -->
     <!-- jQuery-2.2.4 js -->
-    <script src="~/Scripts/js/jquery/jquery-2.2.4.min.js"></script>
-    <!-- Popper js -->
-    <script src="~/Scripts/js/bootstrap/popper.min.js"></script>
-    <!-- Bootstrap js -->
-    <script src="~/Scripts/js/bootstrap/bootstrap.min.js"></script>
-    <!-- All Plugins js -->
-    <script src="~/Scripts/js/plugins/plugins.js"></script>
-    <!-- Active js -->
+
     <script src="~/Scripts/js/active.js"></script>
 </body>
 
