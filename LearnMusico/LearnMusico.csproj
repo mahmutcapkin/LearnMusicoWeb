@@ -1901,6 +1901,7 @@
     <Content Include="img\core-img\logo2.png" />
     <Content Include="img\core-img\logoy.png" />
     <None Include="Scripts\jquery-2.2.4.intellisense.js" />
+    <Content Include="Scripts\comment.js" />
     <Content Include="Scripts\jquery-2.2.4.js" />
     <Content Include="Scripts\jquery-2.2.4.min.js" />
     <Content Include="Scripts\js\active.js" />
