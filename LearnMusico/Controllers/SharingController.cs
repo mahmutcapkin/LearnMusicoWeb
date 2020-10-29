@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using LearnMusico.BusinessLayer;
 using LearnMusico.BusinessLayer.Result;
 using LearnMusico.Entities;
+using LearnMusico.Entities.ErrorMessage;
 using LearnMusico.Models;
 using LearnMusico.ViewModels;
 
@@ -198,6 +199,80 @@ namespace LearnMusico.Controllers
             sharingManager.Delete(sharing);
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public ActionResult GetLiked(int[] ids)
+        {
+            //List<int> likedSharingIds = likedManager.List(x => x.LikedUser.Id == CurrentSession.User.Id && ids.Contains(x.Sharing.Id)).Select(x => x.Sharing.Id).ToList();
+
+            //return Json( new {result=likedSharingIds});
+            if (CurrentSession.User != null)
+            {
+                int userid = CurrentSession.User.Id;
+                List<int> likedNoteIds = new List<int>();
+
+                if (ids != null)
+                {
+                    likedNoteIds = likedManager.List(
+                        x => x.LikedUser.Id == userid && ids.Contains(x.Sharing.Id)).Select(
+                        x => x.Sharing.Id).ToList();
+                }
+                else
+                {
+                    likedNoteIds = likedManager.List(
+                        x => x.LikedUser.Id == userid).Select(
+                        x => x.Sharing.Id).ToList();
+                }
+
+                return Json(new { result = likedNoteIds });
+            }
+            else
+            {
+                return Json(new { result = new List<int>() });
+            }
+        }
+
+        public ActionResult LikedState(int sharingid,bool liked)
+        {
+            int res = 0;
+
+            if (CurrentSession.User == null)
+                return Json(new { hasError = true, errorMessage = "Beğenme işlemi için giriş yapmalısınız.", result = 0 });
+
+            Liked like = likedManager.Find(x => x.Sharing.Id == sharingid && x.LikedUser.Id == CurrentSession.User.Id);
+            Sharing sharing = sharingManager.Find(x => x.Id == sharingid);
+
+            if(like !=null && liked==false)
+            {
+                res = likedManager.Delete(like);
+            }
+            else if(like==null && liked==true)
+            {
+                res = likedManager.Insert(new Liked()
+                {
+                    LikedUser = CurrentSession.User,
+                    Sharing = sharing
+                }); 
+            }
+
+            if(res>0)
+            {
+                if(liked)
+                {
+                    sharing.LikeCount++;
+                }
+                else
+                {
+                    sharing.LikeCount--;
+                }
+                res = sharingManager.Update(sharing);
+                return Json(new { hasError = false, errorMessage = string.Empty, result = sharing.LikeCount });
+
+            }
+            return Json(new { hasError = true, errorMessage = "Beğenme işlemi gerçekleştirilemedi.", result = sharing.LikeCount });
+
+        }
+
 
     }
 }

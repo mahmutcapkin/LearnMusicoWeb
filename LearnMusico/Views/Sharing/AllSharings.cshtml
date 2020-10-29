@@ -17,7 +17,7 @@
         <div class="row">
             @foreach (var item in Model)
             {
-                <div class="col-lg-4 col-md-12 mb-4"  data-sharing-id="@item.Id">
+                <div class="col-lg-4 col-md-12 mb-4" data-sharing-id="@item.Id">
 
                     <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms">
                         <!-- Post Thumb -->
@@ -35,7 +35,7 @@
                                 <div class="col-md-2">
                                     <p class="text-right">
                                         <button class="btn btn-light btn-xs" type="button" data-liked="false" data-sharing-id="@item.Id">
-                                            <span class="far fa-heart"></span>&nbsp;
+                                            <i class="far fa-heart like-star"></i>&nbsp;
                                             <span class="like-count">@item.LikeCount</span>
                                         </button>
                                     </p>
@@ -46,7 +46,7 @@
 
 
                             <div class="post-meta d-flex mb-30">
-                                <p class="post-author">@item.ModifiedUsername</p>
+                                <p class="post-author">@item.Owner.Username</p>
                                 <p class="tags"><a href="#" data-toggle="modal" data-target="#modal_comment" data-sharing-id="@item.Id">Yorumlar</a></p>
                             </div>
 
@@ -64,14 +64,15 @@
 
                         </div>
                     </div>
-                    
+
                 </div>
             }
-            </div>
+        </div>
 
     </div>
 </section>
 
-@BootstrapT.ModalPopup("modal_comment",title:"Paylaşım")
+@BootstrapT.ModalPopup("modal_comment", title: "Paylaşım")
 
 <script src="~/Scripts/comment.js"></script>
+<script src="~/Scripts/like.js"></script>

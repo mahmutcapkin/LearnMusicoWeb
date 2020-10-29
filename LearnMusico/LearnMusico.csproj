@@ -1909,6 +1909,7 @@
     <Content Include="Scripts\js\bootstrap\popper.min.js" />
     <Content Include="Scripts\js\jquery\jquery-2.2.4.min.js" />
     <Content Include="Scripts\js\plugins\plugins.js" />
+    <Content Include="Scripts\like.js" />
     <Content Include="videos\instrument\kalimba.mp4" />
     <Content Include="videos\sharing\kalimba.mp4" />
     <Content Include="Web.config" />
