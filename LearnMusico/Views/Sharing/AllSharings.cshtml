@@ -57,22 +57,19 @@
     </div>
 </section>
 
-@BootstrapT.ModalPopup(id:"modal_comment",title:"Paylaşım")
+@BootstrapT.ModalPopup("modal_comment",title:"Paylaşım")
 <script>
 
-    //var sharingid = -1;
+    var sharingid = -1;
     var modalCommentBodyId = "#modal_comment_body";
 
     $(function ()
-    {
-        
+    {        
         $('#modal_comment').on('show.bs.modal', function (e) {
             var btne = $(e.relatedTarget);
-            var sharingid = btne.data("sharing-id")
-
+            sharingid = btne.data("sharing-id");
             $(modalCommentBodyId).load("/Comment/ShowSharingComments/" + sharingid);
-                
-
+               
         })
     });
 
@@ -125,8 +122,7 @@
             }
 
         }
-        else if (e === "delete_clicked")
-        {
+        else if (e === "delete_clicked") {
             var dialog_res = confirm("Yorum Silinsin mi ?");
             if (!dialog_res) return false;
 
@@ -134,15 +130,41 @@
                 method: "GET",
                 url: "/Comment/Delete/" + commentid,
 
-
             }).done(function (data) {
                 if (data.result) {
                     //yorumlar partial tekrar yüklenir..
                     $(modalCommentBodyId).load("/Comment/ShowSharingComments/" + sharingid);
                 }
+                else {
+                    alert("Yorum Silinemedi.");
+                }
+            }).fail(function () {
+                alert("Sunucu ile bağlantı kurulamadı.");
+            });
+        }
+        else if (e === "new_clicked")
+        {
+            var txt = $("#new_comment_text").val();
+            //var sharingid = $(spanid).val();
+            //$('#modal_comment').on('show.bs.modal', function (e) {
+            //    var btne = $(e.relatedTarget);
+            //    var sharingid = btne.data("sharing-id")
+            //});
+
+            $.ajax({
+                method: "POST",
+                url: "/Comment/Create",
+                data: { "text": txt, "sharingid" : sharingid }
+
+            }).done(function (data) {
+                if (data.result)
+                {
+                    //yorumlar partial tekrar yüklenir..
+                    $(modalCommentBodyId).load("/Comment/ShowSharingComments/" + sharingid);
+                }
                 else
                 {
-                   alert("Yorum Silinemedi.");
+                    alert("Yorum Eklenemedi.");
                 }
             }).fail(function () {
                 alert("Sunucu ile bağlantı kurulamadı.");
