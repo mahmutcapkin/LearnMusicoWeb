@@ -21,10 +21,10 @@ namespace LearnMusico.Entities
 
         public int MusicaUserId { get; set; }
 
-        [DisplayName("Oluşturma Tarihi")]
+        [DisplayName("Oluşturma Tarihi"),ScaffoldColumn(false)]
         public DateTime AddedDate { get; set; }
 
-        [DisplayName("Güncelleme Tarihi")]
+        [DisplayName("Güncelleme Tarihi"), ScaffoldColumn(false)]
         public DateTime? ModifiedDate { get; set; }
 
         public virtual MusicaUser MusicaUser { get; set; }

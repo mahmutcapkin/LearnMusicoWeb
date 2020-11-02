@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -18,6 +19,9 @@ namespace LearnMusico.Entities
 
         [Required(ErrorMessage = "{0} alanı gereklidir.")]
         public int ToMusicaUserId { get; set; }
+
+        [DisplayName("Oluşturma Tarihi"), ScaffoldColumn(false)]
+        public DateTime AddedDate { get; set; }
 
         public virtual List<MessageReplies> MessageReplies { get; set; }
 
