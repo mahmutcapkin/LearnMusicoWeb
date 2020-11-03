@@ -17,15 +17,12 @@ namespace LearnMusico.Entities
         [Required(ErrorMessage = "{0} alanı gereklidir."), StringLength(300, ErrorMessage = "{0} max {1} karakter içermelidir.")]
         public string Text { get; set; }
 
-        public Guid MessageId { get; set; }
+        public Guid MessagesId { get; set; }
 
         public int MusicaUserId { get; set; }
 
         [DisplayName("Oluşturma Tarihi"),ScaffoldColumn(false)]
         public DateTime AddedDate { get; set; }
-
-        [DisplayName("Güncelleme Tarihi"), ScaffoldColumn(false)]
-        public DateTime? ModifiedDate { get; set; }
 
         public virtual MusicaUser MusicaUser { get; set; }
         public virtual Messages Messages { get; set; }
