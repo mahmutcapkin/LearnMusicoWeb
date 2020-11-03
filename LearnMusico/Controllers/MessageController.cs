@@ -84,5 +84,21 @@ namespace LearnMusico.Controllers
         }
 
 
+        public ActionResult RemoveMessage(string id)
+        {
+            var guid = new Guid(id);
+            var mReplies = mRepliesManager.List().Where(x => x.MessagesId == guid);
+            foreach (MessageReplies rep  in mReplies)
+            {
+                mRepliesManager.Delete(rep);
+            }
+            var message = messagesManager.Find(s => s.Id == guid);
+            messagesManager.Delete(message);
+
+
+            return RedirectToAction("Index","Message");
+        }
+
+
     }
 }
