@@ -1,0 +1,99 @@
+﻿@using LearnMusico.Models
+@model LearnMusico.ViewModels.MRepliesViewModel
+
+@{
+    ViewBag.Title = "Mesajlar";
+}
+
+<section class="breadcumb-area bg-img bg-overlay" style="  background-image: url(../../img/bg-img/breadcumb3.jpg);">
+    <div class="bradcumbContent">
+        <h2>@ViewBag.Title</h2>
+    </div>
+</section>
+
+<section class="blog-area section-padding-100">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Konu: @Model.MReplies.FirstOrDefault().Messages.Subject</h3>
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var msg in Model.MReplies)
+            {
+                if (msg.MusicaUserId == CurrentSession.User.Id)
+                {
+                    <div class="col-md-12 mt-20">
+                        <div class="media">
+                            <div class="media-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h6 class="mt-0 text-right">@(string.Format("{0} {1} ({2})",msg.MusicaUser.Name,msg.MusicaUser.Surname,msg.MusicaUser.Username))</h6>
+                                    </div>
+                                </div>
+                                <p>@msg.Text</p>
+                                 <h6 class="mt-0">@msg.AddedDate.ToString("dd.MM.yyyy hh:mm")</h6>         
+                            </div>
+                            <img class="ml-3" src="~/img/user/@msg.MusicaUser.ProfileImageFilename" width="64" height="64" alt="">
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+
+                }
+                else
+                {
+                    <div class="col-md-12 mt-20">
+                        <div class="media">
+                            <img class="align-self-start mr-3" src="~/img/user/@msg.MusicaUser.ProfileImageFilename" width="64" height="64" alt="">
+                            <div class="media-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6 class="mt-0">@(string.Format("{0} {1} ({2})",msg.MusicaUser.Name,msg.MusicaUser.Surname,msg.MusicaUser.Username))</h6>
+                                    </div>
+
+                                </div>
+                                <p>@msg.Text</p>
+                             
+                                    <h6 class="mt-0">@msg.AddedDate.ToString("dd.MM.yyyy hh:mm")</h6>
+
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+
+                }
+
+            }
+        </div>
+
+               @using (Html.BeginForm())
+               {
+                   <div class="row">
+                       <div class="col-md-12 mt-35">
+
+                           <div class="form-group">
+                               <h5>Mesaj Cevapla</h5>
+                               <hr />
+                           </div>
+                           @Html.Hidden("MessagesId", Model.MReplies.FirstOrDefault().Messages.Id)
+                           <div class="form-group">
+                               @Html.TextArea("Text", new { placeholder = "Mesaj Metni", @class = "form-control" })
+                               @*<textarea cols="30" rows="5" name="messagebody" id="messagebody" placeholder="Message Text" class="form-control"></textarea>*@
+                           </div>
+
+                           <div class="form-group">
+                               <button type="submit" class="btn btn-success">
+                                   <i class="fa fa-send"></i> Cevapla
+                               </button>
+                           </div>
+
+                       </div>
+                   </div>
+               }
+
+    </div>
+</section>

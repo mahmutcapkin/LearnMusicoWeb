@@ -9,7 +9,6 @@ namespace LearnMusico.ViewModels
     { 
         public string Subject { get; set; }
         public string MessageBody { get; set; }
-
         public int ToUserId { get; set; }
     }
 }

@@ -14,6 +14,7 @@ namespace LearnMusico.Controllers
     {
         private MusicaUserManager userManager = new MusicaUserManager();
         private MessagesManager messagesManager = new MessagesManager();
+        private MessageRepliesManager mRepliesManager = new MessageRepliesManager();
 
         public ActionResult Index()
         {
@@ -60,5 +61,28 @@ namespace LearnMusico.Controllers
 
             return RedirectToAction("Index","Message");
         }
+
+        [HttpGet]
+        public ActionResult MessageReplies(string id)
+        {
+            MRepliesViewModel model = new MRepliesViewModel();
+            var guid = new Guid(id);
+            model.MReplies = mRepliesManager.List().Where(x => x.MessagesId == guid).OrderBy(x => x.AddedDate).ToList();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult MessageReplies(MessageReplies message)
+        {
+            message.AddedDate = DateTime.Now;
+            message.Id = Guid.NewGuid();
+            message.MusicaUserId = CurrentSession.User.Id;
+            mRepliesManager.Insert(message);
+
+            return RedirectToAction("MessageReplies","Message",new {id=message.MessagesId });
+        }
+
+
     }
 }

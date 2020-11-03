@@ -150,6 +150,7 @@
     <Compile Include="ViewModels\ErrorViewModel.cs" />
     <Compile Include="ViewModels\InfoViewModel.cs" />
     <Compile Include="ViewModels\MessageUserViewModel.cs" />
+    <Compile Include="ViewModels\MRepliesViewModel.cs" />
     <Compile Include="ViewModels\NotifyViewModelBase.cs" />
     <Compile Include="ViewModels\OkViewModel.cs" />
     <Compile Include="ViewModels\SendMessageViewModel.cs" />
@@ -1929,6 +1930,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Message\MessageReplies.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
