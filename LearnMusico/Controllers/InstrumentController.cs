@@ -56,9 +56,15 @@ namespace LearnMusico.Controllers
 
 
         //tüm enstruman bilgileri
-        public ActionResult InstrumanAll()
+        public ActionResult InstrumanAll(string deger)
         {
-            return View(instrumentManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList());
+            var result = instrumentManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList();
+            if(!string.IsNullOrEmpty(deger))
+            {
+                result = instrumentManager.ListQueryable().Where(x => x.InstrumentName.ToLower().Contains(deger.ToLower())).ToList();
+            }
+            //ViewBag.Search = "Girdiğiniz enstrüman bulunamadı.";
+            return View();
         }
 
 

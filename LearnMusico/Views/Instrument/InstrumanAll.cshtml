@@ -16,7 +16,12 @@
         <div class="row">
             <div class="col-lg-3 col-md-3">
                 <div class="blog-sidebar-area">
+                    @using (Html.BeginForm("InstrumanAll", "Instrument", FormMethod.Get))
+                    {
 
+                        @Html.TextBox("deger")
+                        <button type="submit" class="btn btn-primary">Ara</button>
+                    }
                     @Html.Partial("_PartialInstrumentCategory")
                 </div>
                

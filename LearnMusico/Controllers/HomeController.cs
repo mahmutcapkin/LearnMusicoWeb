@@ -136,6 +136,15 @@ namespace LearnMusico.Controllers
             return View(res.Result);
         }
 
+
+        //public ActionResult SearchProfile(string name)
+        //{
+        //    var result = musicaUserManager.Find(x => x.Username.ToLower().Contains(name.ToLower()));
+        //}
+
+
+
+
         public ActionResult EditProfile()
         {
 

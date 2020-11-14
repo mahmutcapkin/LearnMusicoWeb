@@ -27,10 +27,16 @@ namespace LearnMusico.Controllers
             return View(articles.ToList());
         }
 
-        public ActionResult AllArticle()
+        public ActionResult AllArticle(string deger)
         {
-            
-            return View(articleManager.ListQueryable().OrderByDescending(x=>x.ModifiedOn).ToList());
+            var result = articleManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList();
+            if (!string.IsNullOrEmpty(deger))
+            {
+                result = articleManager.ListQueryable().Where(x => x.Title.ToLower().Contains(deger.ToLower())).ToList();
+                                      
+            }
+            //ViewBag.Search = "Girdiğiniz haber/yazı bulunamadı.";
+            return View(result);
         }
         public ActionResult ByArticleCategory(int? id)
         {
