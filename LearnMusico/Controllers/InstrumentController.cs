@@ -64,7 +64,7 @@ namespace LearnMusico.Controllers
                 result = instrumentManager.ListQueryable().Where(x => x.InstrumentName.ToLower().Contains(deger.ToLower())).ToList();
             }
             //ViewBag.Search = "Girdiğiniz enstrüman bulunamadı.";
-            return View();
+            return View(result);
         }
 
 

@@ -4,17 +4,6 @@
     ViewBag.Title = "Haber/Yazı";
 }
 
-<script>
-    $(document).ready(function () {
-        $("#myInput").on("keyup", function () {
-            var value = $(this).val().toLowerCase();
-            $("#myArticle div div.blog-content a").filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
-</script>
-
 
 <section class="breadcumb-area bg-img bg-overlay" style="  background-image: url(../../img/bg-img/breadcumb3.jpg);">
     <div class="bradcumbContent">
@@ -29,7 +18,7 @@
         <div class="blog-area section-padding-100">
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-lg-9" id="myArticle">
+                    <div class="col-12 col-lg-9">
                         @foreach (var item in Model)
                         {
 
