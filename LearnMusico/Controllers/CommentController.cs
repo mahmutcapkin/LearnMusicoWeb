@@ -1,5 +1,6 @@
 ﻿using LearnMusico.BusinessLayer;
 using LearnMusico.Entities;
+using LearnMusico.Filters;
 using LearnMusico.Models;
 using LearnMusico.ViewModels;
 using System;
@@ -12,6 +13,7 @@ using System.Web.Mvc;
 
 namespace LearnMusico.Controllers
 {
+    [Auth]
     public class CommentController : Controller
     {
         private SharingManager sharingManager = new SharingManager();

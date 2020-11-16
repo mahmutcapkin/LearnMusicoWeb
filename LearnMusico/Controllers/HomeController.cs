@@ -2,6 +2,7 @@
 using LearnMusico.BusinessLayer.Result;
 using LearnMusico.Entities;
 using LearnMusico.Entities.ValueObject;
+using LearnMusico.Filters;
 using LearnMusico.Models;
 using LearnMusico.ViewModels;
 using System;
@@ -19,7 +20,7 @@ namespace LearnMusico.Controllers
 
         public ActionResult Index()
         {
-            Test test = new Test();
+            //Test test = new Test();
             return View();
         }
 
@@ -116,6 +117,7 @@ namespace LearnMusico.Controllers
             return View("Ok", ovm);
         }
 
+        [Auth]
         public ActionResult ShowProfile()
         {
 
@@ -136,7 +138,7 @@ namespace LearnMusico.Controllers
             return View(res.Result);
         }
 
-
+        [Auth]
         public ActionResult EditProfile()
         {
 
@@ -158,6 +160,7 @@ namespace LearnMusico.Controllers
             return View(res.Result);
         }
 
+        [Auth]
         [HttpPost]
         public ActionResult EditProfile(MusicaUser model, HttpPostedFileBase ProfileImage, HttpPostedFileBase cv)
         {

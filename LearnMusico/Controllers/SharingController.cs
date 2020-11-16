@@ -10,11 +10,13 @@ using LearnMusico.BusinessLayer;
 using LearnMusico.BusinessLayer.Result;
 using LearnMusico.Entities;
 using LearnMusico.Entities.ErrorMessage;
+using LearnMusico.Filters;
 using LearnMusico.Models;
 using LearnMusico.ViewModels;
 
 namespace LearnMusico.Controllers
 {
+    [Auth]
     public class SharingController : Controller
     {
         private SharingManager sharingManager = new SharingManager();

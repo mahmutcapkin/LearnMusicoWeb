@@ -9,15 +9,19 @@ using System.Web.Mvc;
 using LearnMusico.BusinessLayer;
 using LearnMusico.BusinessLayer.Result;
 using LearnMusico.Entities;
+using LearnMusico.Filters;
 using LearnMusico.Models;
 using LearnMusico.ViewModels;
 
 namespace LearnMusico.Controllers
 {
+    [Auth]
     public class ArticleController : Controller
     {
         private ArticleManager articleManager = new ArticleManager();
 
+        
+        [AuthTeacher]
         // GET: Article
         public ActionResult Index()
         {
@@ -49,7 +53,8 @@ namespace LearnMusico.Controllers
             return View("AllArticle", article);
 
         }
-        // GET: Article/Details/5
+
+        [AuthTeacher]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -64,14 +69,14 @@ namespace LearnMusico.Controllers
             return View(article);
         }
 
-        // GET: Article/Create
+        [AuthTeacher]
         public ActionResult Create()
         {
             ViewBag.ArticleCategoryId = new SelectList(CacheHelper.GetArticleCategoryFromCache(), "Id", "Title");
             return View();
         }
 
-        
+        [AuthTeacher]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Article article,HttpPostedFileBase ImageFileName)
@@ -98,7 +103,7 @@ namespace LearnMusico.Controllers
             return View(article);
         }
 
-        // GET: Article/Edit/5
+        [AuthTeacher]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -114,7 +119,7 @@ namespace LearnMusico.Controllers
             return View(article);
         }
 
-        
+        [AuthTeacher]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Article article,HttpPostedFile ImageFileName)
@@ -151,7 +156,7 @@ namespace LearnMusico.Controllers
             return View(article);
         }
 
-        // GET: Article/Delete/5
+        [AuthTeacher]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -166,7 +171,7 @@ namespace LearnMusico.Controllers
             return View(article);
         }
 
-        // POST: Article/Delete/5
+        [AuthTeacher]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

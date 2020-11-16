@@ -1,6 +1,7 @@
 ﻿using LearnMusico.BusinessLayer;
 using LearnMusico.BusinessLayer.Result;
 using LearnMusico.Entities;
+using LearnMusico.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ using System.Web.Mvc;
 
 namespace LearnMusico.Controllers
 {
+    [Auth]
+    [AuthAdmin]
     public class MusicaUserController : Controller
     {
 

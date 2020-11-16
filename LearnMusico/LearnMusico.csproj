@@ -140,6 +140,10 @@
     <Compile Include="Controllers\MusicaUserController.cs" />
     <Compile Include="Controllers\SharingController.cs" />
     <Compile Include="Controllers\SpecialLessonPriceController.cs" />
+    <Compile Include="Filters\Auth.cs" />
+    <Compile Include="Filters\AuthAdmin.cs" />
+    <Compile Include="Filters\AuthTeacher.cs" />
+    <Compile Include="Filters\Exc.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -169,6 +173,7 @@
     <Content Include="css\audioplayer.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\classy-nav.css" />
+    <Content Include="css\error.css" />
     <Content Include="css\magnific-popup.css" />
     <Content Include="css\one-music-icon.css" />
     <Content Include="css\owl.carousel.min.css" />
@@ -1908,6 +1913,7 @@
     <Content Include="Message.html" />
     <Content Include="Messages.html" />
     <Content Include="Scripts\comment.js" />
+    <Content Include="Scripts\error.js" />
     <Content Include="Scripts\jquery-2.2.4.js" />
     <Content Include="Scripts\jquery-2.2.4.min.js" />
     <Content Include="Scripts\js\active.js" />

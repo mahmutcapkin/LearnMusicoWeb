@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using LearnMusico.BusinessLayer;
 using LearnMusico.BusinessLayer.Result;
 using LearnMusico.Entities;
+using LearnMusico.Filters;
 using LearnMusico.Models;
 using LearnMusico.ViewModels;
 
@@ -17,8 +18,9 @@ namespace LearnMusico.Controllers
     public class InstrumentController : Controller
     {
         private InstrumentManager instrumentManager = new InstrumentManager();
-        
 
+        [Auth]
+        [AuthTeacher]
         //Enstrumanlarım
         public ActionResult Index()
         {
@@ -28,6 +30,7 @@ namespace LearnMusico.Controllers
             return View(instrument.ToList());
         }
 
+        [Auth]
         public ActionResult ByInstrumentCategory(int? id)
         {
             if (id == null)
@@ -54,7 +57,7 @@ namespace LearnMusico.Controllers
         //}
 
 
-
+        [Auth]
         //tüm enstruman bilgileri
         public ActionResult InstrumanAll(string deger)
         {
@@ -67,7 +70,8 @@ namespace LearnMusico.Controllers
             return View(result);
         }
 
-
+        [Auth]
+        [AuthTeacher]
         // GET: Instrument/Details/5
         public ActionResult Details(int? id)
         {
@@ -83,6 +87,8 @@ namespace LearnMusico.Controllers
             return View(instrument);
         }
 
+        [Auth]
+        [AuthTeacher]
         // GET: Instrument/Create
         public ActionResult Create()
         {
@@ -90,7 +96,8 @@ namespace LearnMusico.Controllers
             return View();
         }
 
-        
+        [Auth]
+        [AuthTeacher]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Instrument instrument, HttpPostedFileBase VideoUrlPath, HttpPostedFileBase AudioUrlPath, HttpPostedFileBase ImageFilePath)
@@ -134,6 +141,8 @@ namespace LearnMusico.Controllers
         }
 
         // GET: Instrument/Edit/5
+        [Auth]
+        [AuthTeacher]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -149,7 +158,8 @@ namespace LearnMusico.Controllers
             return View(instrument);
         }
 
-
+        [Auth]
+        [AuthTeacher]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Instrument instrument, HttpPostedFileBase VideoUrlPath, HttpPostedFileBase AudioUrlPath, HttpPostedFileBase ImageFilePath)
@@ -203,6 +213,8 @@ namespace LearnMusico.Controllers
         }
 
         // GET: Instrument/Delete/5
+        [Auth]
+        [AuthTeacher]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -218,6 +230,8 @@ namespace LearnMusico.Controllers
         }
 
         // POST: Instrument/Delete/5
+        [Auth]
+        [AuthTeacher]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

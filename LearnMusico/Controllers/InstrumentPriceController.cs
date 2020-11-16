@@ -9,11 +9,13 @@ using System.Web.Mvc;
 using LearnMusico.BusinessLayer;
 using LearnMusico.BusinessLayer.Result;
 using LearnMusico.Entities;
+using LearnMusico.Filters;
 using LearnMusico.Models;
 using LearnMusico.ViewModels;
 
 namespace LearnMusico.Controllers
 {
+    [Auth]
     public class InstrumentPriceController : Controller
     {
         private InstrumentPriceManager priceManager = new InstrumentPriceManager();
@@ -26,6 +28,7 @@ namespace LearnMusico.Controllers
                             x => x.ModifiedOn);
             return View(instrumentPrices.ToList());
         }
+
 
         public ActionResult InstrumentPriceAll()
         {

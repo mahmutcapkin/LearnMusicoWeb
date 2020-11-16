@@ -1,5 +1,6 @@
 ﻿using LearnMusico.BusinessLayer;
 using LearnMusico.Entities;
+using LearnMusico.Filters;
 using LearnMusico.Models;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,8 @@ using System.Web.Mvc;
 
 namespace LearnMusico.Controllers
 {
+    [Auth]
+    [AuthTeacher]
     public class ArticleCategoryController : Controller
     {
 

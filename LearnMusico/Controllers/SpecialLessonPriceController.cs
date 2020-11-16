@@ -9,11 +9,13 @@ using System.Web.Mvc;
 using LearnMusico.BusinessLayer;
 using LearnMusico.BusinessLayer.Result;
 using LearnMusico.Entities;
+using LearnMusico.Filters;
 using LearnMusico.Models;
 using LearnMusico.ViewModels;
 
 namespace LearnMusico.Controllers
 {
+    [Auth]
     public class SpecialLessonPriceController : Controller
     {
         private LessonPriceManager LpriceManager = new LessonPriceManager();
@@ -21,6 +23,7 @@ namespace LearnMusico.Controllers
         private LessonPriceViewModel priceViewModel = new LessonPriceViewModel();
 
         // özel derslerim 
+        [AuthTeacher]
         public ActionResult Index()
         {
             var specialLessonPrices = LpriceManager.ListQueryable().Include("Teacher").Where(
@@ -55,7 +58,9 @@ namespace LearnMusico.Controllers
 
         }
 
+
         // GET: SpecialLessonPrice/Details/5
+        [AuthTeacher]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -71,12 +76,14 @@ namespace LearnMusico.Controllers
         }
 
         // GET: SpecialLessonPrice/Create
+        [AuthTeacher]
         public ActionResult Create()
         {
             ViewBag.InstrumentCategoryId = new SelectList(CacheHelper.GetInstrumentCategoryFromCache(), "Id", "Title");
             return View();
         }
 
+        [AuthTeacher]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(SpecialLessonPrice specialLessonPrice,HttpPostedFileBase ImageFilePath)
@@ -105,6 +112,7 @@ namespace LearnMusico.Controllers
         }
 
         // GET: SpecialLessonPrice/Edit/5
+        [AuthTeacher]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -120,6 +128,7 @@ namespace LearnMusico.Controllers
             return View(specialLessonPrice);
         }
 
+        [AuthTeacher]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(SpecialLessonPrice specialLessonPrice, HttpPostedFileBase ImageFilePath)
@@ -161,6 +170,7 @@ namespace LearnMusico.Controllers
         }
 
         // GET: SpecialLessonPrice/Delete/5
+        [AuthTeacher]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -176,6 +186,7 @@ namespace LearnMusico.Controllers
         }
 
         // POST: SpecialLessonPrice/Delete/5
+        [AuthTeacher]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

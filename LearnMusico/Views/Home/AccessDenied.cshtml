@@ -8,10 +8,28 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>AccessDenied</title>
+    <link href="~/css/error.css" rel="stylesheet" />
+
+
+    <title>Hata Oluştu</title>
 </head>
 <body>
-    <div> 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h1>403</h1>
+                <h2>Yetkisiz Erişim</h2>
+                <p>
+                    Bu sayfaya erişim yetkiniz bulunmamaktadır.
+                </p>
+                <br /><br /><br />
+                <a href="/Home/Index" class="btn btn-default">
+                    <i class="fa fa-home"></i>Anasayfaya Git
+                </a>
+            </div>
+        </div>
     </div>
 </body>
 </html>
+
+<script src="~/Scripts/error.js"></script>

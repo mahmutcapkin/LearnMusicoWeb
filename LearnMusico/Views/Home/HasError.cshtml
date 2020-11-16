@@ -8,10 +8,44 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>HasError</title>
+    <link href="~/css/error.css" rel="stylesheet" />
+
+    <title>Hata Oluştu</title>
 </head>
 <body>
-    <div> 
+    <div class="container">
+        <div class="row">
+            @{
+                Exception ex = null;
+
+                if (TempData["LastError"] != null)
+                {
+                    ex = TempData["LastError"] as Exception;
+                }
+            }
+            <div class="col-md-8 col-md-offset-2">
+                <h1>404</h1>
+                <h2>Hata Oluştu</h2>
+                <p>
+                    Hata oluştu, lütfen site yöneticisi ile iletişime geçiniz.
+                </p>
+                <br /><br /><br />
+                @if (ex != null)
+                {
+                    <strong>Hata Detay : </strong>
+                    @ex.Message
+                    <br /><br /><br />
+                }
+                <a href="/Home/Index" class="btn btn-default">
+                    <i class="fa fa-home"></i>Anasayfaya Git
+                </a>
+                <a href="mailto:yilmazah.71@gmail.com" class="btn btn-primary">
+                    <i class="fa fa-envelope"></i>E-Posta Gönder
+                </a>
+            </div>
+        </div>
     </div>
 </body>
 </html>
+
+<script src="~/Scripts/error.js"></script>
