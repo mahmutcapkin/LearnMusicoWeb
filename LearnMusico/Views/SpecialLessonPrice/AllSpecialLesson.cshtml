@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LearnMusico.Entities.SpecialLessonPrice>
+﻿@model LearnMusico.ViewModels.LessonPriceViewModel
 @{
     ViewBag.Title = "Özel Dersler";
 }
@@ -19,6 +19,23 @@
                         <div class="blog-sidebar-area">
 
                             @Html.Partial("_PartialLessonCategory")
+                            <br />
+                            @using (Html.BeginForm("AllSpecialLesson", "SpecialLessonPrice", FormMethod.Get))
+                            {
+                                <label class="text-black">Egitmen Ara:</label>
+                                @Html.TextBox("searchUserName")
+                                <button type="submit" class="btn btn-primary btn-sm">Ara</button>
+                            }
+
+                            @if (Model.musicaUser != null)
+                            {
+                                <div class="sidebar-box">
+                                    <img src="~/images/@Model.musicaUser.ProfileImageFilename" alt="Image" class="img-fluid mb-4 w-50 rounded-circle">
+                                    <h3 class="text-black">@(Model.musicaUser.Name+" "+Model.musicaUser.Surname)</h3>
+                                    <p>@Model.musicaUser.About</p>
+                                </div>
+                            }
+
 
                         </div>
 
@@ -27,7 +44,7 @@
                     <div class="col-lg-9">
 
                         <div class="row">
-                            @foreach (var item in Model)
+                            @foreach (var item in Model.LessonPrices)
                             {
 
 

@@ -104,7 +104,7 @@ namespace LearnMusico.Controllers
                     Items = res.Errors
                 };
 
-                return View("Errror", errorViewModel);
+                return View("Error", errorViewModel);
             }
             OkViewModel ovm = new OkViewModel()
             {
@@ -135,14 +135,6 @@ namespace LearnMusico.Controllers
 
             return View(res.Result);
         }
-
-
-        //public ActionResult SearchProfile(string name)
-        //{
-        //    var result = musicaUserManager.Find(x => x.Username.ToLower().Contains(name.ToLower()));
-        //}
-
-
 
 
         public ActionResult EditProfile()

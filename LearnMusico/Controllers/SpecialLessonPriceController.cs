@@ -17,6 +17,8 @@ namespace LearnMusico.Controllers
     public class SpecialLessonPriceController : Controller
     {
         private LessonPriceManager LpriceManager = new LessonPriceManager();
+        private MusicaUserManager musicaUserManager = new MusicaUserManager();
+        private LessonPriceViewModel priceViewModel = new LessonPriceViewModel();
 
         // özel derslerim 
         public ActionResult Index()
@@ -29,10 +31,18 @@ namespace LearnMusico.Controllers
 
         //Tüm özeldersler 
 
-        public ActionResult AllSpecialLesson()
+        public ActionResult AllSpecialLesson(string searchUserName)
         {
-            return View(LpriceManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList());
+            priceViewModel.LessonPrices = LpriceManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList();
+            if (!string.IsNullOrEmpty(searchUserName))
+            {
+               priceViewModel.musicaUser= musicaUserManager.Find(x => x.Username.ToLower().Contains(searchUserName.ToLower()));
+                return View(priceViewModel);
+            }
+            
+            return View(priceViewModel);
         }
+
         public ActionResult ByLessonPriceCategory(int? id)
         {
             if (id == null)
