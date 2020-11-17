@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Özel Dersler";
 }
-
+<link href="~/css/valdiation-summary.css" rel="stylesheet" />
 
 <section class="breadcumb-area bg-img bg-overlay" style="  background-image: url(../../img/bg-img/breadcumb3.jpg);">
     <div class="bradcumbContent">
@@ -33,6 +33,12 @@
                                     <img src="~/images/@Model.musicaUser.ProfileImageFilename" alt="Image" class="img-fluid mb-4 w-50 rounded-circle">
                                     <h3 class="text-black">@(Model.musicaUser.Name+" "+Model.musicaUser.Surname)</h3>
                                     <p>@Model.musicaUser.About</p>
+                                </div>
+                            }
+                            else
+                            {
+                                <div>
+                                    <p color="#FF0000">@ViewBag.Search</p>
                                 </div>
                             }
 

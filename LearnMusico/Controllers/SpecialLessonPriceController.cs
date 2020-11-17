@@ -40,6 +40,10 @@ namespace LearnMusico.Controllers
             if (!string.IsNullOrEmpty(searchUserName))
             {
                priceViewModel.musicaUser= musicaUserManager.Find(x => x.Username.ToLower().Contains(searchUserName.ToLower()));
+                if(priceViewModel.musicaUser==null)
+                {
+                    ViewBag.Search = "Böyle bir isimde kullanıcı bulunamadı.";
+                }
                 return View(priceViewModel);
             }
             
