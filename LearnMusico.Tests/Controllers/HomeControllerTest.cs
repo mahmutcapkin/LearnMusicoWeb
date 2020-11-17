@@ -5,6 +5,9 @@ using System.Text;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LearnMusico;
+using LearnMusico.Controllers;
+using LearnMusico.Entities.ValueObject;
+using LearnMusico.ViewModels;
 //using LearnMusico.Controllers;
 
 namespace LearnMusico.Tests.Controllers
@@ -15,40 +18,84 @@ namespace LearnMusico.Tests.Controllers
         [TestMethod]
         public void Index()
         {
-            // Arrange
-            //HomeController controller = new HomeController();
+           
+           HomeController controller = new HomeController();
 
-            // Act
-            //ViewResult result = controller.Index() as ViewResult;
+          
+           ViewResult result = controller.Index() as ViewResult;
 
-            // Assert
-            //Assert.IsNotNull(result);
+            
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]
-        public void About()
+        public void Login()
         {
-            // Arrange
-            //HomeController controller = new HomeController();
 
-            // Act
-            //ViewResult result = controller.About() as ViewResult;
+            HomeController controller = new HomeController();
 
-            // Assert
-            //Assert.AreEqual("Your application description page.", result.ViewBag.Message);
+
+            ViewResult result = controller.Login() as ViewResult;
+
+
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]
-        public void Contact()
+        public void Register()
         {
-            // Arrange
-            //HomeController controller = new HomeController();
 
-            // Act
-            //ViewResult result = controller.Contact() as ViewResult;
+            HomeController controller = new HomeController();
 
-            // Assert
-            //Assert.IsNotNull(result);
+
+            ViewResult result = controller.Register() as ViewResult;
+
+
+            Assert.IsNotNull(result);
         }
+
+
+        [TestMethod]
+        public void Register(RegisterViewModel model)
+        {
+
+            HomeController controller = new HomeController();
+            OkViewModel okv = new OkViewModel();
+            model.Email = "talha@gmail.com";
+            model.Username = "talha123";
+            model.Password = "12345";
+            model.RePassword = "12345";
+
+            var result = controller.Register(model) as ViewResult;
+            if (result != null)
+            {
+
+                okv.Title = "Kayıt Başarılı";
+                okv.RedirectingUrl = "/Home/Index";               
+                okv.Items.Add("Lütfen e-posta adresinize gönderdiğimiz aktivasyon link'ine tıklayarak hesabınızı aktive ediniz." +
+                    " Hesabını aktive etmeden gönderi eklemeyez ve beğeni yapamazsınız");          
+            }
+            var deger = okv;
+
+            Assert.AreEqual(deger.Title, "Kayıt Başarılı");
+        }
+
+        [TestMethod]
+        public void Login(LoginViewModel model)
+        {
+
+            HomeController controller = new HomeController();
+            
+            model.Username = "talha123";
+            model.Password = "12345";
+
+
+            var result = controller.Login(model) as RedirectToRouteResult;
+               
+            Assert.AreEqual(result.RouteValues["action"], "Index");
+        }
+
+
+
     }
 }

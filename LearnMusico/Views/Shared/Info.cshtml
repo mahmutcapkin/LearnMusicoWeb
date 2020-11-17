@@ -1,0 +1,52 @@
+﻿@using LearnMusico.ViewModels
+@model  InfoViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<section class="breadcumb-area bg-img bg-overlay" style="   background-image: url(../../img/bg-img/breadcumb3.jpg);">
+    <div class="bradcumbContent">
+        <h2>@ViewBag.Title</h2>
+    </div>
+</section>
+
+<section class="login-area section-padding-100">
+    <div class="container">
+
+        <section class="login-info">
+            <div class="container">
+                <div class="row main">
+                    <div class="main-content">
+                        <div class="text-info">
+                            <h2><span class="glyphicon glyphicon-info-sign">&nbsp;&nbsp;&nbsp;@Model.Title</span></h2>
+                            <hr />
+                            <p class="text-info">
+                                @foreach (string msg in Model.Items)
+                                {
+                                    @msg <br>
+                                }
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+
+@{
+    string js = string.Empty;
+    if (Model.IsRedirecting)
+    {
+        js = "setTimeout(function () { window.location = '" + Model.RedirectingUrl + "'; }," + Model.RedirectingTimeOut + ");";
+    }
+}
+<script>
+    $(function () {
+        @Html.Raw(js);
+    });
+
+</script>
+
+

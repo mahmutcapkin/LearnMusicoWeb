@@ -19,8 +19,7 @@ namespace LearnMusico.Controllers
         private MusicaUserManager musicaUserManager = new MusicaUserManager();
 
         public ActionResult Index()
-        {
-            //Test test = new Test();
+        {          
             return View();
         }
 
@@ -82,8 +81,8 @@ namespace LearnMusico.Controllers
                     RedirectingUrl = "/Home/Login"
 
                 };
-                ovm.Items.Add(" Lütfen e-posta adresinize gönderdiğimiz aktivasyon link'ine tıklayarak hesabınızı aktive ediniz." +
-                    " Hesabını aktive etmeden not eklemeyez ve beğenme yapamazsınız");
+                ovm.Items.Add("Lütfen e-posta adresinize gönderdiğimiz aktivasyon link'ine tıklayarak hesabınızı aktive ediniz." +
+                    " Hesabını aktive etmeden gönderi eklemeyez ve beğeni yapamazsınız");
 
                 return View("Ok", ovm);
             }
@@ -112,7 +111,7 @@ namespace LearnMusico.Controllers
                 Title = "Hesap Aktifleştirildi",
                 RedirectingUrl = "/Home/Login"
             };
-            ovm.Items.Add("Hesabınız aktifleştirildi. Artık not paylaşabilir beğeni yapabilirsiniz.");
+            ovm.Items.Add("Hesabınız aktifleştirildi");
 
             return View("Ok", ovm);
         }

@@ -21,7 +21,7 @@ namespace LearnMusico.ViewModels
             Title = "Geçersiz işlem";
             IsRedirecting = true;
             RedirectingUrl = "/Home/Index";
-            RedirectingTimeOut = 10000;
+            RedirectingTimeOut = 4000;
             Items = new List<T>();
         }
 

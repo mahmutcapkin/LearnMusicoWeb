@@ -99,6 +99,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LearnMusico.Entities\LearnMusico.Entities.csproj">
+      <Project>{D70F850D-15FA-43E3-8327-B2EB65332898}</Project>
+      <Name>LearnMusico.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LearnMusico\LearnMusico.csproj">
       <Project>{8EDC7735-A373-474C-9F4B-2CBC908F799E}</Project>
       <Name>LearnMusico</Name>
