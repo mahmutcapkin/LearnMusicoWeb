@@ -14,60 +14,97 @@
 <section class="login-area section-padding-100">
     <div class="container">
 
-        
         <div>
-            <h4>Özel Ders Bilgileri</h4>
             <h5>Özel Ders bilgisini kaldırmak istediğinize emin misiniz?</h5>
             <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.InstrumentCategory.Title)
-                </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.InstrumentCategory.Title)
-                </dd>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InstrumentCategory.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InstrumentName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.InstrumentCategory.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.InstrumentName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Address)
+                    </td>
+                </tr>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.InstrumentName)
-                </dt>
+            </table>
 
-                <dd>
-                    @Html.DisplayFor(model => model.InstrumentName)
-                </dd>
+            @*<dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.InstrumentCategory.Title)
+            </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Description)
-                </dt>
+            <dd>
+                @Html.DisplayFor(model => model.InstrumentCategory.Title)
+            </dd>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Description)
-                </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.InstrumentName)
+            </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Price)
-                </dt>
+            <dd>
+                @Html.DisplayFor(model => model.InstrumentName)
+            </dd>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Price)
-                </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Address)
-                </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Address)
-                </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
 
-            </dl>
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+
+        </dl>*@
 
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
 
                 <div class="form-actions no-color">
-                    <input type="submit" value="Sil" class="btn btn-primary" /> |
+                    <input type="submit" value="Sil" class="btn btn-primary" />
                     @Html.ActionLink("Geri Dön", "Index", null, new { @class = "btn btn-default" })
                 </div>
             }

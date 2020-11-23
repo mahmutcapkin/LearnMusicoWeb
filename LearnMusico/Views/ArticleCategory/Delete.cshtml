@@ -18,39 +18,71 @@
                 <h3>Silmek istediğinize emin misiniz?</h3>
                 <h4>Kategori</h4>
                 <hr />
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Title)
-                    </dt>
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Title)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreatedOn)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModifiedOn)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModifiedUsername)
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => model.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.CreatedOn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.ModifiedOn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.ModifiedUsername)
+                        </td>
+                    </tr>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Title)
-                    </dd>
-                    <dt>
-                        @Html.DisplayNameFor(model => model.CreatedOn)
-                    </dt>
+                </table>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.CreatedOn)
-                    </dd>
+                @*<dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.ModifiedOn)
-                    </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.ModifiedOn)
-                    </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CreatedOn)
+            </dd>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.ModifiedUsername)
-                    </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.ModifiedOn)
+            </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.ModifiedUsername)
-                    </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ModifiedOn)
+            </dd>
 
-                </dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.ModifiedUsername)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ModifiedUsername)
+            </dd>
+
+        </dl>*@
 
                 @using (Html.BeginForm())
                 {
