@@ -14,7 +14,7 @@
 <section class="login-area section-padding-100">
     <div class="container">
 
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("Edit", "Sharing", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
 
