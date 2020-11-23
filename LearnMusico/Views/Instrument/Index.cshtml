@@ -43,10 +43,10 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Description)
                     </td>
-                    <td>
-                        @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" })
-                        @Html.ActionLink("Detaylar", "Details", new { id = item.Id }, new { @class = "btn btn-info" })
-                        @Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                    <td width="250">
+                        @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" })
+                        @Html.ActionLink("Detaylar", "Details", new { id = item.Id }, new { @class = "btn btn-info btn-sm" })
+                        @Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
                     </td>
                 </tr>
             }

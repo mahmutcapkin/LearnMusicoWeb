@@ -16,40 +16,70 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h4>Yazı Kategori</h4>
-                <hr />
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Title)
-                    </dt>
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Title)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreatedOn)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModifiedOn)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModifiedUsername)
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => model.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.CreatedOn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.ModifiedOn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.ModifiedUsername)
+                        </td>
+                    </tr>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Title)
-                    </dd>
-                    <dt>
-                        @Html.DisplayNameFor(model => model.CreatedOn)
-                    </dt>
+                </table>
+                @*<dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.CreatedOn)
-                    </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </dt>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.ModifiedOn)
-                    </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CreatedOn)
+            </dd>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.ModifiedOn)
-                    </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ModifiedOn)
+            </dt>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.ModifiedUsername)
-                    </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ModifiedOn)
+            </dd>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.ModifiedUsername)
-                    </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ModifiedUsername)
+            </dt>
 
-                </dl>
+            <dd>
+                @Html.DisplayFor(model => model.ModifiedUsername)
+            </dd>
+
+        </dl>*@
 
             </div>
             <div class="col-md-8 col-md-offset-2">

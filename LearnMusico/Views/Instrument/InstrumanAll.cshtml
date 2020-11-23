@@ -19,19 +19,15 @@
                     @using (Html.BeginForm("InstrumanAll", "Instrument", FormMethod.Get))
                     {
 
-                        @Html.TextBox("deger")
+                        @Html.TextBox("searchUserName")
                         <button type="submit" class="btn btn-primary">Ara</button>
                     }
+
+
                     @Html.Partial("_PartialInstrumentCategory")
                 </div>
-               
-                    @*<div class="sidebar-box">
-                        <img src="~/img/user/@item.Owner.ProfileImageFilename" alt="Image" class="img-fluid mb-4 w-50 rounded-circle">
-                        <h3 class="text-black">@(item.Owner.Name + " " + item.Owner.Surname)</h3>
-                        <p>@item.Owner.About</p>
-                    </div>*@
-              
-                </div>
+                             
+            </div>
 
 
             <div class="col-lg-9 col-md-9 blog-content">

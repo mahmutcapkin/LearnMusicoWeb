@@ -16,8 +16,32 @@
 
         <div>
             <h4>Enstrüman</h4>
-            <hr />
-            <dl class="dl-horizontal">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InstrumentCategory.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InstrumentName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>                  
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.InstrumentCategory.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.InstrumentName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Description)
+                    </td>                  
+                </tr>
+
+            </table>
+            @*<dl class="dl-horizontal">
                 <dt>
                     @Html.DisplayNameFor(model => model.InstrumentCategory.Title)
                 </dt>
@@ -42,7 +66,7 @@
                     @Html.DisplayFor(model => model.Description)
                 </dd>
 
-            </dl>
+            </dl>*@
         </div>
         <p>
             @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" })

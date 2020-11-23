@@ -43,31 +43,19 @@ namespace LearnMusico.Controllers
 
         }
 
-        //public ActionResult ByAuthor(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    //List<Instrument> instrument = instrumentManager.ListQueryable().Where(x => x.InstrumentCategoryId == id).OrderByDescending(x => x.ModifiedOn).ToList();
-        //    Instrument user = instrumentManager.Find(x => x.Owner.Id == id);
-
-        //    return View("InstrumanAll", user);
-
-        //}
-
 
         [Auth]
         //tüm enstruman bilgileri
-        public ActionResult InstrumanAll(string deger)
+        public ActionResult InstrumanAll(string searchUserName)
         {
             var result = instrumentManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList();
-            if(!string.IsNullOrEmpty(deger))
+            if (!string.IsNullOrEmpty(searchUserName))
             {
-                result = instrumentManager.ListQueryable().Where(x => x.InstrumentName.ToLower().Contains(deger.ToLower())).ToList();
+                result = instrumentManager.ListQueryable().Where(x => x.InstrumentName.ToLower().Contains(searchUserName.ToLower())).ToList();
             }
             //ViewBag.Search = "Girdiğiniz enstrüman bulunamadı.";
             return View(result);
+
         }
 
         [Auth]

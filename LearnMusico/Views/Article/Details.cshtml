@@ -16,41 +16,42 @@
 
         <div>
             <h4>Haber/Yazı</h4>
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.ArticleCategory.Title)
-                </dt>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ArticleCategory.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SubjectType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>                  
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.ArticleCategory.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.SubjectType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Description)
+                    </td>                    
+                </tr>
 
-                <dd>
-                    @Html.DisplayFor(model => model.ArticleCategory.Title)
-                </dd>
+            </table>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Title)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Title)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.SubjectType)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.SubjectType)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Description)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Description)
-                </dd>
-
-            </dl>
+                @*<hr />
+            <h5>@Html.DisplayNameFor(model => model.ArticleCategory.Title):</h5> <h6> @Html.DisplayFor(model => model.ArticleCategory.Title)</h6>
+            <h5>@Html.DisplayNameFor(model => model.SubjectType):</h5> <h6> @Html.DisplayFor(model => model.SubjectType)</h6>
+            <h5>@Html.DisplayNameFor(model => model.Description):</h5> <h6> @Html.DisplayFor(model => model.Description)</h6>*@
         </div>
         <p>
             @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" }) 
