@@ -56,9 +56,9 @@ namespace LearnMusico.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            List<SpecialLessonPrice> lessonPrices = LpriceManager.ListQueryable().Where(x => x.InstrumentCategoryId == id).OrderByDescending(x => x.ModifiedOn).ToList();
-
-            return View("AllSpecialLesson", lessonPrices);
+            priceViewModel.LessonPrices = LpriceManager.ListQueryable().Where(x => x.InstrumentCategoryId == id).OrderByDescending(x => x.ModifiedOn).ToList();
+            priceViewModel.musicaUser = null;
+            return View("AllSpecialLesson", priceViewModel);
 
         }
 

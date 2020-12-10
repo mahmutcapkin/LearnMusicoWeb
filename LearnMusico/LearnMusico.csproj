@@ -1864,6 +1864,12 @@
     <Content Include="img\instrument\gitar.jpg" />
     <Content Include="img\lessonprice\gitar.jpg" />
     <Content Include="img\sharing\keman.jpg" />
+    <Content Include="img\trend\ezhel.jpg" />
+    <Content Include="img\trend\gazapizm.jpg" />
+    <Content Include="img\trend\sagopa.jpg" />
+    <Content Include="img\trend\sezenaksu.jpg" />
+    <Content Include="img\trend\yuzyuzeyken.jpg" />
+    <Content Include="img\trend\zeynepbastik.jpg" />
     <Content Include="img\user\user_default.png" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
