@@ -163,8 +163,13 @@
     <Compile Include="ViewModels\WarningViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="audio\dummy-audio.mp3" />
     <Content Include="audio\instrument\dummy-audio.mp3" />
+    <Content Include="audio\music\Asturias-IsaacAlbeniz.mp3" />
+    <Content Include="audio\music\Beethoven-FürElise.mp3" />
+    <Content Include="audio\music\bolero-ravel.mp3" />
+    <Content Include="audio\music\Handel-Sarabande.mp3" />
+    <Content Include="audio\music\TurkishMarch-Mozart.mp3" />
+    <Content Include="audio\music\Vivaldi-LaFollia.mp3" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -1832,6 +1837,29 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\icomoon.svg" />
     <Content Include="img\article\haber.jpg" />
+    <Content Include="img\bg-img\arp.jpg" />
+    <Content Include="img\bg-img\beethoven.jpg" />
+    <Content Include="img\bg-img\cello.jpg" />
+    <Content Include="img\bg-img\davul.jpg" />
+    <Content Include="img\bg-img\fazilsay.jpg" />
+    <Content Include="img\bg-img\flut.jpg" />
+    <Content Include="img\bg-img\gitar.jpg" />
+    <Content Include="img\bg-img\handel.jpg" />
+    <Content Include="img\bg-img\isaac.jpg" />
+    <Content Include="img\bg-img\keman.jpg" />
+    <Content Include="img\bg-img\klarnet.jpg" />
+    <Content Include="img\bg-img\kudsierguner.jpg" />
+    <Content Include="img\bg-img\mauricaravel.jpg" />
+    <Content Include="img\bg-img\misirli.jpg" />
+    <Content Include="img\bg-img\mozart.jpg" />
+    <Content Include="img\bg-img\neset.jpg" />
+    <Content Include="img\bg-img\piyano.jpg" />
+    <Content Include="img\bg-img\saksafon.jpg" />
+    <Content Include="img\bg-img\sunakan.jpg" />
+    <Content Include="img\bg-img\trompet.jpg" />
+    <Content Include="img\bg-img\vivaldi.jpg" />
+    <Content Include="img\bg-img\volkanoktem.jpg" />
+    <Content Include="img\bg-img\yavuz.jpg" />
     <Content Include="img\instprice\gitar.jpg" />
     <Content Include="img\instrument\gitar.jpg" />
     <Content Include="img\lessonprice\gitar.jpg" />
