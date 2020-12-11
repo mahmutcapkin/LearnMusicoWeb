@@ -50,16 +50,19 @@
                                 </video>
                             </div>
                             <br />
+                            if(!string.IsNullOrEmpty(item.AudioUrlPath))
+                            {
                             <div class="single-song-area mb-30 d-flex flex-wrap align-items-end">
                                 <div class="song-play-area">
                                     <div class="song-name">
                                         <p>Ses oynatıcı</p>
                                     </div>
                                     <audio preload="auto" controls>
-                                        <source src="~/audio/@item.AudioUrlPath">
+                                        <source src="~/audio/instrument/@item.AudioUrlPath">
                                     </audio>
                                 </div>
                             </div>
+                            }
                             <p class="text-right">Yazar: <a href="#">@item.Owner.ModifiedUsername</a></p>
                             <br />
                         }

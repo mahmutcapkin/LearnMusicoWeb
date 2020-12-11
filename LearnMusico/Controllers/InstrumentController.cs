@@ -90,6 +90,10 @@ namespace LearnMusico.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Instrument instrument, HttpPostedFileBase VideoUrlPath, HttpPostedFileBase AudioUrlPath, HttpPostedFileBase ImageFilePath)
         {
+            ModelState.Remove("CreatedOn");
+            ModelState.Remove("ModifiedOn");
+            ModelState.Remove("ModifiedUsername");
+
             if (ModelState.IsValid)
             {
                 if (VideoUrlPath != null &&
@@ -152,6 +156,9 @@ namespace LearnMusico.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Instrument instrument, HttpPostedFileBase VideoUrlPath, HttpPostedFileBase AudioUrlPath, HttpPostedFileBase ImageFilePath)
         {
+            ModelState.Remove("CreatedOn");
+            ModelState.Remove("ModifiedOn");
+            ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
                 if (VideoUrlPath != null &&
@@ -163,7 +170,7 @@ namespace LearnMusico.Controllers
                     instrument.VideoUrlPath = filenameV;
                 }
                 if (AudioUrlPath != null &&
-                       (AudioUrlPath.ContentType == "audio/mp3"))
+                       (AudioUrlPath.ContentType == "audio/mpeg"))
                 {
                     string filenameA = $"instrument_{instrument.Id}.{AudioUrlPath.ContentType.Split('/')[1]}";
 

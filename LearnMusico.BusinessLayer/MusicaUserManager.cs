@@ -43,7 +43,7 @@ namespace LearnMusico.BusinessLayer
                     Username = data.Username,
                     Email = data.Email,
                     Password = data.Password,
-                    ProfileImageFilename = "user.png",
+                    ProfileImageFilename = "user_default.png",
                     ActivateGuid = Guid.NewGuid(),
                     IsActive = false,
                     IsAdmin = false,
@@ -61,7 +61,7 @@ namespace LearnMusico.BusinessLayer
                     string activateUri = $"{siteUri}/Home/UserActivate/{res.Result.ActivateGuid}";
                     string body = $"Merhaba {res.Result.Username}; <br><br> Hesabınızı aktifleştirmek için <a href='{activateUri}'  target='_blank'>tıklayınız.</a>";
 
-                    MailHelper.SendMail(body, res.Result.Email, "LearnMuscio Hesap Aktifleştirme");
+                    MailHelper.SendMail(body, res.Result.Email, "LearnMusico Hesap Aktifleştirme");
 
                 }
 
