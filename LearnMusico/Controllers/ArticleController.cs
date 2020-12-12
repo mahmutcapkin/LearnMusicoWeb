@@ -81,6 +81,10 @@ namespace LearnMusico.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Article article,HttpPostedFileBase ImageFileName)
         {
+            ModelState.Remove("CreatedOn");
+            ModelState.Remove("ModifiedOn");
+            ModelState.Remove("ModifiedUsername");
+
             if (ModelState.IsValid)
             {
                 if (ImageFileName != null &&
@@ -122,8 +126,11 @@ namespace LearnMusico.Controllers
         [AuthTeacher]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Article article,HttpPostedFile ImageFileName)
+        public ActionResult Edit(Article article, HttpPostedFileBase ImageFileName)
         {
+            ModelState.Remove("CreatedOn");
+            ModelState.Remove("ModifiedOn");
+            ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
                 if (ImageFileName != null &&

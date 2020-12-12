@@ -108,6 +108,8 @@ namespace LearnMusico.Controllers
                     ImageFilePath.SaveAs(Server.MapPath($"~/img/lessonprice/{filenameL}"));
                     specialLessonPrice.ImageFilePath = filenameL;
                 }
+                specialLessonPrice.Teacher = CurrentSession.User;
+                LpriceManager.Insert(specialLessonPrice);
                 return RedirectToAction("Index");
             }
 
