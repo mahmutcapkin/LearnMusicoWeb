@@ -23,14 +23,14 @@
                         <!-- Post Thumb -->
                         <div class="blog-post-thumb mt-30">
                             <a>
-                                <img class="img-fluid z-depth-1" src="~/img/sharing/@item.ImageUrlPath" alt="video">
+                                <img class="img-fluid z-depth-1" src="~/img/sharing/@item.ImageUrlPath" alt="">
                             </a>
                         </div>
 
                         <div class="blog-content">
                             <div class="row">
                                 <div class="col-md-10">
-                                    <a href="#" class="post-title" data-toggle="modal" data-target="#modal1">@item.Title</a>
+                                    <a href="#" class="post-title" data-toggle="modal" data-target="#modal_comment">@item.Title</a>
                                 </div>
                                 <div class="col-md-2">
                                     <p class="text-right">
@@ -52,9 +52,9 @@
 
                             @if (string.IsNullOrEmpty(item.Description) == false && item.Description.Length > 70)
                             {
-                                <p>@(item.Description.Substring(0, 80) + "...")</p>
+                                <p>@(item.Description.Substring(0, item.Description.Length) + "...")</p>
                                 <p class="pull-right">
-                                    <a href="#" data-toggle="modal" data-target="#modal1" data-sharing-id="@item.Id" class="btn btn-default btn-sm">devamı</a>
+                                    <a href="#" data-toggle="modal" data-target="#modal_comment" data-sharing-id="@item.Id" class="btn btn-default btn-sm">Görüntüle</a>
                                 </p>
                             }
                             else

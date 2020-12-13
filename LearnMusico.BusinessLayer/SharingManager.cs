@@ -26,6 +26,10 @@ namespace LearnMusico.BusinessLayer
             {
                 res.Result.VideoUrlPath = data.VideoUrlPath;
             }
+            if (string.IsNullOrEmpty(data.ImageUrlPath) == false)
+            {
+                res.Result.ImageUrlPath = data.ImageUrlPath;
+            }
 
             if (base.Update(res.Result) == 0)
             {
