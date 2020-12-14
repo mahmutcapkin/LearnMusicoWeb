@@ -4,6 +4,7 @@
     ViewBag.Title = "Enstrüman Ekle";
 }
 <link href="~/css/valdiation-summary.css" rel="stylesheet" />
+<script src="~/Themes/ckeditor/ckeditor.js"></script>
 <section class="breadcumb-area bg-img bg-overlay" style="   background-image: url(../../img/bg-img/breadcumb3.jpg);">
     <div class="bradcumbContent">
         <h2>@ViewBag.Title</h2>
@@ -33,8 +34,9 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.TextAreaFor(model => model.Description,7,156, new { htmlAttributes = new { @class = "form-control" } })
-
+                    @Html.TextAreaFor(model => model.Description, 7, 156, new { htmlAttributes = new { @id = "Description", @class = "form-control", @rows = "200" } })
+                    <script>CKEDITOR.replace("Description");</script>
+                    <script>CKEDITOR.config.htmlEncodeOutput = false;</script>
                 </div>
             </div>
 

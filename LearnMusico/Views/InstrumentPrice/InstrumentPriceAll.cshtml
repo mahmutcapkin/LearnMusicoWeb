@@ -46,7 +46,7 @@
                                     </div>
                                     <!-- Post Excerpt -->
                                     <p><strong>Kategori: </strong>@item.InstrumentCategory.Title</p>
-                                    <p><strong>Açıklama: </strong>@item.Description</p>
+                                    <p><strong>Açıklama: </strong>@Html.Raw(item.Description)</p>
                                     <p><strong>Durum: </strong>@item.Status</p>
                                     <p><strong>Adres: </strong>@item.Address</p>
                                     <p><strong>Fiyat: </strong>@item.Price TL</p>

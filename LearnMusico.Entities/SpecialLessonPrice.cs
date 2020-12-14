@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace LearnMusico.Entities
 {
@@ -20,6 +21,7 @@ namespace LearnMusico.Entities
         [DisplayName("İçerik"),
             Required(ErrorMessage = "{0} alanı gereklidir."),
             StringLength(400, ErrorMessage = "{0} max {1} karakter içermelidir.")]
+        [AllowHtml]
         public string Description { get; set; }
 
         [DisplayName("Özel Ders Fiyatı"), Required]

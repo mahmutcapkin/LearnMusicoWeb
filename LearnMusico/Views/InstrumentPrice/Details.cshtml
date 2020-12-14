@@ -46,7 +46,7 @@
                         @Html.DisplayFor(model => model.InstrumentName)
                     </td>
                     <td>
-                        @Html.DisplayFor(model => model.Description)
+                        @Html.Raw(Model.Description)
                     </td>
                     <td>
                         @Html.DisplayFor(model => model.Price)

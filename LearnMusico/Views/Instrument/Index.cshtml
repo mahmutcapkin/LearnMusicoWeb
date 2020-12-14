@@ -41,7 +41,7 @@
                         @Html.DisplayFor(modelItem => item.InstrumentName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Description)
+                        @Html.Raw(item.Description)
                     </td>
                     <td width="250">
                         @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" })
