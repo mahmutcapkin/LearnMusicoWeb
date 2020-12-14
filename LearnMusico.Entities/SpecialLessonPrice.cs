@@ -23,8 +23,8 @@ namespace LearnMusico.Entities
             StringLength(400, ErrorMessage = "{0} max {1} karakter içermelidir.")]
         [AllowHtml]
         public string Description { get; set; }
-
-        [DisplayName("Özel Ders Fiyatı"), Required]
+       
+        [DisplayName("Özel Ders Fiyatı"), Required(ErrorMessage = "{0} alanı gereklidir."), Range(0,100000,ErrorMessage= "{0} min {1} değeri almak zorundadır.")]
         public int Price { get; set; }
 
         [DisplayName("Adres"),

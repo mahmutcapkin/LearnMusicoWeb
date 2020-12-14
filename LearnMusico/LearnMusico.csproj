@@ -2314,6 +2314,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="document\user\" />
     <Folder Include="Views\Comment\" />
   </ItemGroup>
   <ItemGroup>

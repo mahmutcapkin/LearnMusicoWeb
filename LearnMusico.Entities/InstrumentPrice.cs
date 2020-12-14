@@ -24,7 +24,7 @@ namespace LearnMusico.Entities
         [AllowHtml]
         public string Description { get; set; }
 
-        [DisplayName("Enstrüman Fiyatı"), Required(ErrorMessage = "{0} alanı gereklidir.")]
+        [DisplayName("Enstrüman Fiyatı"), Required(ErrorMessage = "{0} alanı gereklidir."), Range(0, 100000, ErrorMessage = "{0} min {1} değeri almak zorundadır.")]
         public int Price { get; set; }
 
         [StringLength(150, ErrorMessage = "{0} max {1} karakter içermelidir."), ScaffoldColumn(false)]

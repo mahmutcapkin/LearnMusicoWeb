@@ -24,7 +24,8 @@ namespace LearnMusico.BusinessLayer
             res.Result.Address = data.Address;
             res.Result.Description = data.Description;
             res.Result.InstrumentCategoryId = data.InstrumentCategoryId;
-                
+            res.Result.Owner = data.Owner;
+
             if (string.IsNullOrEmpty(data.ImageFilePath) == false)
             {
                 res.Result.ImageFilePath = data.ImageFilePath;

@@ -158,6 +158,7 @@ namespace LearnMusico.Controllers
                     ImageUrlPath.SaveAs(Server.MapPath($"~/img/sharing/{filenameI}"));
                     sharing.ImageUrlPath = filenameI;
                 }
+                sharing.Owner = CurrentSession.User;
                 BusinessLayerResult<Sharing> res = sharingManager.UpdateSharing(sharing);
 
                 if (res.Errors.Count > 0)

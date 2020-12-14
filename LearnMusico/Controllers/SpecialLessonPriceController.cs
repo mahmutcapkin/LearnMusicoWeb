@@ -155,7 +155,7 @@ namespace LearnMusico.Controllers
                     ImageFilePath.SaveAs(Server.MapPath($"~/img/lessonprice/{filenameL}"));
                     specialLessonPrice.ImageFilePath = filenameL;
                 }
-
+                specialLessonPrice.Teacher = CurrentSession.User;
                 BusinessLayerResult<SpecialLessonPrice> res = LpriceManager.UpdateLessonPrice(specialLessonPrice);
 
                 if (res.Errors.Count > 0)

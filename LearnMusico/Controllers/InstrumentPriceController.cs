@@ -137,7 +137,7 @@ namespace LearnMusico.Controllers
                     ImageFilePath.SaveAs(Server.MapPath($"~/img/instprice/{filenameI}"));
                     instrumentPrice.ImageFilePath = filenameI;
                 }
-
+                instrumentPrice.Owner = CurrentSession.User;
                 BusinessLayerResult<InstrumentPrice> res = priceManager.UpdateInstrumentPrice(instrumentPrice);
 
                 if (res.Errors.Count > 0)

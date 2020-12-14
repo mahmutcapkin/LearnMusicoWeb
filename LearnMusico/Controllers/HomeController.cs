@@ -208,8 +208,27 @@ namespace LearnMusico.Controllers
             return View(model);
         }
 
+        [Auth]
+        public ActionResult DeleteProfile()
+        {
+            BusinessLayerResult<MusicaUser> res = musicaUserManager.RemoveUserById(CurrentSession.User.Id);
+            if (res.Errors.Count > 0)
+            {
+                ErrorViewModel errorNotifyObj = new ErrorViewModel()
+                {
+                    Items = res.Errors,
+                    Title = "Profil Silinemedi.",
+                    RedirectingUrl = "/Home/ShowProfile"
+                };
 
-        public ActionResult Logout()
+                return View("Error", errorNotifyObj);
+            }
+            Session.Clear();
+
+            return RedirectToAction("Index");
+        }
+
+            public ActionResult Logout()
         {
             Session.Clear();
             return RedirectToAction("Index");

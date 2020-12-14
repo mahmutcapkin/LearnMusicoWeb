@@ -533,20 +533,20 @@ img {
 
 .single-hero-slide {
   width: 100%;
-  height: 950px;
+  height: 750px;
   position: relative;
   z-index: 1;
   padding: 0 30px;
   overflow: hidden; }
   @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .single-hero-slide {
-      height: 700px; } }
+      height: 600px; } }
   @media only screen and (min-width: 768px) and (max-width: 991px) {
     .single-hero-slide {
-      height: 650px; } }
+      height: 550px; } }
   @media only screen and (max-width: 767px) {
     .single-hero-slide {
-      height: 500px; } }
+      height: 400px; } }
   .single-hero-slide::after {
     position: absolute;
     width: 100%;
