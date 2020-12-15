@@ -15,8 +15,9 @@ namespace LearnMusico.Entities
             StringLength(300, ErrorMessage = "{0} max {1} karakter içermelidir.")]
         public string Text { get; set; }
 
-
-        public virtual MusicaUser Owner { get; set; }
+        public int MusicaUserId { get; set; }
+        public int SharingId { get; set; }
+        public virtual MusicaUser MusicaUser { get; set; }
         public virtual Sharing Sharing { get; set; }
 
     }

@@ -24,8 +24,8 @@ namespace LearnMusico.Controllers
         //Enstrumanlarım
         public ActionResult Index()
         {
-            var instrument = instrumentManager.ListQueryable().Include("InstrumentCategory").Include("Owner").Where(
-               x => x.Owner.Id == CurrentSession.User.Id).OrderByDescending(
+            var instrument = instrumentManager.ListQueryable().Include("InstrumentCategory").Include("MusicaUser").Where(
+               x => x.MusicaUser.Id == CurrentSession.User.Id).OrderByDescending(
                x => x.ModifiedOn);
             return View(instrument.ToList());
         }
@@ -96,18 +96,21 @@ namespace LearnMusico.Controllers
 
             if (ModelState.IsValid)
             {
+                instrument.MusicaUser = CurrentSession.User;
+                instrument.ModifiedUsername = CurrentSession.User.Username;
+
                 if (VideoUrlPath != null &&
                         (VideoUrlPath.ContentType == "video/mp4"))
                 {
-                    string filenameV = $"instrument_{instrument.Id}.{VideoUrlPath.ContentType.Split('/')[1]}";
+                    string filenameV = $"instrument_{Guid.NewGuid()}.{VideoUrlPath.ContentType.Split('/')[1]}";
 
                     VideoUrlPath.SaveAs(Server.MapPath($"~/videos/instrument/{filenameV}"));
                     instrument.VideoUrlPath = filenameV;
                 }
                 if (AudioUrlPath != null &&
-                       (AudioUrlPath.ContentType == "audio/mp3"))
+                       (AudioUrlPath.ContentType == "audio/mpeg"))
                 {
-                    string filenameA = $"instrument_{instrument.Id}.{AudioUrlPath.ContentType.Split('/')[1]}";
+                    string filenameA = $"instrument_{Guid.NewGuid()}.{AudioUrlPath.ContentType.Split('/')[1]}";
 
                     AudioUrlPath.SaveAs(Server.MapPath($"~/audio/instrument/{filenameA}"));
                     instrument.AudioUrlPath = filenameA;
@@ -117,13 +120,11 @@ namespace LearnMusico.Controllers
                         ImageFilePath.ContentType == "image/jpg" ||
                         ImageFilePath.ContentType == "image/png"))
                 {
-                    string filenameI = $"instrument_{instrument.Id}.{ImageFilePath.ContentType.Split('/')[1]}";
+                    string filenameI = $"instrument_{Guid.NewGuid()}.{ImageFilePath.ContentType.Split('/')[1]}";
 
                     ImageFilePath.SaveAs(Server.MapPath($"~/img/instrument/{filenameI}"));
                     instrument.ImageFilePath = filenameI;
                 }
-
-                instrument.Owner = CurrentSession.User;
                 instrumentManager.Insert(instrument);
                 return RedirectToAction("Index");
             }
@@ -161,10 +162,12 @@ namespace LearnMusico.Controllers
             ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
+                instrument.MusicaUser = CurrentSession.User;
+                instrument.ModifiedUsername = CurrentSession.User.Username;
                 if (VideoUrlPath != null &&
                        (VideoUrlPath.ContentType == "video/mp4"))
                 {
-                    string filenameV = $"instrument_{instrument.Id}.{VideoUrlPath.ContentType.Split('/')[1]}";
+                    string filenameV = $"instrument_{Guid.NewGuid()}.{VideoUrlPath.ContentType.Split('/')[1]}";
 
                     VideoUrlPath.SaveAs(Server.MapPath($"~/videos/instrument/{filenameV}"));
                     instrument.VideoUrlPath = filenameV;
@@ -172,7 +175,7 @@ namespace LearnMusico.Controllers
                 if (AudioUrlPath != null &&
                        (AudioUrlPath.ContentType == "audio/mpeg"))
                 {
-                    string filenameA = $"instrument_{instrument.Id}.{AudioUrlPath.ContentType.Split('/')[1]}";
+                    string filenameA = $"instrument_{Guid.NewGuid()}.{AudioUrlPath.ContentType.Split('/')[1]}";
 
                     AudioUrlPath.SaveAs(Server.MapPath($"~/audio/instrument/{filenameA}"));
                     instrument.AudioUrlPath = filenameA;
@@ -182,7 +185,7 @@ namespace LearnMusico.Controllers
                         ImageFilePath.ContentType == "image/jpg" ||
                         ImageFilePath.ContentType == "image/png"))
                 {
-                    string filenameI = $"instrument_{instrument.Id}.{ImageFilePath.ContentType.Split('/')[1]}";
+                    string filenameI = $"instrument_{Guid.NewGuid()}.{ImageFilePath.ContentType.Split('/')[1]}";
 
                     ImageFilePath.SaveAs(Server.MapPath($"~/img/instrument/{filenameI}"));
                     instrument.ImageFilePath = filenameI;

@@ -1861,7 +1861,9 @@
     <Content Include="img\bg-img\volkanoktem.jpg" />
     <Content Include="img\bg-img\yavuz.jpg" />
     <Content Include="img\instprice\gitar.jpg" />
+    <Content Include="img\instprice\keman.jpg" />
     <Content Include="img\instrument\gitar.jpg" />
+    <Content Include="img\instrument\keman.jpg" />
     <Content Include="img\lessonprice\gitar.jpg" />
     <Content Include="img\sharing\keman.jpg" />
     <Content Include="img\trend\ezhel.jpg" />
@@ -1945,6 +1947,7 @@
     <Content Include="img\core-img\logo.png" />
     <Content Include="img\core-img\logo2.png" />
     <Content Include="img\core-img\logoy.png" />
+    <Content Include="document\user\review.pdf" />
     <None Include="Scripts\jquery-2.2.4.intellisense.js" />
     <Content Include="Scripts\comment.js" />
     <Content Include="Scripts\error.js" />
@@ -2314,7 +2317,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="document\user\" />
     <Folder Include="Views\Comment\" />
   </ItemGroup>
   <ItemGroup>

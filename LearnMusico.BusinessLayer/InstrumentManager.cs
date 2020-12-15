@@ -21,8 +21,13 @@ namespace LearnMusico.BusinessLayer
             res.Result.InstrumentName = data.InstrumentName;
             res.Result.Description = data.Description;
             res.Result.InstrumentCategoryId = data.InstrumentCategoryId;
+            res.Result.MusicaUser = data.MusicaUser;
+            res.Result.ModifiedUsername = data.ModifiedUsername;
             //gerekirse buraya diğer video resim ya da ses dosyası linki eklenecek
-
+            if (string.IsNullOrEmpty(data.VideoUrlPath) == false)
+            {
+                res.Result.VideoUrlPath = data.VideoUrlPath;
+            }
             if (string.IsNullOrEmpty(data.AudioUrlPath) == false)
             {
                 res.Result.AudioUrlPath = data.AudioUrlPath;
@@ -32,10 +37,6 @@ namespace LearnMusico.BusinessLayer
                 res.Result.ImageFilePath = data.ImageFilePath;
             }
 
-            if (string.IsNullOrEmpty(data.VideoUrlPath) == false)
-            {
-                res.Result.VideoUrlPath = data.VideoUrlPath;
-            }
 
             if (base.Update(res.Result) == 0)
             {

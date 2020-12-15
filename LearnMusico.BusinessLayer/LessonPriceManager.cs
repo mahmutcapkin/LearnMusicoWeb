@@ -23,7 +23,7 @@ namespace LearnMusico.BusinessLayer
             res.Result.Address = data.Address;
             res.Result.Description = data.Description;
             res.Result.InstrumentCategoryId = data.InstrumentCategoryId;
-            res.Result.Teacher = data.Teacher;
+            res.Result.MusicaUser = data.MusicaUser;
 
             if (string.IsNullOrEmpty(data.ImageFilePath) == false)
             {

@@ -41,9 +41,9 @@ namespace LearnMusico.Entities
         public string Address { get; set; }
 
         public int InstrumentCategoryId { get; set; }
+        public int MusicaUserId { get; set; }
 
-
-        public virtual MusicaUser Owner { get; set; }
+        public virtual MusicaUser MusicaUser { get; set; }
 
         public virtual InstrumentCategory InstrumentCategory { get; set; }
     }

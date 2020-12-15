@@ -21,6 +21,8 @@ namespace LearnMusico.BusinessLayer
             res.Result.Title = data.Title;
             res.Result.Description = data.Description;
             res.Result.SubjectType = data.SubjectType;
+            res.Result.MusicaUser = data.MusicaUser;
+            res.Result.ModifiedUsername = data.ModifiedUsername;
 
 
             if (string.IsNullOrEmpty(data.ImageFileName) == false)

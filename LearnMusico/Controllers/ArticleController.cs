@@ -25,8 +25,8 @@ namespace LearnMusico.Controllers
         // GET: Article
         public ActionResult Index()
         {
-            var articles = articleManager.ListQueryable().Include("ArticleCategory").Include("Owner").Where(
-               x => x.Owner.Id == CurrentSession.User.Id).OrderByDescending(
+            var articles = articleManager.ListQueryable().Include("ArticleCategory").Include("MusicaUser").Where(
+               x => x.MusicaUser.Id == CurrentSession.User.Id).OrderByDescending(
                x => x.ModifiedOn);
             return View(articles.ToList());
         }
@@ -87,18 +87,18 @@ namespace LearnMusico.Controllers
 
             if (ModelState.IsValid)
             {
+                article.MusicaUser = CurrentSession.User;
+                article.ModifiedUsername = CurrentSession.User.Username;
                 if (ImageFileName != null &&
                       (ImageFileName.ContentType == "image/jpeg" ||
                        ImageFileName.ContentType == "image/jpg" ||
                        ImageFileName.ContentType == "image/png"))
                 {
-                    string filenameA = $"article_{article.Id}.{ImageFileName.ContentType.Split('/')[1]}";
+                    string filenameA = $"article_{Guid.NewGuid()}.{ImageFileName.ContentType.Split('/')[1]}";
 
-                    ImageFileName.SaveAs(Server.MapPath($"~/img/instrument/{filenameA}"));
+                    ImageFileName.SaveAs(Server.MapPath($"~/img/article/{filenameA}"));
                     article.ImageFileName = filenameA;
                 }
-
-                article.Owner = CurrentSession.User;
                 articleManager.Insert(article);
                 return RedirectToAction("Index");
             }
@@ -133,12 +133,14 @@ namespace LearnMusico.Controllers
             ModelState.Remove("ModifiedUsername");
             if (ModelState.IsValid)
             {
+                article.MusicaUser = CurrentSession.User;
+                article.ModifiedUsername = CurrentSession.User.Username;
                 if (ImageFileName != null &&
                          (ImageFileName.ContentType == "image/jpeg" ||
                          ImageFileName.ContentType == "image/jpg" ||
                          ImageFileName.ContentType == "image/png"))
                 {
-                    string filename = $"article_{article.Id}.{ImageFileName.ContentType.Split('/')[1]}";
+                    string filename = $"article_{Guid.NewGuid()}.{ImageFileName.ContentType.Split('/')[1]}";
 
                     ImageFileName.SaveAs(Server.MapPath($"~/img/article/{filename}"));
                     article.ImageFileName = filename;

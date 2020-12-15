@@ -14,8 +14,9 @@ namespace LearnMusico.Entities
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        //virtual methodlar
-        public virtual MusicaUser LikedUser { get; set; }
+        public int MusicaUserId { get; set; }
+        public int SharingId { get; set; }
+        public virtual MusicaUser MusicaUser { get; set; }
         public virtual Sharing Sharing { get; set; }
     }
 }

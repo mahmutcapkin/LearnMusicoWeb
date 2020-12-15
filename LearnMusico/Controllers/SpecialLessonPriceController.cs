@@ -26,8 +26,8 @@ namespace LearnMusico.Controllers
         [AuthTeacher]
         public ActionResult Index()
         {
-            var specialLessonPrices = LpriceManager.ListQueryable().Include("Teacher").Where(
-                            x => x.Teacher.Id == CurrentSession.User.Id).OrderByDescending(
+            var specialLessonPrices = LpriceManager.ListQueryable().Include("MusicaUser").Where(
+                            x => x.MusicaUser.Id == CurrentSession.User.Id).OrderByDescending(
                             x => x.ModifiedOn);
             return View(specialLessonPrices.ToList());
         }
@@ -98,17 +98,19 @@ namespace LearnMusico.Controllers
 
             if (ModelState.IsValid)
             {
+                specialLessonPrice.MusicaUser = CurrentSession.User;
+                specialLessonPrice.ModifiedUsername = CurrentSession.User.Username;
                 if (ImageFilePath != null &&
                       (ImageFilePath.ContentType == "image/jpeg" ||
                        ImageFilePath.ContentType == "image/jpg" ||
                        ImageFilePath.ContentType == "image/png"))
                 {
-                    string filenameL = $"lessonP_{specialLessonPrice.Id}.{ImageFilePath.ContentType.Split('/')[1]}";
+                    string filenameL = $"lessonP_{Guid.NewGuid()}.{ImageFilePath.ContentType.Split('/')[1]}";
 
                     ImageFilePath.SaveAs(Server.MapPath($"~/img/lessonprice/{filenameL}"));
                     specialLessonPrice.ImageFilePath = filenameL;
                 }
-                specialLessonPrice.Teacher = CurrentSession.User;
+               
                 LpriceManager.Insert(specialLessonPrice);
                 return RedirectToAction("Index");
             }
@@ -145,17 +147,19 @@ namespace LearnMusico.Controllers
 
             if (ModelState.IsValid)
             {
+                specialLessonPrice.MusicaUser = CurrentSession.User;
+                specialLessonPrice.ModifiedUsername = CurrentSession.User.Username;
                 if (ImageFilePath != null &&
                        (ImageFilePath.ContentType == "image/jpeg" ||
                         ImageFilePath.ContentType == "image/jpg" ||
                         ImageFilePath.ContentType == "image/png"))
                 {
-                    string filenameL = $"lessonP_{specialLessonPrice.Id}.{ImageFilePath.ContentType.Split('/')[1]}";
+                    string filenameL = $"lessonP_{Guid.NewGuid()}.{ImageFilePath.ContentType.Split('/')[1]}";
 
                     ImageFilePath.SaveAs(Server.MapPath($"~/img/lessonprice/{filenameL}"));
                     specialLessonPrice.ImageFilePath = filenameL;
                 }
-                specialLessonPrice.Teacher = CurrentSession.User;
+                
                 BusinessLayerResult<SpecialLessonPrice> res = LpriceManager.UpdateLessonPrice(specialLessonPrice);
 
                 if (res.Errors.Count > 0)

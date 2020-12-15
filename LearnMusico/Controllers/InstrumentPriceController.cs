@@ -23,8 +23,8 @@ namespace LearnMusico.Controllers
         // benim satılık ürünlerim
         public ActionResult Index()
         {
-            var instrumentPrices = priceManager.ListQueryable().Include("Owner").Where(
-                            x => x.Owner.Id == CurrentSession.User.Id).OrderByDescending(
+            var instrumentPrices = priceManager.ListQueryable().Include("MusicaUser").Where(
+                            x => x.MusicaUser.Id == CurrentSession.User.Id).OrderByDescending(
                             x => x.ModifiedOn);
             return View(instrumentPrices.ToList());
         }
@@ -81,17 +81,19 @@ namespace LearnMusico.Controllers
 
             if (ModelState.IsValid)
             {
+                instrumentPrice.MusicaUser = CurrentSession.User;
+                instrumentPrice.ModifiedUsername = CurrentSession.User.Username;
                 if (ImageFilePath != null &&
                        (ImageFilePath.ContentType == "image/jpeg" ||
                         ImageFilePath.ContentType == "image/jpg" ||
                         ImageFilePath.ContentType == "image/png"))
                 {
-                    string filenameI = $"instrumentP_{instrumentPrice.Id}.{ImageFilePath.ContentType.Split('/')[1]}";
+                    string filenameI = $"instrumentP_{Guid.NewGuid()}.{ImageFilePath.ContentType.Split('/')[1]}";
 
                     ImageFilePath.SaveAs(Server.MapPath($"~/img/instprice/{filenameI}"));
                     instrumentPrice.ImageFilePath = filenameI;
                 }
-                instrumentPrice.Owner = CurrentSession.User;
+
                 priceManager.Insert(instrumentPrice);
                 return RedirectToAction("Index");
             }
@@ -127,17 +129,19 @@ namespace LearnMusico.Controllers
 
             if (ModelState.IsValid)
             {
+                instrumentPrice.MusicaUser = CurrentSession.User;
+                instrumentPrice.ModifiedUsername = CurrentSession.User.Username;
                 if (ImageFilePath != null &&
                        (ImageFilePath.ContentType == "image/jpeg" ||
                         ImageFilePath.ContentType == "image/jpg" ||
                         ImageFilePath.ContentType == "image/png"))
                 {
-                    string filenameI = $"instrumentP_{instrumentPrice.Id}.{ImageFilePath.ContentType.Split('/')[1]}";
+                    string filenameI = $"instrumentP_{Guid.NewGuid()}.{ImageFilePath.ContentType.Split('/')[1]}";
 
                     ImageFilePath.SaveAs(Server.MapPath($"~/img/instprice/{filenameI}"));
                     instrumentPrice.ImageFilePath = filenameI;
                 }
-                instrumentPrice.Owner = CurrentSession.User;
+
                 BusinessLayerResult<InstrumentPrice> res = priceManager.UpdateInstrumentPrice(instrumentPrice);
 
                 if (res.Errors.Count > 0)

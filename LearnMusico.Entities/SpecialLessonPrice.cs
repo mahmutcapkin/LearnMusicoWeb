@@ -36,8 +36,10 @@ namespace LearnMusico.Entities
         public string ImageFilePath { get; set; }
 
         public int InstrumentCategoryId { get; set; }
+        public int MusicaUserId { get; set; }
 
-        public virtual MusicaUser Teacher { get; set; }
+
+        public virtual MusicaUser MusicaUser { get; set; }
 
         public virtual InstrumentCategory InstrumentCategory { get; set; }
     }

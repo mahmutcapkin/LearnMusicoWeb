@@ -12,7 +12,8 @@ namespace LearnMusico.DataAccessLayer.EntityFramework
     {
         public DatabaseContext()
         {
-            Database.SetInitializer(new MyInitilazier());
+          
+            //Database.SetInitializer(new MyInitilazier());
         }
 
         public DbSet<Article> Articles { get; set; }

@@ -33,10 +33,11 @@ namespace LearnMusico.Entities
         public string ImageFileName { get; set; }
 
         public int ArticleCategoryId { get; set; }
+        public int MusicaUserId { get; set; }
 
         public virtual ArticleCategory ArticleCategory { get; set; }
 
-        public virtual MusicaUser Owner { get; set; }
+        public virtual MusicaUser MusicaUser { get; set; }
     }
 
 }

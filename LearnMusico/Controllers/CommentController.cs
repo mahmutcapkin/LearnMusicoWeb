@@ -109,7 +109,7 @@ namespace LearnMusico.Controllers
                 }
 
                 comment.Sharing = sharing;
-                comment.Owner = CurrentSession.User;
+                comment.MusicaUser = CurrentSession.User;
 
                 if (commentManager.Insert(comment) > 0)
                 {

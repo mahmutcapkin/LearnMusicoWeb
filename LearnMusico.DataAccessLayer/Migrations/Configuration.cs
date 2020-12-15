@@ -1,17 +1,20 @@
-﻿using LearnMusico.Entities;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.SqlTypes;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LearnMusico.DataAccessLayer.EntityFramework
+﻿namespace LearnMusico.DataAccessLayer.Migrations
 {
-    public class MyInitilazier : CreateDatabaseIfNotExists<DatabaseContext>
+    using LearnMusico.Entities;
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Data.Entity.Migrations;
+    using System.Linq;
+
+    internal sealed class Configuration : DbMigrationsConfiguration<LearnMusico.DataAccessLayer.EntityFramework.DatabaseContext>
     {
-        protected override void Seed(DatabaseContext context)
+        public Configuration()
+        {
+            AutomaticMigrationsEnabled = false;
+        }
+
+        protected override void Seed(LearnMusico.DataAccessLayer.EntityFramework.DatabaseContext context)
         {
             MusicaUser admin = new MusicaUser()
             {
@@ -22,7 +25,7 @@ namespace LearnMusico.DataAccessLayer.EntityFramework
                 ActivateGuid = Guid.NewGuid(),
                 IsActive = true,
                 IsAdmin = true,
-                CV="review.pdf",
+                CV = "review.pdf",
                 IsTeacher = false,
                 Username = "ahmetkilic",
                 ProfileImageFilename = "user_default.png",
@@ -78,7 +81,7 @@ namespace LearnMusico.DataAccessLayer.EntityFramework
                     Name = FakeData.NameData.GetFirstName(),
                     Surname = FakeData.NameData.GetSurname(),
                     Email = FakeData.NetworkData.GetEmail(),
-                    About =FakeData.PlaceData.GetAddress(),
+                    About = FakeData.PlaceData.GetAddress(),
                     ActivateGuid = Guid.NewGuid(),
                     IsActive = true,
                     IsAdmin = false,
@@ -182,7 +185,7 @@ namespace LearnMusico.DataAccessLayer.EntityFramework
             {
                 InstrumentCategory instcat = new InstrumentCategory()
                 {
-                    Title = FakeData.PlaceData.GetStreetName(),             
+                    Title = FakeData.PlaceData.GetStreetName(),
                     CreatedOn = DateTime.Now,
                     ModifiedOn = DateTime.Now,
                     ModifiedUsername = "ahmetkilic"
@@ -197,9 +200,9 @@ namespace LearnMusico.DataAccessLayer.EntityFramework
                         InstrumentName = FakeData.TextData.GetAlphabetical(FakeData.NumberData.GetNumber(1, 3)),
                         Description = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
                         InstrumentCategory = instcat,
-                        ImageFilePath="gitar.jpg",
-                        AudioUrlPath= "dummy-audio.mp3",
-                        VideoUrlPath="kalimba.mp4",
+                        ImageFilePath = "gitar.jpg",
+                        AudioUrlPath = "dummy-audio.mp3",
+                        VideoUrlPath = "kalimba.mp4",
                         MusicaUser = owner,
                         CreatedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now),
                         ModifiedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now),
@@ -214,9 +217,9 @@ namespace LearnMusico.DataAccessLayer.EntityFramework
             // adding fake instrumentprice...
             for (int i = 0; i < 5; i++)
             {
-               
+
                 InstrumentCategory cat = instcatList[i];
-                
+
                 for (int k = 0; k < 5; k++)
                 {
                     MusicaUser owner = userList[FakeData.NumberData.GetNumber(0, userList.Count - 1)];
@@ -226,9 +229,9 @@ namespace LearnMusico.DataAccessLayer.EntityFramework
                         Description = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
                         InstrumentCategory = cat,
                         ImageFilePath = "gitar.jpg",
-                        Price=250,
-                        Status="Yeni gibi sayılır",
-                        Address= FakeData.PlaceData.GetAddress(),
+                        Price = 250,
+                        Status = "Yeni gibi sayılır",
+                        Address = FakeData.PlaceData.GetAddress(),
                         MusicaUser = owner,
                         CreatedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now),
                         ModifiedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now),
@@ -255,10 +258,10 @@ namespace LearnMusico.DataAccessLayer.EntityFramework
                         InstrumentName = FakeData.TextData.GetAlphabetical(FakeData.NumberData.GetNumber(1, 2)),
                         Description = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
                         Price = 300,
-                        
+
                         ImageFilePath = "gitar.jpg",
                         Address = FakeData.PlaceData.GetAddress(),
-                        MusicaUser= owner,
+                        MusicaUser = owner,
                         CreatedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now),
                         ModifiedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now),
                         ModifiedUsername = owner.Username
@@ -269,12 +272,6 @@ namespace LearnMusico.DataAccessLayer.EntityFramework
             }
 
             context.SaveChanges();
-
-
         }
-
-
     }
 }
-
-

@@ -32,7 +32,8 @@ namespace LearnMusico.Entities
         [DisplayName("Beğeni Sayısı")]
         public int LikeCount { get; set; }
 
-        public virtual MusicaUser Owner { get; set; }
+        public int MusicaUserId { get; set; }
+        public virtual MusicaUser MusicaUser { get; set; }
         public virtual List<Comment> Comments { get; set; }
         public virtual List<Liked> Likes { get; set; }
 

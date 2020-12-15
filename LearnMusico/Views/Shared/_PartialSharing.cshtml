@@ -19,7 +19,7 @@
         <div class="media-body mb-30">
             <div>
                 <div class="row">
-                    <div class="col-md-6"> <h6>@(Model.sharing.Owner.Name+" "+Model.sharing.Owner.Surname)</h6>  </div>
+                    <div class="col-md-6"> <h6>@(Model.sharing.MusicaUser.Name+" "+Model.sharing.MusicaUser.Surname)</h6>  </div>
 
                     <div class="col-md-6"> <h6 class="text-right"> (@Model.sharing.CreatedOn.ToString("dd.MM.yy"))</h6></div>
                 </div>
@@ -86,12 +86,12 @@
 {
     <ul class="list-unstyled">
         <li class="media">
-            <img class="mr-3" src="~/img/user/@item.Owner.ProfileImageFilename" width="64" height="64">
+            <img class="mr-3" src="~/img/user/@item.MusicaUser.ProfileImageFilename" width="64" height="64">
             <div class="media-body">
                 <div>
                     <div class="row">
                         <div class="col-md-6">
-                            <h6 class="mt-0 mb-1">@(item.Owner.Name+" "+item.Owner.Surname)(@item.ModifiedUsername)</h6><br />
+                            <h6 class="mt-0 mb-1">@(item.MusicaUser.Name+" "+item.MusicaUser.Surname)(@item.ModifiedUsername)</h6><br />
                         </div>
                         <div class="col-md-6">
                             <h6 class="text-right">
@@ -103,7 +103,7 @@
                         <span class="col-md-9" id="comment_text_@item.Id" contenteditable="false">@item.Text</span>
 
                         <div class="col-md-3">
-                            @if (user != null && user.Id == item.Owner.Id)
+                            @if (user != null && user.Id == item.MusicaUser.Id)
                             {
                                 <div class="pull-right">
                                     <small>

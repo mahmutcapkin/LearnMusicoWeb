@@ -25,8 +25,8 @@ namespace LearnMusico.Controllers
         //Gönderilerim
         public ActionResult Index()
         {
-            var sharings = sharingManager.ListQueryable().Include("Owner").Where(
-                           x => x.Owner.Id == CurrentSession.User.Id).OrderByDescending(
+            var sharings = sharingManager.ListQueryable().Include("MusicaUser").Where(
+                           x => x.MusicaUser.Id == CurrentSession.User.Id).OrderByDescending(
                            x => x.ModifiedOn);
             return View(sharings.ToList());
         }
@@ -35,7 +35,7 @@ namespace LearnMusico.Controllers
         //Tüm Gönderiler
         public ActionResult AllSharings()
         {
-            return View(sharingManager.ListQueryable().OrderByDescending(x => x.ModifiedOn).ToList());
+            return View(sharingManager.ListQueryable().OrderByDescending(x => x.CreatedOn).ToList());
         }
 
         public ActionResult MostLiked()
@@ -46,8 +46,8 @@ namespace LearnMusico.Controllers
 
         public ActionResult MyLikedSharings()
         {
-            var sharings = likedManager.ListQueryable().Include("LikedUser").Include("Sharing").Where(
-                x => x.LikedUser.Id == CurrentSession.User.Id).Select(
+            var sharings = likedManager.ListQueryable().Include("MusicaUser").Include("Sharing").Where(
+                x => x.MusicaUser.Id == CurrentSession.User.Id).Select(
                 x => x.Sharing).OrderByDescending(
                 x => x.ModifiedOn);
 
@@ -88,10 +88,12 @@ namespace LearnMusico.Controllers
 
             if (ModelState.IsValid)
             {
+                sharing.MusicaUser = CurrentSession.User;
+                sharing.ModifiedUsername = CurrentSession.User.Username;
                 if (VideoUrlPath != null &&
                                      (VideoUrlPath.ContentType == "video/mp4"))
                 {
-                    string filenameV = $"sharingV_{sharing.Id}.{VideoUrlPath.ContentType.Split('/')[1]}";
+                    string filenameV = $"sharingV_{Guid.NewGuid()}.{VideoUrlPath.ContentType.Split('/')[1]}";
 
                     VideoUrlPath.SaveAs(Server.MapPath($"~/videos/sharing/{filenameV}"));
                     sharing.VideoUrlPath = filenameV;
@@ -101,13 +103,12 @@ namespace LearnMusico.Controllers
                        ImageUrlPath.ContentType == "image/jpg" ||
                        ImageUrlPath.ContentType == "image/png"))
                 {
-                    string filenameI = $"sharingI_{sharing.Id}.{ImageUrlPath.ContentType.Split('/')[1]}";
+                    string filenameI = $"sharingI_{Guid.NewGuid()}.{ImageUrlPath.ContentType.Split('/')[1]}";
 
                     ImageUrlPath.SaveAs(Server.MapPath($"~/img/sharing/{filenameI}"));
                     sharing.ImageUrlPath = filenameI;
                 }
 
-                sharing.Owner = CurrentSession.User;
                 sharingManager.Insert(sharing);
                 return RedirectToAction("Index");
             }
@@ -140,10 +141,12 @@ namespace LearnMusico.Controllers
 
             if (ModelState.IsValid)
             {
+                sharing.MusicaUser = CurrentSession.User;
+                sharing.ModifiedUsername = CurrentSession.User.Username;
                 if (VideoUrlPath != null &&
                         (VideoUrlPath.ContentType == "video/mp4"))
                 {
-                    string filename = $"sharingV_{sharing.Id}.{VideoUrlPath.ContentType.Split('/')[1]}";
+                    string filename = $"sharingV_{Guid.NewGuid()}.{VideoUrlPath.ContentType.Split('/')[1]}";
 
                     VideoUrlPath.SaveAs(Server.MapPath($"~/videos/sharing/{filename}"));
                     sharing.VideoUrlPath = filename;
@@ -153,12 +156,12 @@ namespace LearnMusico.Controllers
                       ImageUrlPath.ContentType == "image/jpg" ||
                       ImageUrlPath.ContentType == "image/png"))
                 {
-                    string filenameI = $"sharingI_{sharing.Id}.{ImageUrlPath.ContentType.Split('/')[1]}";
+                    string filenameI = $"sharingI_{Guid.NewGuid()}.{ImageUrlPath.ContentType.Split('/')[1]}";
 
                     ImageUrlPath.SaveAs(Server.MapPath($"~/img/sharing/{filenameI}"));
                     sharing.ImageUrlPath = filenameI;
                 }
-                sharing.Owner = CurrentSession.User;
+
                 BusinessLayerResult<Sharing> res = sharingManager.UpdateSharing(sharing);
 
                 if (res.Errors.Count > 0)
@@ -217,13 +220,13 @@ namespace LearnMusico.Controllers
                 if (ids != null)
                 {
                     likedNoteIds = likedManager.List(
-                        x => x.LikedUser.Id == userid && ids.Contains(x.Sharing.Id)).Select(
+                        x => x.MusicaUser.Id == userid && ids.Contains(x.Sharing.Id)).Select(
                         x => x.Sharing.Id).ToList();
                 }
                 else
                 {
                     likedNoteIds = likedManager.List(
-                        x => x.LikedUser.Id == userid).Select(
+                        x => x.MusicaUser.Id == userid).Select(
                         x => x.Sharing.Id).ToList();
                 }
 
@@ -242,7 +245,7 @@ namespace LearnMusico.Controllers
             if (CurrentSession.User == null)
                 return Json(new { hasError = true, errorMessage = "Beğenme işlemi için giriş yapmalısınız.", result = 0 });
 
-            Liked like = likedManager.Find(x => x.Sharing.Id == sharingid && x.LikedUser.Id == CurrentSession.User.Id);
+            Liked like = likedManager.Find(x => x.Sharing.Id == sharingid && x.MusicaUser.Id == CurrentSession.User.Id);
             Sharing sharing = sharingManager.Find(x => x.Id == sharingid);
 
             if(like !=null && liked==false)
@@ -253,7 +256,7 @@ namespace LearnMusico.Controllers
             {
                 res = likedManager.Insert(new Liked()
                 {
-                    LikedUser = CurrentSession.User,
+                    MusicaUser = CurrentSession.User,
                     Sharing = sharing
                 }); 
             }

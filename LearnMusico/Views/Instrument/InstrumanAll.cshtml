@@ -52,18 +52,18 @@
                             <br />
                             if(!string.IsNullOrEmpty(item.AudioUrlPath))
                             {
-                            <div class="single-song-area mb-30 d-flex flex-wrap align-items-end">
-                                <div class="song-play-area">
-                                    <div class="song-name">
-                                        <p>Ses oynatıcı</p>
+                                <div class="single-song-area mb-30 d-flex flex-wrap align-items-end">
+                                    <div class="song-play-area">
+                                        <div class="song-name">
+                                            <p>Ses oynatıcı</p>
+                                        </div>
+                                        <audio preload="auto" controls>
+                                            <source src="~/audio/instrument/@item.AudioUrlPath">
+                                        </audio>
                                     </div>
-                                    <audio preload="auto" controls>
-                                        <source src="~/audio/instrument/@item.AudioUrlPath">
-                                    </audio>
                                 </div>
-                            </div>
                             }
-                            <p class="text-right">Yazar: <a href="#">@(item.Owner.Name+" "+item.Owner.Surname)</a></p>
+                            <p class="text-right">Yazar: <a href="#">@(item.MusicaUser.Name+" "+item.MusicaUser.Surname)</a></p>
                             <br />
                         }
                     </div>

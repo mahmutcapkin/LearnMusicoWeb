@@ -20,7 +20,8 @@ namespace LearnMusico.BusinessLayer
             res.Result = Find(x => x.Id == data.Id);
             res.Result.Title = data.Title;
             res.Result.Description = data.Description;
-            res.Result.Owner = data.Owner;
+            res.Result.MusicaUser = data.MusicaUser;
+            res.Result.ModifiedUsername = data.ModifiedUsername;
             //gerekirse buraya diğer video resim ya da ses dosyası linki eklenecek
 
             if (string.IsNullOrEmpty(data.VideoUrlPath) == false)
