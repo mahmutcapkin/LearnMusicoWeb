@@ -33,17 +33,6 @@
 </head>
 
 <body>
-    <!-- Preloader -->
-    @*<div class="preloader d-flex align-items-center justify-content-center">
-            <div class="lds-ellipsis">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </div>*@
-
-    <!-- ##### Header Area Start ##### -->
     <header class="header-area">
         <!-- Navbar Area -->
         <div class="oneMusic-main-menu">
@@ -73,7 +62,19 @@
                             <div class="classynav">
                                 @if (CurrentSession.User != null)
                                 {
-                                    <ul>
+                                <ul>
+                                    <li>
+                                        @if (CurrentSession.User.IsAdmin)
+                                        {
+                                            <a href="#">Yönetim</a>
+                                            <ul class="dropdown">
+                                                <li><a href="/MusicaUser/Index">Kullanıcılar</a></li>
+                                                <li><a href="/MusicaUser/Create">Kullanıcı Ekle</a></li>
+                                            </ul>
+                                        }
+                                    </li>
+                                    @if (!CurrentSession.User.IsAdmin)
+                                    {
                                         <li>
                                             <a href="/InstrumentPrice/InstrumentPriceAll">Satılık Enstrümanlar</a>
                                             @if (!CurrentSession.User.IsTeacher)
@@ -129,24 +130,7 @@
                                             }
 
                                         </li>
-
-                                        @*<li><a href="index.html">Haber/Yazı Detaylarım</a></li>
-                                            <li><a href="index.html">Haber/Yazı Ekle</a></li>
-                                            <li><a href="index.html">Enstrümanlarım</a></li>
-                                            <li><a href="index.html">Enstrüman Ekle</a></li>
-                                            <li><a href="index.html">özel Derslerim</a></li>
-                                            <li><a href="index.html">özel Ders Ekle</a></li>*@
-
-                                        @*<li>
-                                                <a href="/Home/Index"> Yönetim</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="/Article/MyArticle">Haber/Yazılarım</a></li>
-                                                    <li><a href="/Article/Create">Haber/Yazı Ekle</a></li>
-                                                    <li><a href="index.html">Özel Derslerim</a></li>
-                                                    <li><a href="index.html">Özel Ders Ekle</a></li>
-                                                </ul>
-                                            </li>*@
-
+                                    }
                                     </ul>
                                 }
 
@@ -191,8 +175,7 @@
             </div>
         </div>
     </header>
-    <!-- ##### Header Area End ##### -->
-    <!-- ##### Hero Area Start ##### -->
+
     @RenderBody()
 
     @RenderSection("footer", required: false)

@@ -71,7 +71,17 @@
                             @Html.DisplayFor(modelItem => item.Surname)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.About)
+                            @if (!string.IsNullOrEmpty(item.About))
+                            {
+                                if (item.About.Length > 20)
+                                {
+                                    @(item.About.Substring(0,20)+"...")
+                                }
+                                else
+                                {
+                                    @item.About
+                                }
+                            }
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Username)
@@ -83,7 +93,7 @@
                             @Html.DisplayFor(modelItem => item.Password)
                         </td>
                         <td>
-                            <a href="~/document/@item.CV" target="_blank" class="btn btn-xs">CV</a>
+                            <a href="~/document/user/@item.CV" target="_blank" class="btn btn-xs">@item.CV</a>
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.IsActive)
